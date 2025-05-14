@@ -1,0 +1,135 @@
+{
+    "ui:classNames": "custom-css-class",
+    "ui:submitButtonOptions": {
+        "props": {
+            "disabled": false,
+            "className": ""
+        },
+        "norender": false,
+        "submitText": "Submit"
+    },
+    
+    "submittingEntity": {
+        "ui:field": "LayoutGridField",
+        "ui:layoutGrid": {
+                "ui:row": {                 
+                "spacing": 2,
+                "children":[
+                    {"ui:row": {"spacing": 2,"size": 12, "children":[{"title":"submittingEntity","field":"LayoutHeaderField"}]}},
+                    {"ui:row": {"spacing": 2,"size": 12, "children":[{"ui:columns": {"size":6, "children": ["name", "code"]}}]}},
+                    {"ui:row": {"spacing": 2,"size": 12, "children":[{"ui:columns": {"size": 12,"children": ["typeOfSubmittingFinancialEntity"]}}]}}
+                ]             
+            }
+        },
+        "name":{
+            "ui:title":"Name",
+            "ui:description":""
+        },
+        "code":{
+            "ui:title":"Code"
+        },
+        "typeOfSubmittingFinancialEntity":{
+            "ui:title":"typeOfSubmittingFinancialEntity",
+            "size": 12,
+            "ui:classNames":"selectEntity",
+            "items": {
+                "ui:title":"Item",
+                "ui:classNames":"selecItem"
+            }
+        },
+        "ui:options":{
+            "classNames":"step-0 category"
+        }           
+    },
+    "affectedFinancialEntity": {
+        "ui:field": "LayoutGridField",
+        "ui:layoutGrid": {
+                "ui:row": {
+                "spacing": 2,
+                "children":[
+                    {"ui:row": {"spacing": 2,"size": 12, "children":[{"title":"affectedFinancialEntity","field":"LayoutHeaderField"}]}},
+                    {"ui:row": {"spacing": 2,"size": 12, "children":[{"ui:columns": {"size":6, "children": ["name", "LEI"]}}]}}
+                ]
+            }
+        },        
+        "name":{
+            "ui:title":"Name"
+        },
+        "LEI":{
+            "ui:title":"LEI"
+        },
+        "ui:options":{
+            "classNames":"step-1 category"
+        }           
+    },
+    "primaryContact": {
+        "ui:field": "LayoutGridField",
+        "ui:layoutGrid": {
+                "ui:row": {
+                "spacing": 2,
+                "children":[
+                    {"ui:row": {"spacing": 2,"size": 12, "children":[{"title":"primaryContact","field":"LayoutHeaderField"}]}},
+                    {"ui:row": {"spacing": 2,"size": 12, "children":[{"ui:columns": {"size":4, "children": ["name", "email","phone"]}}]}}
+                ]
+            }
+        }, 
+        "name":{
+            "ui:title":"Name"
+        },
+        "email":{
+            "ui:title":"Email"
+        },
+        "phone":{
+            "ui:title":"Phone"
+        },
+        "ui:options":{
+            "classNames":"step2 category"
+        }           
+    },    
+    "secondaryContact": {
+        "ui:field": "LayoutGridField",
+        "ui:layoutGrid": {
+                "ui:row": {
+                "spacing": 2,
+                "children":[
+                    {"ui:row": {"spacing": 2,"size": 12, "children":[{"title":"secondaryContact","field":"LayoutHeaderField"}]}},
+                    {"ui:row": {"spacing": 2,"size": 12, "children":[{"ui:columns": {"size":4, "children": ["name", "email","phone"]}}]}}
+                ]
+            }
+        }, 
+        "name":{
+            "ui:title":"Name"
+        },
+        "email":{
+            "ui:title":"Email"
+        },
+        "phone":{
+            "ui:title":"Phone"
+        },
+        "ui:options":{
+            "classNames":"step-2 category"
+        }        
+    },
+    "cyberThreat": {
+        "ui:field": "LayoutGridField",
+        "ui:layoutGrid": {
+                "ui:row": {
+                "className": "grid-catagory",
+                "children":[
+                    {"ui:row": {"size": 12,"children":[{"title":"cyberThreat","field":"LayoutHeaderField", "fullWidth":true}]}},
+                    {"ui:row": {"spacing": 2,"size": 12, "children":[{"ui:columns": {"size":6, "children": ["detectionDateTime", "cyberThreatDescription"]}}]}},
+                    {"ui:row": {"spacing": 2,"size": 12, "children":[{"ui:columns": {"size":6, "children": ["potentialImpactInformation", "potentialClassificationCriteria"]}}]}},
+                    {"ui:row": {"spacing": 2,"size": 12, "children":[{"ui:columns": {"size":6, "children": ["status", "actionsTakenToPreventMaterialisation"]}}]}},
+                    {"ui:row": {"spacing": 2,"size": 12, "children":[{"ui:columns": {"size":6, "children": ["notificationToOtherStakeholders", "indicatorsOfCompromise"]}}]}},
+                    {"ui:row": {"spacing": 2,"size": 12, "children":[{"ui:columns": {"size":12, "children": ["otherRelevantInformation"]}}]}}
+                ]
+            }
+        }, 
+        "potentialClassificationCriteria": {
+            "ui:classNames":"selectEntity"
+        },
+        "ui:options":{
+            "classNames":"step-3 category"
+        }
+    }
+}
