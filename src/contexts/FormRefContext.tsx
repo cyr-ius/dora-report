@@ -1,12 +1,13 @@
-import Form from "@rjsf/core";
+
+import type Form from "@rjsf/core";
 import { createContext, useContext, useRef, type FC, type ReactNode, type RefObject } from "react";
 
-type FormRefType = RefObject<InstanceType<typeof Form>>;
+type FormRefType = RefObject<Form<any> | null>;
 
 const FormRefContext = createContext<FormRefType | null>(null);
 
 export const FormRefProvider: FC<{ children: ReactNode }> = ({children,}) => {
-  const formRef = useRef<InstanceType<typeof Form> | null>(null);
+  const formRef = useRef<Form<any>>(null);
 
   return (
     <FormRefContext.Provider value={formRef}>
