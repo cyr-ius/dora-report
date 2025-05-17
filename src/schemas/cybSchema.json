@@ -1,0 +1,193 @@
+{
+  "$id": "CYB-1.1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DORA Significant Cyber Threats",
+  "type": "object",
+  "properties": {
+    "submittingEntity": {
+      "$ref": "#/$defs/SubmittingEntity",
+      "description": "field 1, 2, 3"
+    },
+    "affectedFinancialEntity": {
+      "$ref": "#/$defs/AffectedEntity",
+      "description": "field 4, 5"
+    },
+    "primaryContact": {
+      "$ref": "#/$defs/Contact",
+      "description": "field 6, 7, 8"
+    },
+    "secondaryContact": {
+      "$ref": "#/$defs/Contact",
+      "description": "field 9, 10, 11"
+    },
+    "cyberThreat": {
+      "$ref": "#/$defs/CyberThreat"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "submittingEntity",
+    "affectedFinancialEntity",
+    "primaryContact",
+    "secondaryContact",
+    "cyberThreat"
+  ],
+  "$defs": {
+    "SubmittingEntity": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "maxLength": 32767,
+          "description": "field 1"
+        },
+        "code": {
+          "type": "string",
+          "maxLength": 32767,
+          "description": "field 2"
+        },
+        "typeOfSubmittingFinancialEntity": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "description": "field 3",
+            "enum": [
+              "credit_institution",
+              "payment_institution",
+              "exempted_payment_institution",
+              "account_information_service_provider",
+              "electronic_money_institution",
+              "exempted_electronic_money_institution",
+              "investment_firm",
+              "crypto-asset_service_provider",
+              "issuer_of_asset-referenced_tokens",
+              "central_securities_depository",
+              "central_counterparty",
+              "trading_venue",
+              "trade_repository",
+              "manager_of_alternative_investment_fund",
+              "management_company",
+              "data_reporting_service_provider",
+              "insurance_and_reinsurance_undertaking",
+              "insurance_intermediary_reinsurance_intermediary_and_ancillary_insurance_intermediary",
+              "institution_for_occupational_retirement_provision",
+              "credit_rating_agency",
+              "administrator_of_critical_benchmarks",
+              "crowdfunding_service_provider",
+              "securitisation_repository"
+            ]
+          }
+        }
+      },
+      "required": ["name", "code"],
+      "additionalProperties": false
+    },
+    "AffectedEntity": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "maxLength": 32767,
+          "description": "field 4"
+        },
+        "LEI": {
+          "type": "string",
+          "pattern": "^[A-Z0-9]{18}[0-9]{2}$",
+          "description": "field 5"
+        }
+      }
+    },
+    "Contact": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "maxLength": 32767,
+          "description": "field 6, 9 - depending on the type of the contact primary or second"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "7, 10 - depending on the type of the contact primary or second"
+        },
+        "phone": {
+          "type": "string",
+          "pattern": "^\\+?[1-9]\\d{1,14}(\\s?\\(\\d+\\))?([-\\s.]?\\d+)*$",
+          "description": "field 8, 11 - depending on the type of the contact primary or second"
+        }
+      },
+      "required": ["name", "email", "phone"],
+      "additionalProperties": false
+    },
+    "CyberThreat": {
+      "type": "object",
+      "properties": {
+        "detectionDateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "field 12"
+        },
+        "cyberThreatDescription": {
+          "type": "string",
+          "maxLength": 32767,
+          "description": "field 13"
+        },
+        "potentialImpactInformation": {
+          "type": "string",
+          "maxLength": 32767,
+          "description": "field 14"
+        },
+        "potentialClassificationCriteria": {
+          "type": "array",
+          "description": " field 15",
+          "items": {
+            "type": "string",
+            "enum": [
+              "clients_financial_counterparts_and_transactions_affected",
+              "reputational_impact",
+              "duration_and_service_downtime",
+              "geographical_spread",
+              "data_losses",
+              "critical_services_affected",
+              "economic_impact"
+            ]
+          }
+        },
+        "status": {
+          "type": "string",
+          "enum": ["active", "inactive"],
+          "description": "field 16"
+        },
+        "actionsTakenToPreventMaterialisation": {
+          "type": "string",
+          "maxLength": 32767,
+          "description": "field 17"
+        },
+        "notificationToOtherStakeholders": {
+          "type": "string",
+          "maxLength": 32767,
+          "description": "field 18"
+        },
+        "indicatorsOfCompromise": {
+          "type": "string",
+          "maxLength": 32767,
+          "description": "field 19"
+        },
+        "otherRelevantInformation": {
+          "type": "string",
+          "maxLength": 32767,
+          "description": "field 20"
+        }
+      },
+      "required": [
+        "detectionDateTime",
+        "cyberThreatDescription",
+        "potentialImpactInformation",
+        "potentialClassificationCriteria",
+        "status",
+        "actionsTakenToPreventMaterialisation"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

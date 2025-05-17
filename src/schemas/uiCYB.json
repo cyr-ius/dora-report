@@ -1,12 +1,9 @@
 {
+    "ui:title": "",
+    "ui:description":"Ce rapport permet de délcarer une menace auprès de l'EBA",
     "ui:classNames": "custom-css-class",
     "ui:submitButtonOptions": {
-        "props": {
-            "disabled": false,
-            "className": ""
-        },
-        "norender": false,
-        "submitText": "Submit"
+        "norender": true
     },
     
     "submittingEntity": {
@@ -14,6 +11,7 @@
         "ui:layoutGrid": {
                 "ui:row": {                 
                 "spacing": 2,
+
                 "children":[
                     {"ui:row": {"spacing": 2,"size": 12, "children":[{"title":"submittingEntity","field":"LayoutHeaderField"}]}},
                     {"ui:row": {"spacing": 2,"size": 12, "children":[{"ui:columns": {"size":6, "children": ["name", "code"]}}]}},
@@ -26,10 +24,12 @@
             "ui:description":""
         },
         "code":{
-            "ui:title":"Code"
+            "ui:title":"Code",
+            "ui:help":""
         },
         "typeOfSubmittingFinancialEntity":{
             "ui:title":"typeOfSubmittingFinancialEntity",
+            "ui:help":"",
             "size": 12,
             "ui:classNames":"selectEntity",
             "items": {
@@ -38,7 +38,7 @@
             }
         },
         "ui:options":{
-            "classNames":"step-0 category"
+            "classNames":"step0 category"
         }           
     },
     "affectedFinancialEntity": {
@@ -59,7 +59,7 @@
             "ui:title":"LEI"
         },
         "ui:options":{
-            "classNames":"step-1 category"
+            "classNames":"step1 category"
         }           
     },
     "primaryContact": {
@@ -107,7 +107,7 @@
             "ui:title":"Phone"
         },
         "ui:options":{
-            "classNames":"step-2 category"
+            "classNames":"step2 category"
         }        
     },
     "cyberThreat": {
@@ -129,7 +129,7 @@
             "ui:classNames":"selectEntity"
         },
         "ui:options":{
-            "classNames":"step-3 category"
+            "classNames":"step3 category"
         }
     }
 }

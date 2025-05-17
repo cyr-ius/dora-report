@@ -10,24 +10,9 @@ html, body {
   width: calc(var(--Grid-columns) * 7.75%);
 }
 
-.category {
-  display: none;
-}
-
-.step-0,
-.step-1,
-.step-2 {
-  display: block;
-}
-
 .App {
   text-align: center;
   margin-bottom: 1em;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 60px;
 }
 
 .App-header {
@@ -70,14 +55,30 @@ html, body {
   color: #6c757d;
 }
 
-.logo:hover {
+/* Logo Header */
+
+.Header-logo {
+  animation: Header-logo-spin infinite 20s linear;
+  height: 60px;
+}
+
+.Header-logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
-.logo.react:hover {
+.Header-logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
-@keyframes logo-spin {
+/* Stepper */
+.hidden-category {
+  display:none;
+}
+
+.category.active-step {
+  display: block;
+}
+
+@keyframes Header-logo-spin {
   from {
     transform: rotate(0deg);
   }

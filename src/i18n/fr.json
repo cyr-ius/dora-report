@@ -27,12 +27,24 @@
   "Are you sure you want to delete the selected entry?": "Voulez-vous vraiment supprimer l’entrée sélectionnée ?",
   "No data": "Aucune donnée",
   "Delete": "Supprimer",
+  "Cancel": "Annuler",
   "Yes": "Oui",
   "No": "Non",  
   "active": "Actif",
   "inactive": "Inactif",
   "up": "Monter",
   "down": "Descendre",
+
+  "JSON Import": "Import JSON",
+  "Save":"Sauvegarder",
+  "My saves":"Mes sauvegardes",
+  "View saves":"Voir les sauvegardes",
+  "ID": "Id",
+  "Actions": "Actions",
+  "Invalid JSON File":"Fichier JSON invalide",
+  "Save naming": "Nommer la sauvegarde",
+  "Label": "Label",
+
 
   "reportCurrency.label": "Devise du rapport",
   "incidentSubmission.label": "Soumission d'incident",
@@ -105,7 +117,6 @@
   "incident.incidentType.incidentClassification.label": "Classification de l’incident",
   "incident.incidentType.otherIncidentClassification.label": "Autre classification de l’incident",
   "incident.incidentType.threatTechniques.label": "Techniques de menace",
-  "incident.incidentType.threatTechniques.label": "Techniques de menace",
   "incident.incidentType.otherThreatTechniques.label": "Autres techniques de menace",
   "incident.incidentType.indicatorsOfCompromise.label": "Indicateurs de compromission",
 
@@ -115,7 +126,6 @@
   "incident.incidentType.incidentClassification.external_event": "événement externe",
   "incident.incidentType.incidentClassification.payment-related": "lié au paiement",
   "incident.incidentType.incidentClassification.other": "autre",
-  "incident.incidentType.otherIncidentClassification.label": "Autre Classification d'Incident",
 
   "incident.incidentType.threatTechniques.social_engineering_including_phishing": "Ingénierie sociale, y compris le phishing",
   "incident.incidentType.threatTechniques.ddos": "Attaque par déni de service (DDoS)",
@@ -128,7 +138,6 @@
   "incident.incidentType.threatTechniques.supply-chain_attack": "Attaque de la chaîne d’approvisionnement",
   "incident.incidentType.threatTechniques.other": "Autre",
 
-
   "incident.rootCausesOther.label": "Autres causes profondes",
   "incident.rootCausesInformation.label": "Informations sur les causes profondes",
   "incident.rootCauseAddressingDateTime.label": "Date et heure de traitement de la cause profonde",
@@ -139,7 +148,6 @@
   "incident.rootCauseHLClassification.process_failure": "Défaillance de processus",
   "incident.rootCauseHLClassification.system_failure_malfunction": "Défaillance système : dysfonctionnement",
   "incident.rootCauseHLClassification.human_error": "Erreur humaine",
-  "incident.rootCauseHLClassification.external_event": "Événement externe",
   
   "incident.rootCausesDetailedClassification.label": "Classification détaillée des causes principales",
   "incident.rootCausesDetailedClassification.malicious_actions_deliberate_internal_actions": "Actions malveillantes, actions internes délibérées",
@@ -158,9 +166,6 @@
   "incident.rootCausesDetailedClassification.system_failure_hardware_obsolescence_ageing": "Échec système, obsolescence matérielle, vieillissement",
   "incident.rootCausesDetailedClassification.system_failure_software_compatibility_configuration": "Échec système, compatibilité et configuration logicielle",
   "incident.rootCausesDetailedClassification.system_failure_software_performance": "Échec système, performance logicielle",
-  "incident.rootCausesDetailedClassification.system_failure_network_configuration": "Échec système, configuration réseau",
-  "incident.rootCausesDetailedClassification.system_failure_physical_damage": "Échec système, dommages physiques",
-  "incident.rootCausesDetailedClassification.system_failure_other": "Échec système, autre",
   "incident.rootCausesDetailedClassification.system_failure_network_configuration": "Échec système, configuration réseau",
   "incident.rootCausesDetailedClassification.system_failure_physical_damage": "Échec système, dommages physiques",
   "incident.rootCausesDetailedClassification.system_failure_other": "Échec système, autre",
@@ -194,9 +199,6 @@
   "incident.rootCausesAdditionalClassification.inadequate_ict_systems_acquisition_development_and_maintenance": "Acquisition, développement et maintenance des systèmes ICT inadéquats",
   "incident.rootCausesAdditionalClassification.insufficient_or_failure_of_software_testing": "Tests logiciels insuffisants ou échoués" ,   
 
-  "incident.rootCausesOther.label": "Autres causes principales",
-  "incident.rootCausesInformation.label": "Informations sur les causes principales",
-  "incident.rootCauseAddressingDateTime.label": "Date et heure de traitement de la cause principale",
   "incident.incidentResolutionSummary.label": "Résumé de la résolution de l'incident",
   "incident.incidentResolutionDateTime.label": "Date et heure de la résolution de l’incident",
   "incident.incidentResolutionVsPlannedImplementation.label": "Résolution de l’incident vs mise en œuvre prévue",
@@ -243,14 +245,7 @@
   "impactAssessment.isAffectedInfrastructureComponents.label": "Des Composants d'Infrastructure Sont-ils Affectés ?",
   "impactAssessment.affectedInfrastructureComponents.label": "Composants d'Infrastructure Affectés",
   "impactAssessment.isImpactOnFinancialInterest.label": "Impact Sur les Intérêts Financiers ?",
-
-
-  "impactAssessment.serviceImpact.label": "Impact sur le Service",
-  "impactAssessment.serviceImpact.serviceRestorationDateTime.label": "Date et Heure de Rétablissement du Service",
-  "impactAssessment.serviceImpact.serviceDowntime.label": "Temps d'Indisponibilité du Service",
-  "impactAssessment.serviceImpact.isTemporaryActionsMeasuresForRecovery.label": "Des Mesures Temporaires ont-elles été Prises pour la Récupération ?",
-  "impactAssessment.serviceImpact.descriptionOfTemporaryActionsMeasuresForRecovery.label": "Description des Mesures Temporaires pour la Récupération",
-  
+ 
   "primaryContact.label": "Contact principal",
   "primaryContact.name.label": "Nom du contact principal",
   "primaryContact.email.label": "Email du contact principal",

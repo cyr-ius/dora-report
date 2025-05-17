@@ -1,24 +1,25 @@
-import { JsonSchema } from '@jsonforms/core';
 import { Button } from '@mui/material';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
-import { FC } from 'react';
+import { useEffect, useRef, type FC, type RefObject } from 'react';
 import { useTranslation } from 'react-i18next';
-import { CustomAjv } from '../components/ajv';
-import { validateSchema } from '../components/utils';
-import { useSchema } from '../context/SchemaContext';
+import { useErrors } from '../contexts/ErrorContext';
 
 interface PDFButtonProps {
-  schema: JsonSchema;
   data: any;
+  formRef: RefObject<any>
 }
 
-export const GeneratePDGButton: FC<PDFButtonProps> = ({ schema, data }) => {
+export const GeneratePDGButton: FC<PDFButtonProps> = ({ data, formRef }) => {
   const { t } = useTranslation();
-  const { setErrors } = useSchema();
-  const ajv = CustomAjv();
+  const {errors} = useErrors();
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
 
-  const generatePDF = (data: any) => {
+  useEffect(() => {
+      formRef.current.validateForm()
+  }, []);
+
+  const generatePDF = () => {
     const doc = new jsPDF();
 
     // Définir la couleur bleu pour la page de garde
@@ -115,16 +116,15 @@ export const GeneratePDGButton: FC<PDFButtonProps> = ({ schema, data }) => {
     doc.save(fileName);
   };
 
-  const pdfButton = () => {
-    const vs = validateSchema(schema, data);
-    if (vs.valid) {
-      generatePDF(data);
-    } else {
-      if (vs.validate.errors) setErrors(vs.validate.errors);
-    }
-  };
   return (
-    <Button variant="contained" color="primary" onClick={pdfButton}>
+    <Button 
+      ref={buttonRef}
+      variant="contained" 
+      color="primary" 
+      onClick={generatePDF} 
+      sx={{ backgroundColor: 'purple', color: 'white', '&:hover': { backgroundColor: '#5e0e9b' } }}
+      disabled={errors.length > 0}
+      >
       {t('Generate')} PDF
     </Button>
   );

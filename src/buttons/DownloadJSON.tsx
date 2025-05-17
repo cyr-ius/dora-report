@@ -1,20 +1,22 @@
-import { JsonSchema } from '@jsonforms/core';
 import { Button } from '@mui/material';
-import { FC } from 'react';
+import { useEffect, type FC, type RefObject } from 'react';
 import { useTranslation } from 'react-i18next';
-import { validateSchema } from '../components/utils';
-import { useSchema } from '../context/SchemaContext';
+import { useErrors } from '../contexts/ErrorContext';
 
 interface JSONButtonProps {
-  schema: JsonSchema;
   data: any;
+  formRef: RefObject<any>
 }
 
-export const DownloadJSONButton: FC<JSONButtonProps> = ({ schema, data }) => {
+export const DownloadJSONButton: FC<JSONButtonProps> = ({ data, formRef }) => {
   const { t } = useTranslation();
-  const { setErrors } = useSchema();
+  const {errors} = useErrors()
 
-  const handleDownload = (data: any) => {
+  useEffect(()=>{
+    formRef.current.validateForm();
+  }, [])
+
+  const handleDownload = () => {
     const timestamp = new Date().toISOString().replace(/[:.-]/g, '_');
     const fileName = `formulaire_${timestamp}.json`;
 
@@ -29,16 +31,9 @@ export const DownloadJSONButton: FC<JSONButtonProps> = ({ schema, data }) => {
     URL.revokeObjectURL(url);
   };
 
-  const downloadButton = () => {
-    const vs = validateSchema(schema, data);
-    if (vs.valid) {
-      handleDownload(data);
-    } else {
-      if (vs.validate.errors) setErrors(vs.validate.errors);
-    }
-  };
+
   return (
-    <Button variant="contained" color="primary" onClick={downloadButton}>
+    <Button variant="contained" color="primary" onClick={handleDownload} disabled={errors.length > 0}>
       {t('Download')} JSON
     </Button>
   );

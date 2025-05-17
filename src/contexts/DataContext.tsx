@@ -15,9 +15,7 @@ interface DataContextType {
 
 const DataContext = createContext<DataContextType | undefined>(undefined);
 
-export const DataProvider: FC<{ children: ReactNode }> = ({
-  children,
-}) => {
+export const DataProvider: FC<{ children: ReactNode }> = ({children,}) => {
   const [data, setData] = useState<Record<string, any>>({});
 
   return (
