@@ -25,7 +25,6 @@ type SaveEntry = {
 const SaveModal: FC<SaveModalProps> = ({ open, formType, onClose }) => {
     const {t} = useTranslation()
     const {data} = useData()
-    const [saves, setSaves] = useState<Record<string, SaveEntry>>(loadSaves());
     const [label, setLabel] = useState<string>(`${formType}-${new Date().toLocaleString()}`)
 
     useEffect(()=>{
@@ -41,7 +40,6 @@ const SaveModal: FC<SaveModalProps> = ({ open, formType, onClose }) => {
         const id = crypto.randomUUID();
         const entry: SaveEntry = { label, type: formType, data: data };
         const newSaves = { ...loadSaves(), [id]: entry };
-        setSaves(newSaves);
         console.debug(newSaves)
         localStorage.setItem('dora-saves', JSON.stringify(newSaves));       
         onClose();

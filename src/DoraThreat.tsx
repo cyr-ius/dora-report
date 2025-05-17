@@ -85,9 +85,11 @@ export const DoraThreat: FC = () => {
     }
 
     const handleReset = () => {
-        formRef.current.reset()
-        setStep(0)
-        setTimeout(() => setData(initialData), 0);        
+        if (formRef.current) {
+            formRef.current.reset()
+            setStep(0)
+            setTimeout(() => setData(initialData), 0);        
+        }
     }
 
     return (

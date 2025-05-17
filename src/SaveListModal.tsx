@@ -14,8 +14,8 @@ import {
 import { useEffect, useState, type FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useData } from './contexts/DataContext';
-import { useStepper } from './contexts/Stepper';
 import { useFormRef } from './contexts/FormRefContext';
+import { useStepper } from './contexts/Stepper';
 
 interface SaveListModalProps {
   open: boolean;
@@ -66,9 +66,11 @@ export const SaveListModal: FC<SaveListModalProps> = ({ open, onClose }) => {
             alert("Cette sauvegarde correspond à un autre formulaire.");
             return;
         }
-        formRef.current.reset()
-        setStep(0)         
-        setTimeout(() => setData(entry.data), 0);             
+        if (formRef.current){
+            formRef.current.reset()
+            setStep(0)         
+            setTimeout(() => setData(entry.data), 0);             
+        }
         onClose()
     };    
 
