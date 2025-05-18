@@ -10,7 +10,8 @@ import {
 } from '@mui/material';
 import { type FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useLocale } from './contexts/LocaleContext';
+import { useLocale } from '../contexts/LocaleContext';
+
 
 interface LocaleModalProps {
   open: boolean;

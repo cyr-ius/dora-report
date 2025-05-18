@@ -195,7 +195,7 @@
                 "incidentDescription",
                 "rootCauseHLClassification",
                 "incidentResolutionSummary",
-				"incidentResolutionDateTime",
+				        "incidentResolutionDateTime",
                 "incidentResolutionVsPlannedImplementation",
                 "financialRecoveriesAmount"
               ]

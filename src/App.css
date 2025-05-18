@@ -6,10 +6,6 @@ html, body {
   min-width: 320px;
 }
 
-.selectEntity .MuiGrid2-container > div:first-of-type {
-  width: calc(var(--Grid-columns) * 7.75%);
-}
-
 .App {
   text-align: center;
   margin-bottom: 1em;
@@ -70,12 +66,19 @@ html, body {
 }
 
 /* Stepper */
-.hidden-category {
-  display:none;
+.category {
+  display:none !important;
 }
 
 .category.active-step {
-  display: block;
+  display: block !important;
+}
+
+/* Array */
+.selectSub .MuiGrid2-direction-xs-row.MuiGrid2-grid-xs-auto {
+  width: 94.5%;
+  margin:0;
+  padding: 0;
 }
 
 @keyframes Header-logo-spin {

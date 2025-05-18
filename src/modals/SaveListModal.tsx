@@ -13,12 +13,13 @@ import {
 } from '@mui/material';
 import { useEffect, useState, type FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useData } from './contexts/DataContext';
-import { useFormRef } from './contexts/FormRefContext';
-import { useStepper } from './contexts/Stepper';
+import { useData } from '../contexts/DataContext';
+import { useFormRef } from '../contexts/FormRefContext';
+import { useStepper } from '../contexts/Stepper';
 
 interface SaveListModalProps {
   open: boolean;
+  formType: 'threat' | 'incident';
   onClose: () => void;
 }
 
@@ -29,7 +30,7 @@ type SaveEntry = {
 };
 
 
-export const SaveListModal: FC<SaveListModalProps> = ({ open, onClose }) => {
+export const SaveListModal: FC<SaveListModalProps> = ({ open, onClose, formType }) => {
     const {t} = useTranslation()
     const formRef = useFormRef()
     const [saves, setSaves] = useState<Record<string, SaveEntry>>(loadSaves());
@@ -62,8 +63,8 @@ export const SaveListModal: FC<SaveListModalProps> = ({ open, onClose }) => {
 
     const handleEdit = (id: string) => {
         const entry = saves[id];
-        if (entry.type !== 'threat') {
-            alert("Cette sauvegarde correspond à un autre formulaire.");
+        if (entry.type !== formType) {
+            alert(t('This backup corresponds to another form.'));
             return;
         }
         if (formRef.current){
@@ -80,7 +81,9 @@ export const SaveListModal: FC<SaveListModalProps> = ({ open, onClose }) => {
             <DialogContent>
             <Table sx={{ width: '100%' }} size="small">
                 <TableBody>
-                {Object.entries(saves).map(([id, entry]) => (
+                {Object.entries(saves)
+                    .filter(([,meta]) => meta.type === formType)
+                    .map(([id, entry]) => (
                     <TableRow key={id}>
                         <TableCell align="left">{entry.label}</TableCell>
                         <TableCell align="right">

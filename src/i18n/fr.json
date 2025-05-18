@@ -1,14 +1,14 @@
 {
-  "Report Currency*": "Devise monétaire *",
-  "Submitting Entity*": "Entité émettrice*",
-  "Affected Entity*": "Entités ciblées",
+  "Incident Submission":"Soumission d'incident",
+  "Submitting Entity": "Entité émettrice",
+  "Affected Entity": "Entités ciblées",
   "Ultimate Parent Undertaking": "Ultime parent",
-  "Incident*": "Incident*",
+  "Incident": "Incident",
   "Impact": "Impacts",
-  "Contact*": "Contacts*",
+  "Contact*": "Contacts",
   "Other Auhorities": "Autres Autorités",
   "Duration Service Downtime": "Durée d'indisponibilité",
-  "Threat*":"Menaces*",
+  "Threat":"Menaces",
   
   "DORA Major Incident Report": "DORA Rapport d'incident majeur",
   "DORA Threat Report": "DORA Rapport de menace",
@@ -20,6 +20,7 @@
   "Download": "Télécharger",
   "Validation": "Validation",
   "Locale": "Langue",
+  "Reset": "Réinitialiser",
 
   "enum.none": "---",
   "No selection": "Aucune sélection",
@@ -34,6 +35,9 @@
   "inactive": "Inactif",
   "up": "Monter",
   "down": "Descendre",
+  "Field":"Champ",
+  "Value": "Value",
+  "Date": "Date",
 
   "JSON Import": "Import JSON",
   "Save":"Sauvegarder",
@@ -45,6 +49,10 @@
   "Save naming": "Nommer la sauvegarde",
   "Label": "Label",
 
+  "This document contains the form data.":"Ce document contient les données du formulaire.",
+  "Summary of the submitted form":"Résumé du formulaire soumis",
+  "This report allows a major security incident to be declared to the supervisory authority.": "Ce rapport permet de déclarer un incident de sécurité majeure à l'autorité de tutelle",
+  "This backup corresponds to another form.":"Cette sauvegarde correspond à un autre formulaire.",
 
   "reportCurrency.label": "Devise du rapport",
   "incidentSubmission.label": "Soumission d'incident",

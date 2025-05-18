@@ -1,0 +1,569 @@
+{
+    "ui:title": "",
+    "ui:description":"This report allows a major security incident to be declared to the supervisory authority.",
+    "ui:submitButtonOptions": {
+        "norender": true
+    },
+  
+    "ui:field": "LayoutGridField",
+    "ui:layoutGrid": {
+        "ui:row": {   
+            "spacing":2,
+            "children":[           
+                {
+                    "ui:row": {
+                        "spacing":2,
+                        "size":12,  
+                        "className":"category step0",                        
+                        "children":[
+                            {
+                                "ui:col": {
+                                    "size":12 , 
+                                    "children": [
+                                        {"title":"incidentSubmission","field":"LayoutHeaderField","fullWidth":true}
+                                    ]
+                                }
+                            },                                                 
+                            {
+                                "ui:row":{
+                                    "spacing":2,
+                                    "size":12,                            
+                                    "children":[
+                                        {   "ui:row": {
+                                                "spacing": 2,
+                                                "size":12 , 
+                                                "children":[
+                                                    {"ui:col" : {"spacing": 2,"size": 9,"children": ["incidentSubmission"]}},
+                                                    {"ui:col" : {"spacing": 2,"size": 3,"children": ["reportCurrency"]}}
+                                                ]
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                },                                       
+                {
+                    "ui:row": {
+                        "spacing":2,
+                        "size":12,      
+                        "className":"category step1",                        
+                        "children":["submittingEntity"]
+                    }
+                },                                            
+                {
+                    "ui:row": {
+                        "spacing":2,
+                        "size":12,
+                        "className":"category step2 selectSub",                        
+                        "children":["affectedEntity"]
+                    }
+                },                                            
+                {
+                    "ui:row": {
+                        "spacing":2,
+                        "size":12,
+                        "className":"category step3",                        
+                        "children":["ultimateParentUndertaking"]
+                    }
+                },
+                {
+                    "ui:row": {
+                        "spacing":2,
+                        "size":12,
+                        "className":"category step4",                        
+                        "children":["primaryContact"]
+                    }
+                },
+                {
+                    "ui:row": {
+                        "spacing":2,
+                        "size":12,    
+                        "className":"category step4",                             
+                        "children":["secondaryContact"]
+                    }
+                },                                                     
+                {
+                    "ui:row": {
+                        "spacing":2,
+                        "size":12,
+                        "className":"category step5 selectSub",                         
+                        "children":["incident"] 
+                    }
+                },                                                     
+                {
+                    "ui:row": {
+                        "spacing":2,
+                        "size":12,
+                        "className":"category step6 selectSub",   
+                        "children":["impactAssessment"] 
+                    }
+                }, 
+                {
+                    "ui:row": {
+                        "spacing":2,
+                        "size":12,  
+                        "className":"category step7 selectSub",                          
+                        "children":[
+                            {
+                                "ui:col": {"size":12 , "children": [{"title":"OtherAuthorities","field":"LayoutHeaderField","fullWidth":true}]}
+                            },
+                            {
+                                "ui:col": {"size":12 , "children": ["reportingToOtherAuthorities"]}
+                            },
+                            {
+                                "ui:col": {"size":12 , "children": ["reportingToOtherAuthoritiesOther"]}
+                            }                            
+
+                        ]
+                    }
+                },                   
+                {
+                    "ui:row": {
+                        "spacing":2,
+                        "size":12,  
+                        "className":"category step8",  
+                        "children":[
+                            {
+                                "ui:col": {
+                                    "size":12 , 
+                                    "children": [
+                                        {"title":"informationDurationServiceDowntimeActualOrEstimate","field":"LayoutHeaderField","fullWidth":true}
+                                    ]
+                                }
+                            },
+                            {   "ui:col": {
+                                    "size": 12,
+                                    "children":["informationDurationServiceDowntimeActualOrEstimate"]
+                                }
+                            }
+
+                        ]
+                    }
+                }                                                    
+            ]
+        }
+    },
+    "submittingEntity": {
+        "ui:field": "LayoutGridField",
+        "ui:layoutGrid": {
+                "ui:row": {
+                    "spacing":2,
+                    "children":[
+                        {
+                            "ui:col": {
+                                "size":12 , 
+                                "children": [
+                                    {"title":"submittingEntity","field":"LayoutHeaderField","fullWidth":true}
+                                ]
+                            }
+                        },   
+                        {
+                            "ui:col": {
+                                "size":12 , 
+                                "children": ["entityType"]
+                            }
+                        },                                               
+                        {
+                            "ui:columns": {
+                                "size":4, 
+                                "children": ["name","code","LEI"]
+                            }
+                        }
+                    ]
+            }
+        },
+        "entityType": {
+            "ui:options": {
+                "emptyValue":"SUBMITTING_ENTITY"
+            }
+        }
+    },  
+    "affectedEntity": {
+        "items":{
+            "ui:field": "LayoutGridField",
+            "ui:layoutGrid": {
+                "ui:row": {
+                    "spacing":2,
+                    "children":[
+                        {
+                            "ui:col": {
+                                "size":12 , 
+                                "children": ["entityType"]
+                            }
+                        },                        
+                        {
+                            "ui:columns": {
+                                "size":4, 
+                                "children": ["name","code","LEI"]
+                            }
+                        },
+                        {
+                            "ui:col": {
+                                "size":12 ,
+                                "children":["affectedEntityType"]
+                            }
+                        }                        
+                    ]
+                }
+            },
+            "affectedEntityType": {
+                "ui:title":"affectedEntityType",
+                "ui:options": {
+                    "orderable": false
+                }
+            }
+        },
+        "ui:options": {
+            "orderable": false
+        }
+    },
+    "ultimateParentUndertaking": {
+        "ui:field": "LayoutGridField",
+        "ui:layoutGrid": {
+                "ui:row": {
+                    "spacing":2,
+                    "size":12,   
+                    "children":[
+                        {
+                            "ui:col": {
+                                "size":12 , 
+                                "children": [
+                                    {"title":"ultimateParentUndertaking","field":"LayoutHeaderField","fullWidth":true}
+                                ]
+                            }
+                        },   
+                        {
+                            "ui:col": {
+                                "size":12 , 
+                                "children": ["entityType"]
+                            }
+                        },                           
+                        {
+                            "ui:columns": {
+                                "size":4, 
+                                "children": ["name","code","LEI"]
+                            }
+                        }
+                    ]
+            }
+        }      
+    },        
+    "primaryContact": {
+        "ui:field": "LayoutGridField",
+        "ui:layoutGrid": {
+                "ui:row": {
+                    "spacing":2,
+                    "size":12,   
+                    "children":[
+                        {
+                            "ui:col": {
+                                "size":12 , 
+                                "children": [
+                                    {"title":"primaryContact","field":"LayoutHeaderField","fullWidth":true}
+                                ]
+                            }
+                        },    
+                        {
+                            "ui:columns": {
+                                "size":4, 
+                                "children": ["name", "email","phone"]
+                            }
+                        }
+                ]
+            }
+        }, 
+        "name": {
+            "ui:title":"Name"
+        },        
+        "email": {
+            "ui:title":"Email"
+        },        
+        "phone": {
+            "ui:title":"Phone"
+        }     
+    },    
+    "secondaryContact": {
+        "ui:field": "LayoutGridField",
+        "ui:layoutGrid": {
+                "ui:row": {
+                    "spacing":2,
+                    "size":12,   
+                    "children":[
+                        {
+                            "ui:col": {
+                                "size":12 , 
+                                "children": [
+                                    {"title":"secondaryContact","field":"LayoutHeaderField","fullWidth":true}
+                                ]
+                            }
+                        },    
+                        {
+                            "ui:columns": {
+                                "size":4, 
+                                "children": ["name", "email","phone"]
+                            }
+                        }
+                ]
+            }
+        },
+        "name": {
+            "ui:title":"Name"
+        },
+        "email": {
+            "ui:title":"Email"
+        },        
+        "phone": {
+            "ui:title":"Phone"
+        }       
+    },
+    "incident": {
+        "ui:field": "LayoutGridField",
+        "ui:layoutGrid": {
+                "ui:row": {
+                    "spacing":2,
+                    "children":[
+                        {
+                            "ui:col": {
+                                "size":12 , 
+                                "children": [{"title":"incident","field":"LayoutHeaderField","fullWidth":true}]
+                            }
+                        },    
+                        {
+                            "ui:columns": {"size":4, "children": ["financialEntityCode","detectionDateTime","classificationDateTime"]}
+                        },                                            
+                        {
+                            "ui:columns": {
+                                "size":12, 
+                                "children": [
+                                    "incidentDescription",
+                                    "otherInformation",
+                                    "classificationTypes"
+                                ]
+                            }
+                        },
+                        {
+                            "ui:columns": {"size":3, "children": ["isBusinessContinuityActivated","incidentDiscovery","incidentOccurrenceDateTime","incidentDuration"]}
+                        },   
+                        {
+                            "ui:columns": {"size":12, "children": [
+                                "originatesFromThirdPartyProvider",
+                                "competentAuthorityCode",
+                                "incidentType",
+                                "rootCauseHLClassification",
+                                "rootCausesDetailedClassification",
+                                "rootCausesAdditionalClassification",
+                                "rootCausesOther",
+                                "rootCausesInformation",
+                                "rootCauseAddressingDateTime",
+                                "incidentResolutionDateTime",
+                                "incidentResolutionSummary",
+                                "incidentResolutionVsPlannedImplementation",
+                                "assessmentOfRiskToCriticalFunctions",
+                                "informationRelevantToResolutionAuthorities"
+                                ]
+                            }
+                        },  
+                        {
+                            "ui:columns": {"size":6, "children": ["financialRecoveriesAmount","grossAmountIndirectDirectCosts"]}
+                        },                                                                                                                                                                                                                                                                        
+                        {
+                            "ui:columns": {"size":12, "children": ["recurringIncidentDate","recurringNonMajorIncidentsDescription"]}
+                        }                                                                                                                                                                                                                                                                        
+                ]
+            }
+        },  
+        "isBusinessContinuityActivated": {
+            "ui:widget": "select"
+        },
+        "incidentDescription": {
+            "ui:widget":"textarea",
+            "ui:rows": 3
+        },
+        "otherInformation": {
+            "ui:widget":"textarea",
+            "ui:rows": 3
+        },   
+        "classificationTypes": {
+            "ui:options":{
+                "orderable": false
+            }
+        },
+        "incidentType": {
+            "incidentClassification": {
+                "ui:options":{
+                    "orderable": false
+                }
+            },
+            "threatTechniques": {
+                "ui:options":{
+                    "orderable": false
+                }
+            }
+        },
+        "rootCauseHLClassification": {
+            "ui:options":{
+                "orderable": false
+            }            
+        },
+        "rootCausesDetailedClassification": {
+            "ui:options":{
+                "orderable": false
+            }            
+        },
+        "rootCausesAdditionalClassification": {
+            "ui:options":{
+                "orderable": false
+            }            
+        },
+        "incidentResolutionSummary": {
+            "ui:widget":"textarea",
+            "ui:rows": 3
+        },
+        "recurringNonMajorIncidentsDescription": {
+            "ui:widget":"textarea",
+            "ui:rows": 3
+        },
+        "informationRelevantToResolutionAuthorities": {
+            "ui:widget":"textarea",
+            "ui:rows": 2
+        },
+        "rootCausesOther": {
+            "ui:widget":"textarea",
+            "ui:rows": 2
+        }
+    },
+    "impactAssessment": {
+        "serviceImpact": {
+            "ui:field": "LayoutGridField",
+            "ui:layoutGrid": {
+                "ui:row": {
+                    "spacing": 2,
+                    "size": 12,
+                    "children": [
+                        {
+                            "ui:col": {
+                                "size":12 , 
+                                "children": [
+                                    {"title":"serviceImpact","field":"LayoutHeaderField","fullWidth":true}
+                                ]
+                            }
+                        },   
+                        {
+                            "ui:columns": {
+                                "size":4, 
+                                "children": ["serviceRestorationDateTime", "serviceDowntime","isTemporaryActionsMeasuresForRecovery"]
+                            }
+                        },
+                        {
+                            "ui:col": {
+                                "size":12 , 
+                                "children": [
+                                    "descriptionOfTemporaryActionsMeasuresForRecovery"
+                                ]
+                            }
+                        }
+                    ]
+                }
+            },
+            "isTemporaryActionsMeasuresForRecovery": {
+                "ui:widget":"select"
+            },
+            "descriptionOfTemporaryActionsMeasuresForRecovery": {
+                "ui:widget":"textarea",
+                "ui:emptyValue": false,
+                "ui:rows": 2
+            }
+        },
+        "affectedAssets": {
+            "affectedClients": {
+                "ui:field":"LayoutGridField",
+                "ui:layoutGrid": {
+                    "ui:row": {
+                        "spacing":2,
+                        "size":12,
+                        "children": [
+                            {
+                                "ui:col": {
+                                    "size":12 , 
+                                    "children": [
+                                        {"title":"affectedClients","field":"LayoutHeaderField","fullWidth":true}
+                                    ]
+                                }
+                            },   
+                            {
+                                "ui:columns": {
+                                    "size":6, 
+                                    "children": ["number", "percentage"]
+                                }
+                            }
+                        ]
+                    }
+                }
+            },
+            "affectedFinancialCounterparts": {
+                "ui:field":"LayoutGridField",
+                "ui:layoutGrid": {
+                    "ui:row": {
+                        "spacing":2,
+                        "size":12,
+                        "children": [
+                            {
+                                "ui:col": {
+                                    "size":12 , 
+                                    "children": [
+                                        {"title":"affectedFinancialCounterparts","field":"LayoutHeaderField","fullWidth":true}
+                                    ]
+                                }
+                            },   
+                            {
+                                "ui:columns": {
+                                    "size":6, 
+                                    "children": ["number", "percentage"]
+                                }
+                            }
+                        ]
+                    }
+                }                
+            },
+            "affectedTransactions": {
+                "ui:field":"LayoutGridField",
+                "ui:layoutGrid": {
+                    "ui:row": {
+                        "spacing":2,
+                        "size":12,
+                        "children": [
+                            {
+                                "ui:col": {
+                                    "size":12 , 
+                                    "children": [
+                                        {"title":"affectedTransactions","field":"LayoutHeaderField","fullWidth":true}
+                                    ]
+                                }
+                            },   
+                            {
+                                "ui:columns": {
+                                    "size":6, 
+                                    "children": ["number", "percentage"]
+                                }
+                            }
+                        ]
+                    }
+                }                  
+            },
+            "numbersActualEstimate": {
+                "ui:options": {
+                    "orderable": false
+                }
+            }
+        },
+        "hasImpactOnRelevantClients": {
+            "ui:widget":"select"
+        },
+        "criticalServicesAffected": {
+            "ui:widget":"textarea",
+            "ui:rows": 2
+        }
+    }
+}      

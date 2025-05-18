@@ -5,7 +5,6 @@ import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import { LocaleProvider } from './contexts/LocaleContext.tsx';
 import './i18n';
-import './index.css';
 import theme from './theme';
 
 createRoot(document.getElementById('root')!).render(

@@ -1,6 +1,6 @@
 import { Box, Button, Grid2, Step, StepLabel, Stepper } from "@mui/material";
-import Form from '@rjsf/mui';
 import type { RJSFSchema } from "@rjsf/utils";
+import Form from '@rjsf/mui';
 import { useEffect, useState, type FC } from "react";
 import { useTranslation } from "react-i18next";
 import { DownloadJSONButton } from "./buttons/DownloadJSON";
@@ -13,13 +13,11 @@ import { useFormRef } from "./contexts/FormRefContext";
 import { useStepper } from "./contexts/Stepper";
 import { DebugMode } from "./DebugMode";
 import { ErrorBoundary } from "./ErrorBoundary";
-import schema from "./schemas/cybSchema.json";
-import uischema from "./schemas/uiCYB.json";
+import schema from "./schemas/irSchema.json";
+import uischema from "./schemas/uiIR.json";
 import { validator } from "./utils/ajv";
 
-
-
-export const DoraThreat: FC = () => {
+export const DoraIncident: FC = () => {
     const formRef = useFormRef();
     const { t } = useTranslation();
     const {data, setData} = useData()
@@ -28,12 +26,32 @@ export const DoraThreat: FC = () => {
     const {step, setStep} = useStepper();
     const [displayErrors, setDisplayErrors] = useState<false | "bottom" | "top" | undefined>(false)
     
-    const initialData = {}
+    const initialData = {
+        reportCurrency: "EUR",
+        submittingEntity:{
+            entityType: "SUBMITTING_ENTITY"
+        },
+        affectedEntity: [
+            {
+            entityType: "AFFECTED_ENTITY"
+            }
+        ]
+    }
 
-    const stepFields = [t('Submitting Entity'), t('Affected Entity'),t('Contact'),t('Threat')];
+    const stepFields = [
+        t('Incident Submission'), 
+        t('Submitting Entity'),
+        t('Affected Entity'),
+        t('Ultimate Parent Undertaking'),
+        t('Contact'),
+        t('Incident'),
+        t('Impact'),
+        t('Other Auhorities'),
+        t('Duration Service Downtime'),
+    ];    
 
     useEffect(()=> {
-        setStep(0)
+        setStep(0)  
         setData(initialData)
     }, [])
 
@@ -46,7 +64,6 @@ export const DoraThreat: FC = () => {
             });
         };
 
-
         updateSteps();
         const observer = new MutationObserver(updateSteps);
         const formContainer = document.querySelector('.step-container');
@@ -57,9 +74,8 @@ export const DoraThreat: FC = () => {
         (step === stepFields.length -1) ? setDisplayErrors('bottom') :setDisplayErrors(false)
 
         return () => observer.disconnect();
+
     }, [step]);
-
-
 
     const goNext = () => {
         setStep((prev) => prev + 1);
@@ -75,6 +91,21 @@ export const DoraThreat: FC = () => {
             setStep(0)
             setTimeout(() => setData(initialData), 0);        
         }
+    }
+
+    const transformErrors = (errors:any, uiSchema: any) => {
+        return errors.map((error:any) => {
+            // console.debug(error)
+            if (error.name === 'const' && error.property == '.incidentSubmission') {
+                error.message = '';
+            }
+            if (error.name === 'oneOf' && error.schemaPath === '#/dependencies/incidentSubmission/oneOf') {
+                error.message = '';
+            }
+            if (error.message === 'must match exactly one schema in oneOf')
+                error.message = '';
+            return error;
+        });
     }
 
     return (
@@ -108,7 +139,8 @@ export const DoraThreat: FC = () => {
                                 populate: 'requiredOnly', mergeExtraDefaults: false 
                             },
                             emptyObjectFields: 'populateRequiredDefaults'
-                        }}                        
+                        }}      
+                        transformErrors={transformErrors}                  
                         liveValidate>
                         </Form>
                         <Box 
@@ -132,7 +164,7 @@ export const DoraThreat: FC = () => {
                             </Box>
                         </Box>
                 </Grid2>
-                <SpeedDialActions formType="threat"/>
+                <SpeedDialActions formType="incident"/>
             </Grid2>
         </ErrorBoundary>
     )

@@ -8,7 +8,7 @@ import {
 } from '@mui/material';
 import { type FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useData } from './contexts/DataContext';
+import { useData } from '../contexts/DataContext';
 
 interface ImportModalProps {
   open: boolean;

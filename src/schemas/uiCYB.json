@@ -1,21 +1,82 @@
 {
     "ui:title": "",
-    "ui:description":"Ce rapport permet de délcarer une menace auprès de l'EBA",
-    "ui:classNames": "custom-css-class",
+    "ui:description":"Ce rapport permet de déclarer une menace auprès de l'EBA",
     "ui:submitButtonOptions": {
         "norender": true
     },
     
+    "ui:field": "LayoutGridField",
+    "ui:layoutGrid": {
+        "ui:row": {   
+            "spacing":2,
+            "children":[ 
+                {
+                    "ui:row": {
+                        "spacing":2,
+                        "size":12,  
+                        "className":"category step0 selectSub",  
+                        "children":["submittingEntity"]
+                    }
+                },
+                {
+                    "ui:row": {
+                        "spacing":2,
+                        "size":12,  
+                        "className":"category step1",  
+                        "children":["affectedFinancialEntity"]
+                    }
+                },
+                {
+                    "ui:row": {
+                        "spacing":2,
+                        "size":12,  
+                        "className":"category step2",  
+                        "children":["primaryContact","secondaryContact"]
+                    }
+                },
+                {
+                    "ui:row": {
+                        "spacing":2,
+                        "size":12,  
+                        "className":"category step3 selectSub",  
+                        "children":["cyberThreat"]
+                    }
+                }                                                
+            ]
+        }
+
+    },
     "submittingEntity": {
         "ui:field": "LayoutGridField",
         "ui:layoutGrid": {
                 "ui:row": {                 
                 "spacing": 2,
-
                 "children":[
-                    {"ui:row": {"spacing": 2,"size": 12, "children":[{"title":"submittingEntity","field":"LayoutHeaderField"}]}},
-                    {"ui:row": {"spacing": 2,"size": 12, "children":[{"ui:columns": {"size":6, "children": ["name", "code"]}}]}},
-                    {"ui:row": {"spacing": 2,"size": 12, "children":[{"ui:columns": {"size": 12,"children": ["typeOfSubmittingFinancialEntity"]}}]}}
+                    {
+                        "ui:col": {
+                            "spacing": 2,
+                            "size": 12, 
+                            "children":[
+                                {"title":"submittingEntity","field":"LayoutHeaderField"}
+                            ]
+                        }
+                    },
+                    {
+                        "ui:row": {
+                            "spacing": 2,
+                            "size": 12, 
+                            "children":[
+                                {"ui:columns": {"size":6, "children": ["name", "code"]}}
+                            ]
+                        }
+                    },
+                    {
+                        "ui:col": {
+                            "spacing": 2,
+                            "size": 12,
+                            "children":["typeOfSubmittingFinancialEntity"]
+                        }
+                    }
                 ]             
             }
         },
@@ -36,10 +97,7 @@
                 "ui:title":"Item",
                 "ui:classNames":"selecItem"
             }
-        },
-        "ui:options":{
-            "classNames":"step0 category"
-        }           
+        }         
     },
     "affectedFinancialEntity": {
         "ui:field": "LayoutGridField",
@@ -47,8 +105,20 @@
                 "ui:row": {
                 "spacing": 2,
                 "children":[
-                    {"ui:row": {"spacing": 2,"size": 12, "children":[{"title":"affectedFinancialEntity","field":"LayoutHeaderField"}]}},
-                    {"ui:row": {"spacing": 2,"size": 12, "children":[{"ui:columns": {"size":6, "children": ["name", "LEI"]}}]}}
+                    {
+                        "ui:col": {
+                            "spacing": 2,
+                            "size": 12, 
+                            "children":[{"title":"affectedFinancialEntity","field":"LayoutHeaderField"}]
+                        }
+                    },
+                    {
+                        "ui:row": {
+                            "spacing": 2,
+                            "size": 12, 
+                            "children":[{"ui:columns": {"size":6, "children": ["name", "LEI"]}}]
+                        }
+                    }
                 ]
             }
         },        
@@ -57,10 +127,7 @@
         },
         "LEI":{
             "ui:title":"LEI"
-        },
-        "ui:options":{
-            "classNames":"step1 category"
-        }           
+        }         
     },
     "primaryContact": {
         "ui:field": "LayoutGridField",
@@ -68,8 +135,20 @@
                 "ui:row": {
                 "spacing": 2,
                 "children":[
-                    {"ui:row": {"spacing": 2,"size": 12, "children":[{"title":"primaryContact","field":"LayoutHeaderField"}]}},
-                    {"ui:row": {"spacing": 2,"size": 12, "children":[{"ui:columns": {"size":4, "children": ["name", "email","phone"]}}]}}
+                    {
+                        "ui:col": {
+                            "spacing": 2,
+                            "size": 12,
+                             "children":[{"title":"primaryContact","field":"LayoutHeaderField"}]
+                            }
+                    },
+                    {
+                        "ui:row": {
+                            "spacing": 2,
+                            "size": 12,
+                            "children":[{"ui:columns": {"size":4, "children": ["name", "email","phone"]}}]
+                        }
+                    }
                 ]
             }
         }, 
@@ -81,10 +160,7 @@
         },
         "phone":{
             "ui:title":"Phone"
-        },
-        "ui:options":{
-            "classNames":"step2 category"
-        }           
+        }          
     },    
     "secondaryContact": {
         "ui:field": "LayoutGridField",
@@ -92,8 +168,20 @@
                 "ui:row": {
                 "spacing": 2,
                 "children":[
-                    {"ui:row": {"spacing": 2,"size": 12, "children":[{"title":"secondaryContact","field":"LayoutHeaderField"}]}},
-                    {"ui:row": {"spacing": 2,"size": 12, "children":[{"ui:columns": {"size":4, "children": ["name", "email","phone"]}}]}}
+                    {
+                        "ui:col": {
+                            "spacing": 2,
+                            "size": 12,
+                             "children":[{"title":"secondaryContact","field":"LayoutHeaderField"}]
+                            }
+                    },
+                    {
+                        "ui:row": {
+                            "spacing": 2,
+                            "size": 12,
+                            "children":[{"ui:columns": {"size":4, "children": ["name", "email","phone"]}}]
+                        }
+                    }
                 ]
             }
         }, 
@@ -105,31 +193,47 @@
         },
         "phone":{
             "ui:title":"Phone"
-        },
-        "ui:options":{
-            "classNames":"step2 category"
-        }        
+        }      
     },
     "cyberThreat": {
         "ui:field": "LayoutGridField",
         "ui:layoutGrid": {
                 "ui:row": {
-                "className": "grid-catagory",
-                "children":[
-                    {"ui:row": {"size": 12,"children":[{"title":"cyberThreat","field":"LayoutHeaderField", "fullWidth":true}]}},
-                    {"ui:row": {"spacing": 2,"size": 12, "children":[{"ui:columns": {"size":6, "children": ["detectionDateTime", "cyberThreatDescription"]}}]}},
-                    {"ui:row": {"spacing": 2,"size": 12, "children":[{"ui:columns": {"size":6, "children": ["potentialImpactInformation", "potentialClassificationCriteria"]}}]}},
-                    {"ui:row": {"spacing": 2,"size": 12, "children":[{"ui:columns": {"size":6, "children": ["status", "actionsTakenToPreventMaterialisation"]}}]}},
-                    {"ui:row": {"spacing": 2,"size": 12, "children":[{"ui:columns": {"size":6, "children": ["notificationToOtherStakeholders", "indicatorsOfCompromise"]}}]}},
-                    {"ui:row": {"spacing": 2,"size": 12, "children":[{"ui:columns": {"size":12, "children": ["otherRelevantInformation"]}}]}}
-                ]
+                    "spacing": 2,
+                    "children":[
+                        {
+                            "ui:col": {
+                                "size": 12,
+                                "children":[{"title":"cyberThreat","field":"LayoutHeaderField", "fullWidth":true}]}},
+                        {
+                            "ui:row": {
+                                "spacing": 2,
+                                "size": 12, 
+                                "children":[{"ui:columns": {"size":6, "children": ["detectionDateTime", "status"]}}]
+                            }
+                        },
+                        {
+                            "ui:col": {
+                                "spacing": 2,
+                                "size": 12,
+                                "children":[
+                                    "cyberThreatDescription",
+                                    "potentialImpactInformation",
+                                    "potentialClassificationCriteria",
+                                    "actionsTakenToPreventMaterialisation",
+                                    "notificationToOtherStakeholders",
+                                    "indicatorsOfCompromise",
+                                    "otherRelevantInformation"
+                                ]
+                            }
+                        }
+                    ]
             }
         }, 
+        "detectionDateTime":{
+        },
         "potentialClassificationCriteria": {
             "ui:classNames":"selectEntity"
-        },
-        "ui:options":{
-            "classNames":"step3 category"
         }
     }
 }

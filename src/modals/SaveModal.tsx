@@ -8,7 +8,7 @@ import {
 } from '@mui/material';
 import { useEffect, useState, type FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useData } from './contexts/DataContext';
+import { useData } from '../contexts/DataContext';
 
 interface SaveModalProps {
   open: boolean;
@@ -40,7 +40,6 @@ const SaveModal: FC<SaveModalProps> = ({ open, formType, onClose }) => {
         const id = crypto.randomUUID();
         const entry: SaveEntry = { label, type: formType, data: data };
         const newSaves = { ...loadSaves(), [id]: entry };
-        console.debug(newSaves)
         localStorage.setItem('dora-saves', JSON.stringify(newSaves));       
         onClose();
     };

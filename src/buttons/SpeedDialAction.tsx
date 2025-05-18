@@ -2,12 +2,16 @@ import { Language, List, Save, Upload } from '@mui/icons-material';
 import { SpeedDial, SpeedDialAction, SpeedDialIcon } from '@mui/material';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ImportModal } from '../ImportModal';
-import { LocaleModal } from '../LocaleModal';
-import { SaveListModal } from '../SaveListModal';
-import SaveModal from '../SaveModal';
+import { ImportModal } from '../modals/ImportModal';
+import { LocaleModal } from '../modals/LocaleModal';
+import { SaveListModal } from '../modals/SaveListModal';
+import SaveModal from '../modals/SaveModal';
 
-export const SpeedDialActions = () => {
+type Props = {
+    formType: 'threat' | 'incident'
+}
+
+export const SpeedDialActions = (props: Props) => {
     const {t} = useTranslation()
     const [localeModalOpen, setLocaleModalOpen] = useState(false);
     const [importModalOpen, setImportModalOpen] = useState(false);
@@ -55,9 +59,9 @@ export const SpeedDialActions = () => {
             />
         </SpeedDial>
         <ImportModal open={importModalOpen} onClose={() => setImportModalOpen(false)}/>
-        <SaveListModal open={saveListDialogOpen} onClose={() => setSaveListDialogOpen(false)} />
+        <SaveListModal formType={props.formType} open={saveListDialogOpen} onClose={() => setSaveListDialogOpen(false)} />
         <LocaleModal open={localeModalOpen} onClose={() => setLocaleModalOpen(false)}/>       
-        <SaveModal open={saveDialogOpen} formType='threat' onClose={() => setSaveDialogOpen(false)}/>
+        <SaveModal formType={props.formType} open={saveDialogOpen} onClose={() => setSaveDialogOpen(false)} />
         </>
     );
 };

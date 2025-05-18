@@ -40,7 +40,7 @@ export const GeneratePDGButton: FC<PDFButtonProps> = ({ data, formRef }) => {
     const pageWidth = doc.internal.pageSize.width;
     const pageHeight = doc.internal.pageSize.height;
 
-    const title = 'DORA Major Incident Report';
+    const title = t('DORA Major Incident Report');
     doc.setFontSize(22);
     doc.setTextColor(255, 255, 255); // Texte blanc pour contraster avec le bleu
     const titleWidth = doc.getTextWidth(title); // Largeur du texte
@@ -51,7 +51,7 @@ export const GeneratePDGButton: FC<PDFButtonProps> = ({ data, formRef }) => {
     doc.text(title, titleX, titleY); // Titre centré
 
     // Date centrée
-    const dateText = `Date : ${new Date().toLocaleString()}`;
+    const dateText = `${t('Date')} : ${new Date().toLocaleString()}`;
     doc.setFontSize(14);
     const dateWidth = doc.getTextWidth(dateText); // Largeur du texte de la date
     const dateX = (pageWidth - dateWidth) / 2; // Position horizontale pour centrer la date
@@ -60,7 +60,7 @@ export const GeneratePDGButton: FC<PDFButtonProps> = ({ data, formRef }) => {
     doc.text(dateText, dateX, dateY); // Date centrée
 
     // Description centrée
-    const description = 'Ce document contient les données du formulaire.';
+    const description = t('This document contains the form data.');
     doc.setFontSize(12);
     const descriptionWidth = doc.getTextWidth(description);
     const descriptionX = (pageWidth - descriptionWidth) / 2;
@@ -74,7 +74,7 @@ export const GeneratePDGButton: FC<PDFButtonProps> = ({ data, formRef }) => {
     // Entête du tableau avec le même bleu
     doc.setFontSize(14);
     doc.setTextColor(0, 0, 0); // Texte noir pour le tableau
-    doc.text('Résumé du formulaire soumis', 14, 20);
+    doc.text('Summary of the submitted form', 14, 20);
 
     const tableData: any[] = [];
 
@@ -102,7 +102,7 @@ export const GeneratePDGButton: FC<PDFButtonProps> = ({ data, formRef }) => {
 
     // Entête du tableau avec fond bleu
     autoTable(doc, {
-      head: [['Champ', 'Valeur']],
+      head: [[t('Field'), t('Value')]],
       body: tableData,
       startY: 30,
       headStyles: {

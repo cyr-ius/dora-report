@@ -5,6 +5,7 @@ import { DebugProvider } from './contexts/DebugContext';
 import { ErrorProvider } from './contexts/ErrorContext';
 import { FormRefProvider } from './contexts/FormRefContext';
 import { StepperProvider } from './contexts/Stepper';
+import { DoraIncident } from './DoraIncident';
 import { DoraThreat } from './DoraThreat';
 import { Footer } from './Footer';
 import { Header } from './Header';
@@ -20,8 +21,9 @@ function App() {
             <ErrorProvider>
               <Header/>
               <Routes>
-                <Route path="/" element={<DoraThreat />} />
+                <Route path="/" element={<DoraIncident />} />
                 <Route path="/threat" element={<DoraThreat />} />
+                <Route path="/incident" element={<DoraIncident />} />
               </Routes>
               <Footer/>
             </ErrorProvider>

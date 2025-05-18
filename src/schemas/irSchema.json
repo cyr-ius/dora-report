@@ -233,7 +233,7 @@
               ]
             }
           },
-          "required": ["reportingToOtherAuthorities"]
+          "required": ["impactAssessment","reportingToOtherAuthorities"]
         },
         {
           "properties": {
@@ -332,7 +332,7 @@
               ]
             }
           },         
-          "required": ["reportingToOtherAuthorities"]
+          "required": ["impactAssessment","reportingToOtherAuthorities"]
         },
         {
           "properties": {
@@ -357,30 +357,18 @@
       ]
     },
     "reportingToOtherAuthorities": {
-      "oneOf": [
-        {
-          "properties": {
-            "reportingToOtherAuthorities": {
-              "contains": {
-                "const": "other"
-              }
+      "if": {
+        "properties": {
+          "reportingToOtherAuthorities": {
+            "contains": {
+              "const": "other"
             }
-          },
-          "required": ["reportingToOtherAuthoritiesOther"]
-        },
-        {
-          "not": {
-            "properties": {
-              "reportingToOtherAuthorities": {
-                "contains": {
-                  "const": "other"
-                }
-              }
-            }
-          },
-          "required": []
+          }
         }
-      ]
+      },
+      "then": {
+        "required":["reportingToOtherAuthoritiesOther"]
+      }
     }
   },
   "allOf": [
@@ -478,19 +466,23 @@
               "properties": {
                 "entityType": {
                   "enum": ["SUBMITTING_ENTITY"]
-                },
-                "LEI": { "minLength": 1 }
+                }
               },
-              "required": ["name", "code"]
+              "required": ["name", "code"],
+              "not": {
+                "required": ["LEI"]
+              }
             },
             {
               "properties": {
                 "entityType": {
                   "enum": ["SUBMITTING_ENTITY"]
-                },
-                "code": { "minLength": 1 }
+                }
               },
-              "required": ["name", "LEI"]
+              "required": ["name", "LEI"],
+              "not": {
+                "required": ["code"]
+              }
             },
             {
               "properties": {
@@ -498,28 +490,28 @@
                   "enum": ["AFFECTED_ENTITY"]
                 }
               },
-              "allOf": [
-                {
-                  "required": ["affectedEntityType"]
-                },
-                {
-                  "oneOf": [
-                    { "required": ["name", "LEI"] },
-                    { "required": ["name", "code"] }
-                  ]
+              "required": ["name","code","affectedEntityType"],
+              "not": {
+                "required": ["LEI"]
+              }              
+            },         
+            {
+              "properties": {
+                "entityType": {
+                  "enum": ["AFFECTED_ENTITY"]
                 }
-              ]
-            },
+              },
+              "required": ["name","LEI","affectedEntityType"],
+              "not": {
+                "required": ["code"]
+              }                  
+            },         
             {
               "properties": {
                 "entityType": {
                   "enum": ["ULTIMATE_PARENT_UNDERTAKING_ENTITY"]
                 }
               },
-              "oneOf": [
-                { "required": ["name", "LEI"] },
-                { "required": ["name", "code"] }
-              ],
               "required": []
             }
           ]
@@ -774,44 +766,29 @@
         "financialEntityCode",
         "detectionDateTime",
         "classificationDateTime",
-        "incidentDiscovery"
+        "incidentDiscovery",
+        "isBusinessContinuityActivated"
+        
       ],
       "dependencies": {
         "rootCausesDetailedClassification": {
-          "oneOf": [
-            {
-              "properties": {
-                "rootCausesDetailedClassification": {
-                  "contains": {
-                    "enum": [
+          "if": {
+            "properties": {
+              "rootCausesDetailedClassification": {
+                "contains": {
+                  "enum": [
                       "process_failure_other",
                       "system_failure_other",
                       "human_error_other",
                       "external_event_other"
-                    ]
-                  }
+                  ]
                 }
-              },
-              "required": ["rootCausesOther"]
-            },
-            {
-              "not": {
-                "properties": {
-                  "rootCausesDetailedClassification": {
-                    "contains": {
-                      "enum": [
-                        "process_failure_other",
-                        "system_failure_other",
-                        "human_error_other",
-                        "external_event_other"
-                      ]
-                    }
-                  }
-                }
-              },
-              "required": []
+              }
             }
-          ]
+          },
+          "then": {
+            "required": ["rootCausesOther"]
+          }
         },
         "recurringNonMajorIncidentsDescription": {
           "if": {
@@ -976,7 +953,7 @@
           "description": "field 3.30"
         }
       },
-      "required": [],
+      "required": ["hasImpactOnRelevantClients"],
       "additionalProperties": false
     },
     "ServiceImpact": {
@@ -1002,7 +979,7 @@
           "description": "field 3.34"
         }
       },
-      "required": ["isTemporaryActionsMeasuresForRecovery"],
+      "required": [],
       "additionalProperties": false,
       "dependencies": {
         "isTemporaryActionsMeasuresForRecovery": {
