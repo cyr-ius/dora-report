@@ -23,7 +23,7 @@ export const Header: FC = () => {
         {currentPath.pathname == '/threat' && (
           <h1 className="title">{t('DORA Threat Report')}</h1>
         )}
-        <p className="subtitle">European Bankink Authority.</p>
+        <p className="subtitle">{t('European Banking Authority')}</p>
       </header>
       {debugMode && (
         <div style={{ marginTop: '20px', color: 'red' }}>
