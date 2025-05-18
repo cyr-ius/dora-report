@@ -1,5 +1,7 @@
 name: Build and Deploy
-on: [push]
+on: 
+  push:
+  workflow_call:
 permissions:
   contents: write
 jobs:
