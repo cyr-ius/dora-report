@@ -93,7 +93,7 @@ export const DoraIncident: FC = () => {
         }
     }
 
-    const transformErrors = (errors:any, uiSchema: any) => {
+    const transformErrors = (errors:any) => {
         return errors.map((error:any) => {
             // console.debug(error)
             if (error.name === 'const' && error.property == '.incidentSubmission') {
