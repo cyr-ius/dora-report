@@ -12,6 +12,7 @@
   
   "DORA Major Incident Report": "DORA Rapport d'incident majeur",
   "DORA Threat Report": "DORA Rapport de menace",
+  "DORA Significant Cyber Threats":"DORA Menaces significatives",
 
   "Created by": "Créer par",
   "Previous": "Précédent",
@@ -48,6 +49,12 @@
   "Invalid JSON File":"Fichier JSON invalide",
   "Save naming": "Nommer la sauvegarde",
   "Label": "Label",
+
+  "Name": "Nom",
+  "Email": "Email",
+  "Phone": "Téléphone du contact",
+  "primaryContact":"Contact principal",
+  "secondaryContact":"Contact secondaire",
 
   "This document contains the form data.":"Ce document contient les données du formulaire.",
   "Summary of the submitted form":"Résumé du formulaire soumis",
@@ -292,7 +299,7 @@
   "affectedEntity.addTooltip": "Ajouter à l'entité affectée",
   
 
-  "cyberThreat.label": "Menace cybernétique",
+  "cyberThreat": "Menace cybernétique",
   "cyberThreat.detectionDateTime.label": "Date et heure de détection",
   "cyberThreat.cyberThreatDescription.label": "Description de la menace",
   "cyberThreat.potentialImpactInformation.label": "Informations sur l'impact potentiel",
