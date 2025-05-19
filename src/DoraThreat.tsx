@@ -1,6 +1,6 @@
 import { Box, Button, Grid2, Step, StepLabel, Stepper } from "@mui/material";
 import Form from '@rjsf/mui';
-import type { RJSFSchema } from "@rjsf/utils";
+import type { RegistryFieldsType, RJSFSchema } from "@rjsf/utils";
 import { useEffect, useState, type FC } from "react";
 import { useTranslation } from "react-i18next";
 import { DownloadJSONButton } from "./buttons/DownloadJSON";
@@ -13,10 +13,12 @@ import { useFormRef } from "./contexts/FormRefContext";
 import { useStepper } from "./contexts/Stepper";
 import { DebugMode } from "./DebugMode";
 import { ErrorBoundary } from "./ErrorBoundary";
+import LayoutHeaderField from "./fields/TitleField/LayoutHeaderField";
 import schema from "./schemas/cybSchema.json";
 import uischema from "./schemas/uiCYB.json";
+import FieldTemplate from "./templates/FieldTemplate";
 import { validator } from "./utils/ajv";
-
+import { translateString } from "./utils/translate";
 
 
 export const DoraThreat: FC = () => {
@@ -77,6 +79,14 @@ export const DoraThreat: FC = () => {
         }
     }
 
+    const fields: RegistryFieldsType = {
+        LayoutHeaderField: LayoutHeaderField as any ,
+    };
+
+    const templates = {
+         FieldTemplate: FieldTemplate
+    }
+
     return (
         <ErrorBoundary>
             <Grid2 container spacing={2} justifyContent={'center'}>
@@ -108,7 +118,10 @@ export const DoraThreat: FC = () => {
                                 populate: 'requiredOnly', mergeExtraDefaults: false 
                             },
                             emptyObjectFields: 'populateRequiredDefaults'
-                        }}                        
+                        }}    
+                        translateString={translateString}  
+                        templates={templates}             
+                        fields={fields}    
                         liveValidate>
                         </Form>
                         <Box 

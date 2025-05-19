@@ -1,6 +1,6 @@
 import { Box, Button, Grid2, Step, StepLabel, Stepper } from "@mui/material";
-import type { RJSFSchema } from "@rjsf/utils";
 import Form from '@rjsf/mui';
+import type { RegistryFieldsType, RJSFSchema } from "@rjsf/utils";
 import { useEffect, useState, type FC } from "react";
 import { useTranslation } from "react-i18next";
 import { DownloadJSONButton } from "./buttons/DownloadJSON";
@@ -13,9 +13,12 @@ import { useFormRef } from "./contexts/FormRefContext";
 import { useStepper } from "./contexts/Stepper";
 import { DebugMode } from "./DebugMode";
 import { ErrorBoundary } from "./ErrorBoundary";
+import LayoutHeaderField from "./fields/TitleField/LayoutHeaderField";
 import schema from "./schemas/irSchema.json";
 import uischema from "./schemas/uiIR.json";
+import FieldTemplate from "./templates/FieldTemplate";
 import { validator } from "./utils/ajv";
+import { translateString } from "./utils/translate";
 
 export const DoraIncident: FC = () => {
     const formRef = useFormRef();
@@ -108,6 +111,14 @@ export const DoraIncident: FC = () => {
         });
     }
 
+    const fields: RegistryFieldsType = {
+        LayoutHeaderField: LayoutHeaderField as any ,
+    };
+
+    const templates = {
+         FieldTemplate: FieldTemplate
+    }
+
     return (
         <ErrorBoundary>
             <Grid2 container spacing={2} justifyContent={'center'}>
@@ -124,7 +135,7 @@ export const DoraIncident: FC = () => {
                 <Grid2 size={{ xs: 12, sm: 12, md: debugMode ? 6 : 8 }}>
                     <Form 
                         ref={formRef}
-                        schema={schema as RJSFSchema} 
+                        schema={schema as RJSFSchema}
                         uiSchema={uischema} 
                         validator={validator}
                         formData={data} 
@@ -140,7 +151,10 @@ export const DoraIncident: FC = () => {
                             },
                             emptyObjectFields: 'populateRequiredDefaults'
                         }}      
-                        transformErrors={transformErrors}                  
+                        transformErrors={transformErrors}    
+                        translateString={translateString}
+                        templates={templates}
+                        fields={fields}
                         liveValidate>
                         </Form>
                         <Box 

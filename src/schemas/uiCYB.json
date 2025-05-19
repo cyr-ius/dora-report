@@ -80,13 +80,8 @@
                 ]             
             }
         },
-        "name":{
-            "ui:title":"Name",
-            "ui:description":""
-        },
-        "code":{
-            "ui:title":"Code",
-            "ui:help":""
+        "name": {
+            "ui:title":"HelloWorld"
         },
         "typeOfSubmittingFinancialEntity":{
             "ui:title":"typeOfSubmittingFinancialEntity",
@@ -121,13 +116,7 @@
                     }
                 ]
             }
-        },        
-        "name":{
-            "ui:title":"Name"
-        },
-        "LEI":{
-            "ui:title":"LEI"
-        }         
+        }
     },
     "primaryContact": {
         "ui:field": "LayoutGridField",
@@ -151,16 +140,7 @@
                     }
                 ]
             }
-        }, 
-        "name":{
-            "ui:title":"Name"
-        },
-        "email":{
-            "ui:title":"Email"
-        },
-        "phone":{
-            "ui:title":"Phone"
-        }          
+        }
     },    
     "secondaryContact": {
         "ui:field": "LayoutGridField",
@@ -184,16 +164,7 @@
                     }
                 ]
             }
-        }, 
-        "name":{
-            "ui:title":"Name"
-        },
-        "email":{
-            "ui:title":"Email"
-        },
-        "phone":{
-            "ui:title":"Phone"
-        }      
+        }
     },
     "cyberThreat": {
         "ui:field": "LayoutGridField",

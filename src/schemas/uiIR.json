@@ -273,16 +273,7 @@
                         }
                 ]
             }
-        }, 
-        "name": {
-            "ui:title":"Name"
-        },        
-        "email": {
-            "ui:title":"Email"
-        },        
-        "phone": {
-            "ui:title":"Phone"
-        }     
+        }    
     },    
     "secondaryContact": {
         "ui:field": "LayoutGridField",
@@ -307,16 +298,7 @@
                         }
                 ]
             }
-        },
-        "name": {
-            "ui:title":"Name"
-        },
-        "email": {
-            "ui:title":"Email"
-        },        
-        "phone": {
-            "ui:title":"Phone"
-        }       
+        }     
     },
     "incident": {
         "ui:field": "LayoutGridField",
