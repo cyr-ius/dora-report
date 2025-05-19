@@ -1,6 +1,6 @@
 {
     "ui:title": "",
-    "ui:description":"Ce rapport permet de déclarer une menace auprès de l'EBA",
+    "ui:description":"This report allows you to declare a threat to the EBA",
     "ui:submitButtonOptions": {
         "norender": true
     },
