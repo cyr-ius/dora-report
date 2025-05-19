@@ -80,9 +80,6 @@
                 ]             
             }
         },
-        "name": {
-            "ui:title":"HelloWorld"
-        },
         "typeOfSubmittingFinancialEntity":{
             "ui:title":"typeOfSubmittingFinancialEntity",
             "ui:help":"",
