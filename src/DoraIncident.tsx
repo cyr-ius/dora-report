@@ -1,6 +1,6 @@
 import { Box, Button, Grid2, Step, StepLabel, Stepper } from "@mui/material";
 import Form from '@rjsf/mui';
-import type { RegistryFieldsType, RJSFSchema } from "@rjsf/utils";
+import type { RegistryFieldsType, RegistryWidgetsType, RJSFSchema } from "@rjsf/utils";
 import { useEffect, useState, type FC } from "react";
 import { useTranslation } from "react-i18next";
 import { DownloadJSONButton } from "./buttons/DownloadJSON";
@@ -19,6 +19,7 @@ import uischema from "./schemas/uiIR.json";
 import FieldTemplate from "./templates/FieldTemplate";
 import { validator } from "./utils/ajv";
 import { translateString } from "./utils/translate";
+import SelectWidget from "./widgets/SelectWidget";
 
 export const DoraIncident: FC = () => {
     const formRef = useFormRef();
@@ -119,6 +120,10 @@ export const DoraIncident: FC = () => {
          FieldTemplate: FieldTemplate
     }
 
+    const widgets: RegistryWidgetsType = {
+        SelectWidget: SelectWidget,
+    };    
+
     return (
         <ErrorBoundary>
             <Grid2 container spacing={2} justifyContent={'center'}>
@@ -155,6 +160,7 @@ export const DoraIncident: FC = () => {
                         translateString={translateString}
                         templates={templates}
                         fields={fields}
+                        widgets={widgets}
                         liveValidate>
                         </Form>
                         <Box 

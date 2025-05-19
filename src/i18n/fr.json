@@ -55,7 +55,7 @@
   "Summary of the submitted form":"Résumé du formulaire soumis",
   "This report allows a major security incident to be declared to the supervisory authority": "Ce rapport permet de déclarer un incident de sécurité majeure à l'autorité de tutelle",
   "This backup corresponds to another form":"Cette sauvegarde correspond à un autre formulaire",
-
+  "This report allows you to declare a threat to the EBA":"Ce rapport permet de déclarer une menace auprès de l'EBA",
   "Add Item":"Ajouter un élément",
   "Remove": "Retirer",
 
@@ -74,7 +74,6 @@
   "affectedEntity": "Entité affectée",
   "entityType": "Type d'entité",
   "name": "Nom",
-  "Name": "Nom",
   "code": "Code",
   "affectedEntityType": "Type d'entité affectée",
   "LEI": "LEI",  
@@ -267,6 +266,10 @@
   "potentialImpactInformation": "Informations sur l'impact potentiel",
   "potentialClassificationCriteria": "Critères de classification potentiels",
   "status":"Status",
+
+
+
+
 
   "actionsTakenToPreventMaterialisation": "Actions prises pour éviter la matérialisation",
   "notificationToOtherStakeholders": "Notification à d'autres parties prenantes",

@@ -60,10 +60,11 @@ export default function FieldTemplate<
       const { children,name,uiSchema, ...props } = element.props as { children?: ReactNode , name?: string, uiSchema?: any, [key: string]: any };
 
       let translatedUiSchema = uiSchema;
-      if (uiSchema?.['ui:title']) {
+      if (uiSchema?.['ui:title'] || uiSchema?.['ui:description']  ) {
         translatedUiSchema = {
           ...uiSchema,
-          'ui:title': translateString('%1' as TranslatableString, [uiSchema['ui:title']])
+          'ui:title': translateString('%1' as TranslatableString, [uiSchema['ui:title']]),
+          'ui:description': translateString('%1' as TranslatableString, [uiSchema['ui:description']]),
         };
       }
 
