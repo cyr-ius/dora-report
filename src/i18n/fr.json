@@ -38,8 +38,6 @@
   "Field":"Champ",
   "Value": "Value",
   "Date": "Date",
-  "number":"Number",
-  "percentage":"Pourcentage",
 
   "JSON Import": "Import JSON",
   "Save":"Sauvegarder",
@@ -56,8 +54,24 @@
   "This report allows a major security incident to be declared to the supervisory authority": "Ce rapport permet de déclarer un incident de sécurité majeure à l'autorité de tutelle",
   "This backup corresponds to another form":"Cette sauvegarde correspond à un autre formulaire",
   "This report allows you to declare a threat to the EBA":"Ce rapport permet de déclarer une menace auprès de l'EBA",
+
+  "Item": "Item",
+  "Close": "Fermer",
+  "Errors": "Erreurs",
+  "New Value": "Nouvelle valeur",
+  "Add": "Ajouter",
   "Add Item":"Ajouter un élément",
+  "Copy": "Copier",
+  "Move down":"Déplacer vers le base",
+  "Move up":"Déplacer vers le haut",
   "Remove": "Retirer",
+  "Now": "Maintenant",
+  "Clear": "Effacer",
+  "Select a date": "Sélectionner une date",
+  "Preview": "Visualiser",
+  "Decrease value by 1":"Abaisser de 1",
+  "Increase value by 1":"Augmenter de 1",
+  "Unsupported field schema.":"Champ du schéma non supporté",
 
   "reportCurrency": "Devise du rapport",
   "incidentSubmission": "Soumission d'incident",
@@ -75,9 +89,8 @@
   "entityType": "Type d'entité",
   "name": "Nom",
   "code": "Code",
+  "LEI": "LEI",    
   "affectedEntityType": "Type d'entité affectée",
-  "LEI": "LEI",  
-
   "ultimateParentUndertaking": "Entreprise mère ultime",
 
   "incident": "Incident",
@@ -88,17 +101,12 @@
 
   "classificationTypes": "Types de classification",
   "classificationCriterion": "Critère de classification",
-
   "countryCodeMaterialityThresholds": "Seuils de matérialité par code pays",
-
   "memberStatesImpactType": "Type d'impact sur les États membres",
   "memberStatesImpactTypeDescription": "Description de l'impact sur les États membres",
-
   "dataLosseMaterialityThresholds": "Seuils de matérialité de perte de données",
   "dataLossesDescription": "Description des pertes de données",
-
   "economicImpactMaterialityThreshold": "Seuil de matérialité de l'impact économique",
-
   "reputationalImpactType": "Type d'impact sur la réputation",
   "reputationalImpactDescription": "Description de l'impact sur la réputation",
   "the_major_ict-related_incident_has_been_reflected_in_the_media": "L'incident majeur lié aux TIC a été reflété dans les médias",
@@ -205,6 +213,9 @@
   "recurringNonMajorIncidentsDescription": "Description des incidents récurrents non majeurs",
   "recurringIncidentDate": "Date de l'incident récurrent",
 
+  "number":"Number",
+  "percentage":"Pourcentage",
+  
   "impactAssessment": "Évaluation de l'Impact",
   "hasImpactOnRelevantClients": "A un Impact sur les Clients Pertinents",
   "serviceImpact": "Impact sur le Service",
