@@ -77,18 +77,14 @@ export default function FieldTemplate<
       };
 
       let translatedHelp = help;
-      if (isValidElement(help) && help.type !== Fragment) {
-        const helpProps = help.props as { help?: string; [key: string]: any };
-        if (typeof helpProps.help === "string") {
-          translatedHelp = cloneElement(help, {
-            ...helpProps,
-            ...(helpProps.help && {
-              help: translateString("%1" as TranslatableString, [
-                helpProps.help,
-              ]),
-            }),
-          });
-        }
+      const helpProps = help?.props as { help?: string; [key: string]: any };
+      if (isValidElement(help) && typeof helpProps.help === "string") {
+        translatedHelp = cloneElement(help, {
+          ...helpProps,
+          ...(helpProps.help && {
+            help: translateString("%1" as TranslatableString, [helpProps.help]),
+          }),
+        });
       }
 
       let translatedUiSchema = uiSchema;
@@ -121,7 +117,10 @@ export default function FieldTemplate<
         }),
         ...(translatedUiSchema && { uiSchema: translatedUiSchema }),
         ...(translatedHelp &&
-          element.type !== Fragment && { help: translatedHelp }),
+          typeof helpProps.help === "string" &&
+          Object.prototype.hasOwnProperty.call(element.props, "help") && {
+            help: translatedHelp,
+          }),
       };
 
       return cloneElement(

@@ -1,4 +1,4 @@
-import { Grid, TextField } from "@mui/material";
+import { Grid, TextField, Typography } from "@mui/material";
 import {
   getUiOptions,
   TranslatableString,
@@ -20,7 +20,6 @@ export default function DownTimeField<
   F extends FormContextType = any
 >(props: FieldProps<T, S, F>) {
   const {
-    idSchema,
     children,
     disabled,
     required,
@@ -56,7 +55,6 @@ export default function DownTimeField<
     (key: keyof Duration) => (e: React.ChangeEvent<HTMLInputElement>) => {
       const raw = parseInt(e.target.value || "0", 10);
       const newValue = { ...value, [key]: Math.max(0, raw) };
-      // Optionally clamp values
       if (key === "hours") newValue.hours = Math.min(23, newValue.hours);
       if (key === "minutes") newValue.minutes = Math.min(59, newValue.minutes);
 
@@ -66,8 +64,6 @@ export default function DownTimeField<
       )}`;
       onChange(serviceDowntime as T);
     };
-
-  console.debug("Description:", schema.description);
 
   return (
     <Grid
@@ -81,11 +77,7 @@ export default function DownTimeField<
     >
       <Grid size={4}>
         <TextField
-          style={{ overflow: "unset" }}
-          label={translateString(
-            "%1 - Days Hours Minutes" as TranslatableString,
-            [fieldTitle]
-          )}
+          label={translateString("%1" as TranslatableString, [fieldTitle])}
           type="number"
           value={value.days}
           disabled={disabled || readonly}
@@ -94,17 +86,13 @@ export default function DownTimeField<
           slotProps={{
             inputLabel: { style: { overflow: "unset" } },
             htmlInput: { pattern: "[0-9]{1,3}", min: 0, maxLength: 3 },
-            formHelperText: { style: { display: "block ruby" } },
           }}
-          helperText={translateString('%1' as TranslatableString , [schema.description as string])}
           fullWidth={true}
-
         />
       </Grid>
       <Grid size={4}>
         <TextField
           label=" "
-          helperText=" "
           type="number"
           value={value.hours}
           disabled={disabled || readonly}
@@ -119,14 +107,12 @@ export default function DownTimeField<
               max: 23,
             },
           }}
-          //   onBlur={!readonly ? handleBlur : undefined}
           fullWidth={true}
         />
       </Grid>
       <Grid size={4}>
         <TextField
           label=" "
-          helperText=" "        
           type="number"
           value={value.minutes}
           disabled={disabled || readonly}
@@ -144,7 +130,19 @@ export default function DownTimeField<
           fullWidth={true}
         />
       </Grid>
-      <Grid size="auto">{children}</Grid>
+      <Grid size="auto" style={{ marginTop: "-11px" }}>
+        <Typography
+          variant="subtitle2"
+          color="textSecondary"
+          style={{ display: "block ruby" }}
+        >
+          {translateString("%1" as TranslatableString, [
+            schema.description as string,
+          ])}
+        </Typography>
+      </Grid>
+      {description}
+      {children}
     </Grid>
   );
 }
