@@ -1,5 +1,5 @@
 {
-    "ui:title": "",
+    "ui:title": "Test",
     "ui:description":"This report allows you to declare a threat to the EBA",
     "ui:submitButtonOptions": {
         "norender": true
@@ -46,6 +46,9 @@
         }
 
     },
+    "ui:options":{
+        "help":"This report allows you to declare a threat to the EBA"
+    },    
     "submittingEntity": {
         "ui:field": "LayoutGridField",
         "ui:layoutGrid": {
@@ -82,7 +85,7 @@
         },
         "typeOfSubmittingFinancialEntity":{
             "ui:title":"typeOfSubmittingFinancialEntity",
-            "ui:help":"",
+            "ui:help":"Submitting entity type",
             "size": 12,
             "ui:classNames":"selectEntity",
             "items": {

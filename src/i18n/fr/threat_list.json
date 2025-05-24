@@ -1,0 +1,12 @@
+{
+  "active": "Actif",
+  "inactive": "Inactif",
+
+  "clients_financial_counterparts_and_transactions_affected": "Clients, contreparties financières et transactions affectés",
+  "reputational_impact": "Impact sur la réputation",
+  "duration_and_service_downtime": "Durée et interruption des services",
+  "geographical_spread": "Propagation géographique",
+  "data_losses": "Pertes de données",
+  "critical_services_affected": "Services critiques affectés",
+  "economic_impact": "Impact économique"
+}

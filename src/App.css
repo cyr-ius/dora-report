@@ -75,7 +75,7 @@ html, body {
 }
 
 /* Array */
-.selectSub .MuiGrid2-direction-xs-row.MuiGrid2-grid-xs-auto {
+.selectSub .MuiGrid-direction-xs-row.MuiGrid-grid-xs-auto {
   width: 94.5%;
   margin:0;
   padding: 0;

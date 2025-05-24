@@ -99,7 +99,7 @@ export default function SelectWidget<
           const disabled: boolean = Array.isArray(enumDisabled) && enumDisabled.indexOf(value) !== -1;
           return (
             <MenuItem key={i} value={String(i)} disabled={disabled}>
-              {translateString('%1' as TranslatableString, [label])}
+              {translateString("%1" as TranslatableString, [label])}
             </MenuItem>
           );
         })}

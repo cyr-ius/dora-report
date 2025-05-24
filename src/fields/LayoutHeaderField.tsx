@@ -1,15 +1,15 @@
 import {
-  getTemplate,
-  getUiOptions,
-  titleId,
-  TranslatableString,
-  type FieldProps,
-  type FormContextType,
-  type RJSFSchema,
-  type StrictRJSFSchema,
-  type TemplatesType,
+    getTemplate,
+    getUiOptions,
+    titleId,
+    TranslatableString,
+    type FieldProps,
+    type FormContextType,
+    type RJSFSchema,
+    type StrictRJSFSchema,
+    type TemplatesType,
 } from '@rjsf/utils';
-import { translateString } from '../../utils/translate';
+import { translateString } from '../utils/translate';
 
 /** The `LayoutHeaderField` component renders a `TitleFieldTemplate` with an `id` derived from the `idSchema`
  * and whether it is `required` from the props. The `title` is derived from the props as follows:
@@ -39,13 +39,10 @@ export default function LayoutHeaderField<
     options,
   );
 
-  const tFieldTitle = translateString(fieldTitle as TranslatableString, [])
-
   return (
     <TitleFieldTemplate
       id={titleId<T>(idSchema)}
-      // title={fieldTitle}
-      title={tFieldTitle}
+      title={translateString("%1" as TranslatableString, [fieldTitle])}
       required={required}
       schema={schema}
       uiSchema={uiSchema}

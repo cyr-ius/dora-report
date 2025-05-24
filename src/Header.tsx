@@ -1,4 +1,4 @@
-import { Grid2 } from '@mui/material';
+import { Grid } from '@mui/material';
 import { type FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
@@ -11,7 +11,7 @@ export const Header: FC = () => {
   const currentPath = useLocation();
 
   return (
-    <Grid2 className="App">
+    <Grid className="App">
       <header className="App-header">
         <MenuDropdown />
         <img src="./logo.svg" className="Header-logo" alt="logo" onClick={toggleDebugMode}/>
@@ -30,6 +30,6 @@ export const Header: FC = () => {
           Debug mode is <strong>ON</strong>
         </div>
       )}
-    </Grid2>
+    </Grid>
   );
 };

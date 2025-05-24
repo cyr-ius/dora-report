@@ -1,0 +1,15 @@
+{
+  "affectedEntity": "Entité affectée",
+  "affectedEntityType": "Type d'entité affectée",
+  "code": "Code",
+  "email": "Email du contact",
+  "entityType": "Type d'entité",
+  "LEI": "LEI",
+  "name": "Nom",
+  "phone": "Téléphone du contact",
+  "primaryContact": "Contact principal",
+  "secondaryContact": "Contact secondaire",
+  "Submitting Entity": "Entité émettrice",
+  "Affected Entity": "Entités ciblées",
+  "Contact": "Contacts"
+}

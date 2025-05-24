@@ -145,6 +145,9 @@
             ]
         }
     },
+    "ui:options":{
+        "help":"This report allows a major security incident to be declared to the supervisory authority"
+    },       
     "submittingEntity": {
         "ui:field": "LayoutGridField",
         "ui:layoutGrid": {
@@ -384,6 +387,9 @@
                 }
             }
         },
+        "incidentDuration":{
+            "ui:field": "DownTimeField"
+        },
         "rootCauseHLClassification": {
             "ui:options":{
                 "orderable": false
@@ -448,6 +454,9 @@
                         }
                     ]
                 }
+            },
+            "serviceDowntime": {
+                "ui:field": "DownTimeField"
             },
             "isTemporaryActionsMeasuresForRecovery": {
                 "ui:widget":"select"
