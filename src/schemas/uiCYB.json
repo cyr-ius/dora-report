@@ -43,9 +43,6 @@
       ]
     }
   },
-  "ui:options": {
-    "help": "This report allows you to declare a threat to the EBA"
-  },
   "submittingEntity": {
     "ui:field": "LayoutGridField",
     "ui:layoutGrid": {
@@ -82,10 +79,7 @@
     },
     "typeOfSubmittingFinancialEntity": {
       "size": 12,
-      "ui:classNames": "selectEntity",
-      "items": {
-        "ui:classNames": "selecItem"
-      }
+      "ui:classNames": "selectEntity"
     }
   },
   "affectedFinancialEntity": {
@@ -235,7 +229,6 @@
         ]
       }
     },
-    "detectionDateTime": {},
     "potentialClassificationCriteria": {
       "ui:classNames": "selectEntity"
     }

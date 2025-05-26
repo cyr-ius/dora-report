@@ -129,6 +129,7 @@
           "title": "Statut",
           "description": "Champ 16",
           "enum": {
+            "-": null,
             "active": "Actif",
             "inactive": "Inactif"
           }

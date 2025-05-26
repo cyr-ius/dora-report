@@ -27,6 +27,7 @@ export const ErrorProvider: FC<{ children: ReactNode }> = ({
   );
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useErrors = () => {
   const context = useContext(ErrorContext);
   if (!context) {

@@ -2,7 +2,6 @@ import { Box, Button, Grid, Step, StepLabel, Stepper } from "@mui/material";
 import Form from "@rjsf/mui";
 import type { RegistryFieldsType } from "@rjsf/utils";
 import { useEffect, useMemo, useState, type FC } from "react";
-import { flushSync } from "react-dom";
 import { useTranslation } from "react-i18next";
 import { SpeedDialActions } from "./buttons/SpeedDialAction";
 import { StepNavigationButtons } from "./buttons/StepNavigationButtons";
@@ -34,36 +33,39 @@ export const DoraIncident: FC = () => {
     false | "bottom" | "top" | undefined
   >(false);
 
-  const initialData = {
-    reportCurrency: "EUR",
-    submittingEntity: {
-      entityType: "SUBMITTING_ENTITY",
-    },
-    affectedEntity: [
-      {
-        entityType: "AFFECTED_ENTITY",
+  const initialData = useMemo(
+    () => ({
+      reportCurrency: "EUR",
+      submittingEntity: {
+        entityType: "SUBMITTING_ENTITY",
       },
-    ],
-  };
+      affectedEntity: [
+        {
+          entityType: "AFFECTED_ENTITY",
+        },
+      ],
+    }),
+    []
+  );
 
   const stepFields = useMemo(
     () => [
-      t("incident.incidentSubmission.title", t("incidentSubmission")),
-      t("incident.submittingEntity.title", t("submittingEntity")),
-      t("incident.affectedEntity.title", t("affectedEntity")),
+      t("dora-incident.incidentSubmission.title", t("incidentSubmission")),
+      t("dora-incident.submittingEntity.title", t("submittingEntity")),
+      t("dora-incident.affectedEntity.title", t("affectedEntity")),
       t(
-        "incident.ultimateParentUndertaking.title",
+        "dora-incident.ultimateParentUndertaking.title",
         t("ultimateParentUndertaking")
       ),
-      t("incident.primaryContact.title", t("primaryContact")),
-      t("incident.incident.title", t("incident")),
-      t("incident.impactAssessment.title", t("impactAssessment")),
+      t("dora-incident.primaryContact.title", t("primaryContact")),
+      t("dora-incident.incident.title", t("incident")),
+      t("dora-incident.impactAssessment.title", t("impactAssessment")),
       t(
-        "incident.reportingToOtherAuthorities.title",
+        "dora-incident.reportingToOtherAuthorities.title",
         t("reportingToOtherAuthorities")
       ),
       t(
-        "incident.durationServiceDowntime.title",
+        "dora-incident.durationServiceDowntime.title",
         t("Duration Service Downtime")
       ),
     ],
@@ -71,11 +73,11 @@ export const DoraIncident: FC = () => {
   );
 
   const translatedSchema = useMemo(
-    () => translateSchema(schema, t, "incident"),
+    () => translateSchema(schema, t, "dora-incident"),
     [t]
   );
   const translatedUiSchema = useMemo(
-    () => translateUiSchema(uischema, t, "incident"),
+    () => translateUiSchema(uischema, t, "dora-incident"),
     [t]
   );
 
@@ -113,7 +115,7 @@ export const DoraIncident: FC = () => {
     if (formRef.current) {
       formRef.current.reset();
       setStep(0);
-      flushSync(() => setData(initialData));
+      setTimeout(() => setData(initialData), 10);
     }
   };
 
@@ -178,8 +180,11 @@ export const DoraIncident: FC = () => {
                 populate: "requiredOnly",
                 mergeExtraDefaults: false,
               },
-              emptyObjectFields: "populateRequiredDefaults",
+              constAsDefaults: "skipOneOf",
+              mergeDefaultsIntoFormData: "useDefaultIfFormDataUndefined",
+              emptyObjectFields: "skipDefaults",
             }}
+            focusOnFirstError={true}
             transformErrors={transformErrors}
             translateString={translateString}
             fields={fields}

@@ -2,7 +2,6 @@ import { Box, Button, Grid, Step, StepLabel, Stepper } from "@mui/material";
 import Form from "@rjsf/mui";
 import type { RJSFSchema } from "@rjsf/utils";
 import { useEffect, useMemo, useState, type FC } from "react";
-import { flushSync } from "react-dom";
 import { useTranslation } from "react-i18next";
 import { SpeedDialActions } from "./buttons/SpeedDialAction";
 import { StepNavigationButtons } from "./buttons/StepNavigationButtons";
@@ -88,7 +87,7 @@ export const DoraThreat: FC = () => {
     if (formRef.current) {
       formRef.current.reset();
       setStep(0);
-      flushSync(() => setData(initialData));
+      setTimeout(() => setData(initialData), 10);
     }
   };
 
@@ -132,7 +131,9 @@ export const DoraThreat: FC = () => {
                 populate: "requiredOnly",
                 mergeExtraDefaults: false,
               },
-              emptyObjectFields: "populateRequiredDefaults",
+              constAsDefaults: "skipOneOf",
+              mergeDefaultsIntoFormData: "useDefaultIfFormDataUndefined",
+              emptyObjectFields: "skipDefaults",
             }}
             translateString={translateString}
             liveValidate

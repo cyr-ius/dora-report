@@ -1,5 +1,5 @@
 {
-  "incident": {
+  "dora-incident": {
     "title": "DORA Rapport d'incident majeur",
     "description": "Ce formulaire est utilisé pour soumettre des rapports d'incidents majeurs conformément à la réglementation DORA.",
     "incidentSubmission": {

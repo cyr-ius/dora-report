@@ -1,6 +1,4 @@
 {
-  "ui:title": "",
-  "ui:description": "This report allows a major security incident to be declared to the supervisory authority.",
   "ui:submitButtonOptions": {
     "norender": true
   },
@@ -170,14 +168,6 @@
       ]
     }
   },
-  "ui:options": {
-    "help": "This report allows a major security incident to be declared to the supervisory authority"
-  },
-  "incidentSubmission": {
-    "ui:options": {
-      "help": "This field allows you to describe the incident submission."
-    }
-  },
   "submittingEntity": {
     "ui:field": "LayoutGridField",
     "ui:layoutGrid": {
@@ -210,6 +200,12 @@
           }
         ]
       }
+    },
+    "entityType": {
+      "ui:options": {
+        "widget": "text",
+        "readonly": true
+      }
     }
   },
   "affectedEntity": {
@@ -239,6 +235,15 @@
               }
             }
           ]
+        }
+      },
+      "entityType": {
+        "ui:options": {
+          "enumDisabled": [
+            "SUBMITTING_ENTITY",
+            "ULTIMATE_PARENT_UNDERTAKING_ENTITY"
+          ],
+          "autofocus": true
         }
       },
       "affectedEntityType": {
@@ -283,6 +288,11 @@
             }
           }
         ]
+      }
+    },
+    "entityType": {
+      "ui:options": {
+        "enumDisabled": ["SUBMITTING_ENTITY", "AFFECTED_ENTITY"]
       }
     }
   },
