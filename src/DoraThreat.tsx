@@ -1,15 +1,11 @@
 import { Box, Button, Grid, Step, StepLabel, Stepper } from "@mui/material";
 import Form from "@rjsf/mui";
-import type {
-  RegistryFieldsType,
-  RegistryWidgetsType,
-  RJSFSchema,
-} from "@rjsf/utils";
-import { useEffect, useState, type FC } from "react";
+import type { RJSFSchema } from "@rjsf/utils";
+import { useEffect, useMemo, useState, type FC } from "react";
+import { flushSync } from "react-dom";
 import { useTranslation } from "react-i18next";
-import { DownloadJSONButton } from "./buttons/DownloadJSON";
-import { GeneratePDGButton } from "./buttons/GeneratePDF";
 import { SpeedDialActions } from "./buttons/SpeedDialAction";
+import { StepNavigationButtons } from "./buttons/StepNavigationButtons";
 import { useData } from "./contexts/DataContext";
 import { useDebug } from "./contexts/DebugContext";
 import { useErrors } from "./contexts/ErrorContext";
@@ -17,14 +13,14 @@ import { useFormRef } from "./contexts/FormRefContext";
 import { useStepper } from "./contexts/Stepper";
 import { DebugMode } from "./DebugMode";
 import { ErrorBoundary } from "./ErrorBoundary";
-import LayoutHeaderField from "./fields/LayoutHeaderField";
 import schema from "./schemas/cybSchema.json";
 import uischema from "./schemas/uiCYB.json";
-import DescriptionFieldTemplate from "./templates/DescriptionFieldTemplate";
-import FieldTemplate from "./templates/FieldTemplate";
 import { validator } from "./utils/ajv";
-import { translateString } from "./utils/translate";
-import SelectWidget from "./widgets/SelectWidget";
+import {
+  translateSchema,
+  translateString,
+  translateUiSchema,
+} from "./utils/translate";
 
 export const DoraThreat: FC = () => {
   const formRef = useFormRef();
@@ -37,14 +33,26 @@ export const DoraThreat: FC = () => {
     false | "bottom" | "top" | undefined
   >(false);
 
-  const initialData = {};
+  const initialData = useMemo(() => ({}), []);
 
-  const stepFields = [
-    t("Submitting Entity"),
-    t("Affected Entity"),
-    t("Contact"),
-    t("Threat"),
-  ];
+  const stepFields = useMemo(
+    () => [
+      t("threat.submittingEntity.title", t("submittingEntity")),
+      t("threat.affectedFinancialEntity.title", t("affectedFinancialEntity")),
+      t("threat.primaryContact.title", t("primaryContact")),
+      t("threat.cyberThreat.title", t("cyberThreat")),
+    ],
+    [t]
+  );
+
+  const translatedSchema = useMemo(
+    () => translateSchema(schema, t, "threat"),
+    [t]
+  );
+  const translatedUiSchema = useMemo(
+    () => translateUiSchema(uischema, t, "threat"),
+    [t]
+  );
 
   useEffect(() => {
     setStep(0);
@@ -76,33 +84,12 @@ export const DoraThreat: FC = () => {
     return () => observer.disconnect();
   }, [step, stepFields.length]);
 
-  const goNext = () => {
-    setStep((prev) => prev + 1);
-  };
-
-  const goPrevious = () => {
-    setStep((prev) => Math.max(prev - 1, 0));
-  };
-
   const handleReset = () => {
     if (formRef.current) {
       formRef.current.reset();
       setStep(0);
-      setTimeout(() => setData(initialData), 0);
+      flushSync(() => setData(initialData));
     }
-  };
-
-  const fields: RegistryFieldsType = {
-    LayoutHeaderField: LayoutHeaderField as any,
-  };
-
-  const templates = {
-    FieldTemplate: FieldTemplate,
-    DescriptionFieldTemplate: DescriptionFieldTemplate,
-  };
-
-  const widgets: RegistryWidgetsType = {
-    SelectWidget: SelectWidget,
   };
 
   return (
@@ -125,9 +112,10 @@ export const DoraThreat: FC = () => {
         </Grid>
         <Grid size={{ xs: 12, sm: 12, md: debugMode ? 6 : 8 }}>
           <Form
+            key={step}
             ref={formRef}
-            schema={schema as RJSFSchema}
-            uiSchema={uischema}
+            schema={translatedSchema as RJSFSchema}
+            uiSchema={translatedUiSchema}
             validator={validator}
             formData={data}
             onChange={(e) => {
@@ -147,9 +135,6 @@ export const DoraThreat: FC = () => {
               emptyObjectFields: "populateRequiredDefaults",
             }}
             translateString={translateString}
-            templates={templates}
-            fields={fields}
-            widgets={widgets}
             liveValidate
           ></Form>
           <Box
@@ -166,22 +151,7 @@ export const DoraThreat: FC = () => {
               {t("Reset")}
             </Button>
             <Box sx={{ display: "flex", gap: 1, ml: "auto" }}>
-              {step > 0 && (
-                <Button type="button" onClick={goPrevious}>
-                  {t("Previous")}
-                </Button>
-              )}
-              {step < stepFields.length - 1 && (
-                <Button type="button" onClick={goNext}>
-                  {t("Next")}
-                </Button>
-              )}
-              {step === stepFields.length - 1 && (
-                <DownloadJSONButton data={data} formRef={formRef} />
-              )}
-              {step === stepFields.length - 1 && (
-                <GeneratePDGButton data={data} formRef={formRef} />
-              )}
+              <StepNavigationButtons stepFields={stepFields} />
             </Box>
           </Box>
         </Grid>

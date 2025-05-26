@@ -1,15 +1,11 @@
 import { Box, Button, Grid, Step, StepLabel, Stepper } from "@mui/material";
 import Form from "@rjsf/mui";
-import type {
-  RegistryFieldsType,
-  RegistryWidgetsType,
-  RJSFSchema,
-} from "@rjsf/utils";
-import { useEffect, useState, type FC } from "react";
+import type { RegistryFieldsType } from "@rjsf/utils";
+import { useEffect, useMemo, useState, type FC } from "react";
+import { flushSync } from "react-dom";
 import { useTranslation } from "react-i18next";
-import { DownloadJSONButton } from "./buttons/DownloadJSON";
-import { GeneratePDGButton } from "./buttons/GeneratePDF";
 import { SpeedDialActions } from "./buttons/SpeedDialAction";
+import { StepNavigationButtons } from "./buttons/StepNavigationButtons";
 import { useData } from "./contexts/DataContext";
 import { useDebug } from "./contexts/DebugContext";
 import { useErrors } from "./contexts/ErrorContext";
@@ -17,15 +13,15 @@ import { useFormRef } from "./contexts/FormRefContext";
 import { useStepper } from "./contexts/Stepper";
 import { DebugMode } from "./DebugMode";
 import { ErrorBoundary } from "./ErrorBoundary";
-import LayoutHeaderField from "./fields/LayoutHeaderField";
+import DownTimeField from "./fields/DownTimeField";
 import schema from "./schemas/irSchema.json";
 import uischema from "./schemas/uiIR.json";
-import DescriptionFieldTemplate from "./templates/DescriptionFieldTemplate";
-import FieldTemplate from "./templates/FieldTemplate";
 import { validator } from "./utils/ajv";
-import { translateString } from "./utils/translate";
-import SelectWidget from "./widgets/SelectWidget";
-import DownTimeField from "./fields/DownTimeField";
+import {
+  translateSchema,
+  translateString,
+  translateUiSchema,
+} from "./utils/translate";
 
 export const DoraIncident: FC = () => {
   const formRef = useFormRef();
@@ -50,17 +46,38 @@ export const DoraIncident: FC = () => {
     ],
   };
 
-  const stepFields = [
-    t("Incident Submission"),
-    t("Submitting Entity"),
-    t("Affected Entity"),
-    t("Ultimate Parent Undertaking"),
-    t("Contact"),
-    t("Incident"),
-    t("Impact"),
-    t("Other Auhorities"),
-    t("Duration Service Downtime"),
-  ];
+  const stepFields = useMemo(
+    () => [
+      t("incident.incidentSubmission.title", t("incidentSubmission")),
+      t("incident.submittingEntity.title", t("submittingEntity")),
+      t("incident.affectedEntity.title", t("affectedEntity")),
+      t(
+        "incident.ultimateParentUndertaking.title",
+        t("ultimateParentUndertaking")
+      ),
+      t("incident.primaryContact.title", t("primaryContact")),
+      t("incident.incident.title", t("incident")),
+      t("incident.impactAssessment.title", t("impactAssessment")),
+      t(
+        "incident.reportingToOtherAuthorities.title",
+        t("reportingToOtherAuthorities")
+      ),
+      t(
+        "incident.durationServiceDowntime.title",
+        t("Duration Service Downtime")
+      ),
+    ],
+    [t]
+  );
+
+  const translatedSchema = useMemo(
+    () => translateSchema(schema, t, "incident"),
+    [t]
+  );
+  const translatedUiSchema = useMemo(
+    () => translateUiSchema(uischema, t, "incident"),
+    [t]
+  );
 
   useEffect(() => {
     setStep(0);
@@ -92,19 +109,11 @@ export const DoraIncident: FC = () => {
     return () => observer.disconnect();
   }, [step, stepFields.length]);
 
-  const goNext = () => {
-    setStep((prev) => prev + 1);
-  };
-
-  const goPrevious = () => {
-    setStep((prev) => Math.max(prev - 1, 0));
-  };
-
   const handleReset = () => {
     if (formRef.current) {
       formRef.current.reset();
       setStep(0);
-      setTimeout(() => setData(initialData), 0);
+      flushSync(() => setData(initialData));
     }
   };
 
@@ -127,17 +136,7 @@ export const DoraIncident: FC = () => {
   };
 
   const fields: RegistryFieldsType = {
-    LayoutHeaderField: LayoutHeaderField as any,
     DownTimeField: DownTimeField as any,
-  };
-
-  const templates = {
-    FieldTemplate: FieldTemplate,
-    DescriptionFieldTemplate: DescriptionFieldTemplate,
-  };
-
-  const widgets: RegistryWidgetsType = {
-    SelectWidget: SelectWidget,
   };
 
   return (
@@ -161,8 +160,8 @@ export const DoraIncident: FC = () => {
         <Grid size={{ xs: 12, sm: 12, md: debugMode ? 6 : 8 }}>
           <Form
             ref={formRef}
-            schema={schema as RJSFSchema}
-            uiSchema={uischema}
+            schema={translatedSchema}
+            uiSchema={translatedUiSchema}
             validator={validator}
             formData={data}
             onChange={(e) => {
@@ -183,9 +182,7 @@ export const DoraIncident: FC = () => {
             }}
             transformErrors={transformErrors}
             translateString={translateString}
-            templates={templates}
             fields={fields}
-            widgets={widgets}
             liveValidate
           ></Form>
           <Box
@@ -202,22 +199,7 @@ export const DoraIncident: FC = () => {
               {t("Reset")}
             </Button>
             <Box sx={{ display: "flex", gap: 1, ml: "auto" }}>
-              {step > 0 && (
-                <Button type="button" onClick={goPrevious}>
-                  {t("Previous")}
-                </Button>
-              )}
-              {step < stepFields.length - 1 && (
-                <Button type="button" onClick={goNext}>
-                  {t("Next")}
-                </Button>
-              )}
-              {step === stepFields.length - 1 && (
-                <DownloadJSONButton data={data} formRef={formRef} />
-              )}
-              {step === stepFields.length - 1 && (
-                <GeneratePDGButton data={data} formRef={formRef} />
-              )}
+              <StepNavigationButtons stepFields={stepFields} />
             </Box>
           </Box>
         </Grid>

@@ -1,210 +1,243 @@
 {
-    "ui:title": "Test",
-    "ui:description":"This report allows you to declare a threat to the EBA",
-    "ui:submitButtonOptions": {
-        "norender": true
-    },
-    
+  "ui:submitButtonOptions": {
+    "norender": true
+  },
+
+  "ui:field": "LayoutGridField",
+  "ui:layoutGrid": {
+    "ui:row": {
+      "spacing": 2,
+      "children": [
+        {
+          "ui:row": {
+            "spacing": 2,
+            "size": 12,
+            "className": "category step0 selectSub",
+            "children": ["submittingEntity"]
+          }
+        },
+        {
+          "ui:row": {
+            "spacing": 2,
+            "size": 12,
+            "className": "category step1",
+            "children": ["affectedFinancialEntity"]
+          }
+        },
+        {
+          "ui:row": {
+            "spacing": 2,
+            "size": 12,
+            "className": "category step2",
+            "children": ["primaryContact", "secondaryContact"]
+          }
+        },
+        {
+          "ui:row": {
+            "spacing": 2,
+            "size": 12,
+            "className": "category step3 selectSub",
+            "children": ["cyberThreat"]
+          }
+        }
+      ]
+    }
+  },
+  "ui:options": {
+    "help": "This report allows you to declare a threat to the EBA"
+  },
+  "submittingEntity": {
     "ui:field": "LayoutGridField",
     "ui:layoutGrid": {
-        "ui:row": {   
-            "spacing":2,
-            "children":[ 
-                {
-                    "ui:row": {
-                        "spacing":2,
-                        "size":12,  
-                        "className":"category step0 selectSub",  
-                        "children":["submittingEntity"]
-                    }
-                },
-                {
-                    "ui:row": {
-                        "spacing":2,
-                        "size":12,  
-                        "className":"category step1",  
-                        "children":["affectedFinancialEntity"]
-                    }
-                },
-                {
-                    "ui:row": {
-                        "spacing":2,
-                        "size":12,  
-                        "className":"category step2",  
-                        "children":["primaryContact","secondaryContact"]
-                    }
-                },
-                {
-                    "ui:row": {
-                        "spacing":2,
-                        "size":12,  
-                        "className":"category step3 selectSub",  
-                        "children":["cyberThreat"]
-                    }
-                }                                                
-            ]
-        }
-
+      "ui:row": {
+        "spacing": 2,
+        "children": [
+          {
+            "ui:col": {
+              "spacing": 2,
+              "size": 12,
+              "children": [
+                { "title": "submittingEntity", "field": "LayoutHeaderField" }
+              ]
+            }
+          },
+          {
+            "ui:row": {
+              "spacing": 2,
+              "size": 12,
+              "children": [
+                { "ui:columns": { "size": 6, "children": ["name", "code"] } }
+              ]
+            }
+          },
+          {
+            "ui:col": {
+              "spacing": 2,
+              "size": 12,
+              "children": ["typeOfSubmittingFinancialEntity"]
+            }
+          }
+        ]
+      }
     },
-    "ui:options":{
-        "help":"This report allows you to declare a threat to the EBA"
-    },    
-    "submittingEntity": {
-        "ui:field": "LayoutGridField",
-        "ui:layoutGrid": {
-                "ui:row": {                 
-                "spacing": 2,
-                "children":[
-                    {
-                        "ui:col": {
-                            "spacing": 2,
-                            "size": 12, 
-                            "children":[
-                                {"title":"submittingEntity","field":"LayoutHeaderField"}
-                            ]
-                        }
-                    },
-                    {
-                        "ui:row": {
-                            "spacing": 2,
-                            "size": 12, 
-                            "children":[
-                                {"ui:columns": {"size":6, "children": ["name", "code"]}}
-                            ]
-                        }
-                    },
-                    {
-                        "ui:col": {
-                            "spacing": 2,
-                            "size": 12,
-                            "children":["typeOfSubmittingFinancialEntity"]
-                        }
-                    }
-                ]             
-            }
-        },
-        "typeOfSubmittingFinancialEntity":{
-            "ui:title":"typeOfSubmittingFinancialEntity",
-            "ui:help":"Submitting entity type",
-            "size": 12,
-            "ui:classNames":"selectEntity",
-            "items": {
-                "ui:title":"Item",
-                "ui:classNames":"selecItem"
-            }
-        }         
-    },
-    "affectedFinancialEntity": {
-        "ui:field": "LayoutGridField",
-        "ui:layoutGrid": {
-                "ui:row": {
-                "spacing": 2,
-                "children":[
-                    {
-                        "ui:col": {
-                            "spacing": 2,
-                            "size": 12, 
-                            "children":[{"title":"affectedFinancialEntity","field":"LayoutHeaderField"}]
-                        }
-                    },
-                    {
-                        "ui:row": {
-                            "spacing": 2,
-                            "size": 12, 
-                            "children":[{"ui:columns": {"size":6, "children": ["name", "LEI"]}}]
-                        }
-                    }
-                ]
-            }
-        }
-    },
-    "primaryContact": {
-        "ui:field": "LayoutGridField",
-        "ui:layoutGrid": {
-                "ui:row": {
-                "spacing": 2,
-                "children":[
-                    {
-                        "ui:col": {
-                            "spacing": 2,
-                            "size": 12,
-                             "children":[{"title":"primaryContact","field":"LayoutHeaderField"}]
-                            }
-                    },
-                    {
-                        "ui:row": {
-                            "spacing": 2,
-                            "size": 12,
-                            "children":[{"ui:columns": {"size":4, "children": ["name", "email","phone"]}}]
-                        }
-                    }
-                ]
-            }
-        }
-    },    
-    "secondaryContact": {
-        "ui:field": "LayoutGridField",
-        "ui:layoutGrid": {
-                "ui:row": {
-                "spacing": 2,
-                "children":[
-                    {
-                        "ui:col": {
-                            "spacing": 2,
-                            "size": 12,
-                             "children":[{"title":"secondaryContact","field":"LayoutHeaderField"}]
-                            }
-                    },
-                    {
-                        "ui:row": {
-                            "spacing": 2,
-                            "size": 12,
-                            "children":[{"ui:columns": {"size":4, "children": ["name", "email","phone"]}}]
-                        }
-                    }
-                ]
-            }
-        }
-    },
-    "cyberThreat": {
-        "ui:field": "LayoutGridField",
-        "ui:layoutGrid": {
-                "ui:row": {
-                    "spacing": 2,
-                    "children":[
-                        {
-                            "ui:col": {
-                                "size": 12,
-                                "children":[{"title":"cyberThreat","field":"LayoutHeaderField", "fullWidth":true}]}},
-                        {
-                            "ui:row": {
-                                "spacing": 2,
-                                "size": 12, 
-                                "children":[{"ui:columns": {"size":6, "children": ["detectionDateTime", "status"]}}]
-                            }
-                        },
-                        {
-                            "ui:col": {
-                                "spacing": 2,
-                                "size": 12,
-                                "children":[
-                                    "cyberThreatDescription",
-                                    "potentialImpactInformation",
-                                    "potentialClassificationCriteria",
-                                    "actionsTakenToPreventMaterialisation",
-                                    "notificationToOtherStakeholders",
-                                    "indicatorsOfCompromise",
-                                    "otherRelevantInformation"
-                                ]
-                            }
-                        }
-                    ]
-            }
-        }, 
-        "detectionDateTime":{
-        },
-        "potentialClassificationCriteria": {
-            "ui:classNames":"selectEntity"
-        }
+    "typeOfSubmittingFinancialEntity": {
+      "size": 12,
+      "ui:classNames": "selectEntity",
+      "items": {
+        "ui:classNames": "selecItem"
+      }
     }
+  },
+  "affectedFinancialEntity": {
+    "ui:field": "LayoutGridField",
+    "ui:layoutGrid": {
+      "ui:row": {
+        "spacing": 2,
+        "children": [
+          {
+            "ui:col": {
+              "spacing": 2,
+              "size": 12,
+              "children": [
+                {
+                  "title": "affectedFinancialEntity",
+                  "field": "LayoutHeaderField"
+                }
+              ]
+            }
+          },
+          {
+            "ui:row": {
+              "spacing": 2,
+              "size": 12,
+              "children": [
+                { "ui:columns": { "size": 6, "children": ["name", "LEI"] } }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "primaryContact": {
+    "ui:field": "LayoutGridField",
+    "ui:layoutGrid": {
+      "ui:row": {
+        "spacing": 2,
+        "children": [
+          {
+            "ui:col": {
+              "spacing": 2,
+              "size": 12,
+              "children": [
+                { "title": "primaryContact", "field": "LayoutHeaderField" }
+              ]
+            }
+          },
+          {
+            "ui:row": {
+              "spacing": 2,
+              "size": 12,
+              "children": [
+                {
+                  "ui:columns": {
+                    "size": 4,
+                    "children": ["name", "email", "phone"]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "secondaryContact": {
+    "ui:field": "LayoutGridField",
+    "ui:layoutGrid": {
+      "ui:row": {
+        "spacing": 2,
+        "children": [
+          {
+            "ui:col": {
+              "spacing": 2,
+              "size": 12,
+              "children": [
+                { "title": "secondaryContact", "field": "LayoutHeaderField" }
+              ]
+            }
+          },
+          {
+            "ui:row": {
+              "spacing": 2,
+              "size": 12,
+              "children": [
+                {
+                  "ui:columns": {
+                    "size": 4,
+                    "children": ["name", "email", "phone"]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "cyberThreat": {
+    "ui:field": "LayoutGridField",
+    "ui:layoutGrid": {
+      "ui:row": {
+        "spacing": 2,
+        "children": [
+          {
+            "ui:col": {
+              "size": 12,
+              "children": [
+                {
+                  "title": "cyberThreat",
+                  "field": "LayoutHeaderField",
+                  "fullWidth": true
+                }
+              ]
+            }
+          },
+          {
+            "ui:row": {
+              "spacing": 2,
+              "size": 12,
+              "children": [
+                {
+                  "ui:columns": {
+                    "size": 6,
+                    "children": ["detectionDateTime", "status"]
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "ui:col": {
+              "spacing": 2,
+              "size": 12,
+              "children": [
+                "cyberThreatDescription",
+                "potentialImpactInformation",
+                "potentialClassificationCriteria",
+                "actionsTakenToPreventMaterialisation",
+                "notificationToOtherStakeholders",
+                "indicatorsOfCompromise",
+                "otherRelevantInformation"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "detectionDateTime": {},
+    "potentialClassificationCriteria": {
+      "ui:classNames": "selectEntity"
+    }
+  }
 }

@@ -126,18 +126,6 @@
               {
                 "ui:col": {
                   "size": 12,
-                  "children": [
-                    {
-                      "title": "OtherAuthorities",
-                      "field": "LayoutHeaderField",
-                      "fullWidth": true
-                    }
-                  ]
-                }
-              },
-              {
-                "ui:col": {
-                  "size": 12,
                   "children": ["reportingToOtherAuthorities"]
                 }
               },
@@ -185,6 +173,11 @@
   "ui:options": {
     "help": "This report allows a major security incident to be declared to the supervisory authority"
   },
+  "incidentSubmission": {
+    "ui:options": {
+      "help": "This field allows you to describe the incident submission."
+    }
+  },
   "submittingEntity": {
     "ui:field": "LayoutGridField",
     "ui:layoutGrid": {
@@ -217,11 +210,6 @@
           }
         ]
       }
-    },
-    "entityType": {
-      "ui:options": {
-        "help": "SUBMITTING_ENTITY"
-      }
     }
   },
   "affectedEntity": {
@@ -241,7 +229,7 @@
             {
               "ui:columns": {
                 "size": 4,
-                "children": ["name", "code","LEI"]
+                "children": ["name", "code", "LEI"]
               }
             },
             {
@@ -254,8 +242,6 @@
         }
       },
       "affectedEntityType": {
-        "ui:title": "affectedEntityType",
-        "fullWidth": true,
         "ui:options": {
           "orderable": false
         }

@@ -1,6 +1,6 @@
 {
   "$id": "IR-1.2",
-  "$schema": "https://json-schema.org/draft/2020-12/schema", 
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "DORA Major Incident Report",
   "type": "object",
   "properties": {
@@ -220,8 +220,12 @@
               ]
             },
             "impactAssessment": {
-              "serviceImpact": {
-                "required": []
+              "properties": {
+                "serviceImpact": {
+                  "required": [
+                    "isTemporaryActionsMeasuresForRecovery"
+                  ]
+                }
               },
               "required": [
                 "criticalServicesAffected",
@@ -233,7 +237,11 @@
               ]
             }
           },
-          "required": ["impactAssessment","reportingToOtherAuthorities"]
+          "required": [
+            "impactAssessment",
+            "reportingToOtherAuthorities",
+            "informationDurationServiceDowntimeActualOrEstimate"
+          ]
         },
         {
           "properties": {
@@ -319,8 +327,12 @@
               ]
             },
             "impactAssessment": {
-              "serviceImpact": {
-                "required": []
+              "properties": {
+                "serviceImpact": {
+                  "required": [
+                    "isTemporaryActionsMeasuresForRecovery"
+                  ]
+                }
               },
               "required": [
                 "criticalServicesAffected",
@@ -331,8 +343,12 @@
                 "isImpactOnFinancialInterest"
               ]
             }
-          },         
-          "required": ["impactAssessment","reportingToOtherAuthorities"]
+          },
+          "required": [
+            "impactAssessment",
+            "reportingToOtherAuthorities",
+            "informationDurationServiceDowntimeActualOrEstimate"
+          ]
         },
         {
           "properties": {
@@ -367,7 +383,7 @@
         }
       },
       "then": {
-        "required":["reportingToOtherAuthoritiesOther"]
+        "required": ["reportingToOtherAuthoritiesOther"]
       }
     }
   },
@@ -393,7 +409,11 @@
         "required": ["impactAssessment"]
       },
       "then": {
-        "required": ["informationDurationServiceDowntimeActualOrEstimate"]
+        "impactAssessment":{
+          "serviceImpact": {
+            "required": ["informationDurationServiceDowntimeActualOrEstimate"]
+          }
+        }
       }
     }
   ],
@@ -490,22 +510,22 @@
                   "enum": ["AFFECTED_ENTITY"]
                 }
               },
-              "required": ["name","code","affectedEntityType"],
+              "required": ["name", "code", "affectedEntityType"],
               "not": {
                 "required": ["LEI"]
-              }              
-            },         
+              }
+            },
             {
               "properties": {
                 "entityType": {
                   "enum": ["AFFECTED_ENTITY"]
                 }
               },
-              "required": ["name","LEI","affectedEntityType"],
+              "required": ["name", "LEI", "affectedEntityType"],
               "not": {
                 "required": ["code"]
-              }                  
-            },         
+              }
+            },
             {
               "properties": {
                 "entityType": {
@@ -517,8 +537,8 @@
           ]
         }
       },
-      "required": ["entityType","name"],
-      "additionalProperties": false  
+      "required": ["entityType", "name"],
+      "additionalProperties": false
     },
     "Contact": {
       "type": "object",
@@ -768,7 +788,6 @@
         "classificationDateTime",
         "incidentDiscovery",
         "isBusinessContinuityActivated"
-        
       ],
       "dependencies": {
         "rootCausesDetailedClassification": {
@@ -777,10 +796,10 @@
               "rootCausesDetailedClassification": {
                 "contains": {
                   "enum": [
-                      "process_failure_other",
-                      "system_failure_other",
-                      "human_error_other",
-                      "external_event_other"
+                    "process_failure_other",
+                    "system_failure_other",
+                    "human_error_other",
+                    "external_event_other"
                   ]
                 }
               }
