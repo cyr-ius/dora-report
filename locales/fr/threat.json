@@ -1,0 +1,154 @@
+{
+  "title": "DORA Rapport de menace",
+  "description": "Ce rapport permet de déclarer une menace auprès de l'EBA",
+  "help": "Ce rapport permet de déclarer une menace auprès de l'EBA",
+  "options": {
+    "help": "Ce rapport permet de déclarer une menace auprès de l'EBA"
+  },
+  "submittingEntity": {
+    "title": "Entité soumettrice",
+    "description": "Champ 1, 2, 3"
+  },
+  "affectedFinancialEntity": {
+    "title": "Entité financière affectée",
+    "description": "Champ 4, 5"
+  },
+  "primaryContact": {
+    "title": "Contact principal",
+    "description": "Champ 6, 7, 8"
+  },
+  "secondaryContact": {
+    "title": "Contact secondaire",
+    "description": "Champ 9, 10, 11"
+  },
+  "cyberThreat": {
+    "title": "Menace cybernétique"
+  },
+  "$defs": {
+    "SubmittingEntity": {
+      "title": "Entité soumettrice",
+      "description": "Champ 1",
+      "name": {
+        "title": "Nom de l'entité soumettrice",
+        "description": "Champ 1"
+      },
+      "code": {
+        "title": "Code de l'entité soumettrice",
+        "description": "Champ 2"
+      },
+      "typeOfSubmittingFinancialEntity": {
+        "title": "Type d'entité financière soumise",
+        "items": {
+          "title": "Type d'entité financière",
+          "enum": {
+            "credit_institution": "Institution de crédit",
+            "payment_institution": "Institution de paiement",
+            "exempted_payment_institution": "Institution de paiement exemptée",
+            "account_information_service_provider": "Fournisseur de services d'information sur les comptes",
+            "electronic_money_institution": "Institution de monnaie électronique",
+            "exempted_electronic_money_institution": "Institution de monnaie électronique exemptée",
+            "investment_firm": "Société d'investissement",
+            "crypto-asset_service_provider": "Fournisseur de services d'actifs cryptographiques",
+            "issuer_of_asset-referenced_tokens": "Émetteur de jetons adossés à des actifs",
+            "central_securities_depository": "Dépositaire central de titres",
+            "central_counterparty": "Contrepartie centrale",
+            "trading_venue": "Lieu de négociation",
+            "trade_repository": "Répertoire de transactions",
+            "manager_of_alternative_investment_fund": "Gestionnaire de fonds d'investissement alternatif",
+            "management_company": "Société de gestion",
+            "data_reporting_service_provider": "Fournisseur de services de déclaration de données",
+            "insurance_and_reinsurance_undertaking": "Entreprise d'assurance et de réassurance",
+            "insurance_intermediary_reinsurance_intermediary_and_ancillary_insurance_intermediary": "Intermédiaire d'assurance, intermédiaire de réassurance et intermédiaire d'assurance accessoire",
+            "institution_for_occupational_retirement_provision": "Institution de prévoyance professionnelle",
+            "credit_rating_agency": "Agence de notation de crédit",
+            "administrator_of_critical_benchmarks": "Administrateur de repères critiques",
+            "crowdfunding_service_provider": "Fournisseur de services de financement participatif",
+            "securitisation_repository": "Répertoire de titrisation"
+          }
+        }
+      }
+    },
+    "AffectedEntity": {
+      "title": "Entité affectée",
+      "name": {
+        "title": "Nom de l'entité affectée",
+        "description": "Champ 4"
+      },
+      "LEI": {
+        "title": "Identifiant juridique de l'entité affectée",
+        "description": "Champ 5"
+      }
+    },
+    "Contact": {
+      "title": "Contact",
+      "name": {
+        "title": "Nom du contact",
+        "description": "Champ 6, 9 - selon le type de contact principal ou secondaire"
+      },
+      "email": {
+        "title": "Email du contact",
+        "description": "Champ 7, 10 - selon le type de contact principal ou secondaire"
+      },
+      "phone": {
+        "title": "Numéro de téléphone du contact",
+        "description": "Champ 8, 11 - selon le type de contact principal ou secondaire"
+      }
+    },
+    "CyberThreat": {
+      "title": "Menace cybernétique",
+      "detectionDateTime": {
+        "title": "Date et heure de détection",
+        "description": "Champ 12"
+      },
+      "cyberThreatDescription": {
+        "title": "Description de la menace cybernétique",
+        "description": "Champ 13"
+      },
+      "potentialImpactInformation": {
+        "title": "Informations sur l'impact potentiel",
+        "description": "Champ 14"
+      },
+      "potentialClassificationCriteria": {
+        "title": "Critères de classification potentiels",
+        "description": "Champ 15",
+        "items": {
+          "title": "Critère de classification potentiel",
+          "enum": {
+            "clients_financial_counterparts_and_transactions_affected": "Clients, contreparties financières et transactions affectés",
+            "reputational_impact": "Impact sur la réputation",
+            "duration_and_service_downtime": "Durée et interruption des services",
+            "geographical_spread": "Propagation géographique",
+            "data_losses": "Pertes de données",
+            "critical_services_affected": "Services critiques affectés",
+            "economic_impact": "Impact économique"
+          }
+        }
+      },
+      "status": {
+        "title": "Statut",
+        "description": "Champ 16",
+        "enum": {
+          "-": null,
+          "active": "Actif",
+          "inactive": "Inactif"
+        }
+      },
+      "actionsTakenToPreventMaterialisation": {
+        "title": "Actions prises pour prévenir la matérialisation",
+        "description": "Champ 17"
+      },
+      "notificationToOtherStakeholders": {
+        "title": "Notification à d'autres parties prenantes",
+        "description": "Champ 18"
+      },
+      "indicatorsOfCompromise": {
+        "title": "Indicateurs de compromission",
+        "description": "Champ 19"
+      },
+      "otherRelevantInformation": {
+        "title": "Autres informations pertinentes",
+        "description": "Champ 20"
+      }
+    }
+  }
+}
