@@ -37,7 +37,10 @@ export const translateSchema = (
   const newSchema = { ...schema };
 
   // Générer ou traduire le title
-  if (!newSchema._translated && (!newSchema.title || typeof newSchema.title === "string")) {
+  if (
+    !newSchema._translated &&
+    (!newSchema.title || typeof newSchema.title === "string")
+  ) {
     let tPath = `${ns}:${concatPath(path, "title")}.${newSchema.title}`;
     if (!newSchema.title) {
       const key = getLastKey(path);
