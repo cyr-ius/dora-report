@@ -1,5 +1,5 @@
 {
-  "Incident Reporting": "DORA Rapport d'incident majeur" },
+  "title": { "DORA Major Incident Report": "DORA Rapport d'incident majeur" },
   "description": {
     "This form is used to report incidents that may impact the financial stability of the organization. Please fill out all relevant sections accurately.": "Ce formulaire est utilisé pour soumettre des rapports d'incidents majeurs conformément à la réglementation DORA."
   },
