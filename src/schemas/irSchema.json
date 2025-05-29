@@ -428,7 +428,7 @@
             "AFFECTED_ENTITY",
             "ULTIMATE_PARENT_UNDERTAKING_ENTITY"
           ],
-          "description": "field 1.1"
+          "description": ""
         },
         "name": {
           "type": "string",

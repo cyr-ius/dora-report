@@ -20,6 +20,7 @@ export const StepperProvider: FC<{ children: ReactNode }> = ({
 };
 
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useStepper = () => {
   const context = useContext(StepperContext);
   if (!context) throw new Error('useStepper must be used within a StepperProvider');

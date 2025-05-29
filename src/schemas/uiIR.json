@@ -1,4 +1,6 @@
 {
+  "ui:title": "Incident Reporting",
+  "ui:description": "This form is used to report incidents that may impact the financial stability of the organization. Please fill out all relevant sections accurately.",
   "ui:submitButtonOptions": {
     "norender": true
   },
@@ -204,7 +206,8 @@
     "entityType": {
       "ui:options": {
         "widget": "text",
-        "readonly": true
+        "readonly": true,
+        "title":"entityType"
       }
     }
   },

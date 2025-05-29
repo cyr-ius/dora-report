@@ -19,35 +19,48 @@ export const translateString = (
     case TranslatableString.KeyLabel:
       params = params?.map((item) => t(item));
       return t(replaceStringParameters("%1 Key", params)); // Add "Name" onto the end of the WrapIfAdditionalTemplate key label
-    default:
-      return t(englishStringTranslator(stringToTranslate, params));
+    default: {
+      const stringTranslor = englishStringTranslator(stringToTranslate, params);
+      return t(stringTranslor, t(stringTranslor));
+    }
   }
 };
 
 export const translateSchema = (
   schema: any,
   t: any,
-  path = "form"
+  ns = "translation",
+  path = ""
 ): RJSFSchema => {
   if (!schema || typeof schema !== "object") return schema;
 
   const newSchema = { ...schema };
 
   // Générer ou traduire le title
-  if (!newSchema.title || typeof newSchema.title === "string") {
-    newSchema.title = t(`${path}.title`, t(path, t(getLastKey(path))));
+  if (!newSchema._translated && (!newSchema.title || typeof newSchema.title === "string")) {
+    let tPath = `${ns}:${concatPath(path, "title")}.${newSchema.title}`;
+    if (!newSchema.title) {
+      const key = getLastKey(path);
+      tPath = `${ns}:${concatPath(path, "title")}.${key}`;
+    }
+    newSchema.title = t(tPath);
+    newSchema._translated = true;
   }
 
   // Traduction de la description
-  if (typeof newSchema.description === "string") {
-    newSchema.description = t(`${path}.description`, t(newSchema.description));
+  if (!newSchema._translated && typeof newSchema.description === "string") {
+    const tPath = `${ns}:${concatPath(path, "description")}.${
+      newSchema.description
+    }`;
+    newSchema.description = t(tPath);
+    newSchema._translated = true;
   }
 
   // Remplacement enum → oneOf avec { const, title } (même valeur, mais title traduit)
   if (Array.isArray(newSchema.enum)) {
     newSchema.oneOf = newSchema.enum.map((value: any) => ({
       const: value,
-      title: t(`${path}.enum.${value}`, t(value))
+      title: t(`${ns}:${concatPath(path, `enum.${value}`)}`),
     }));
     delete newSchema.enum;
   }
@@ -59,23 +72,29 @@ export const translateSchema = (
         if (typeof value === "boolean") {
           return [key, value];
         }
-        return [key, translateSchema(value, t, `${path}.${key}`)];
+        return [key, translateSchema(value, t, ns, concatPath(path, key))];
       })
     );
   }
 
   // Récursion dans les items (tableaux)
   if (newSchema.items) {
-    newSchema.items = translateSchema(newSchema.items, t, `${path}.items`);
+    newSchema.items = translateSchema(newSchema.items, t, ns, `${path}.items`);
   }
+
   if (newSchema.items) {
     // cas tableau de type unique
     if (!Array.isArray(newSchema.items)) {
-      newSchema.items = translateSchema(newSchema.items, t, `${path}.items`);
+      newSchema.items = translateSchema(
+        newSchema.items,
+        t,
+        ns,
+        concatPath(path, "items")
+      );
     } else {
       // cas tuple
       newSchema.items = newSchema.items.map((item: any, index: any) =>
-        translateSchema(item, t, `${path}.items[${index}]`)
+        translateSchema(item, t, ns, concatPath(path, `items[${index}]`))
       );
     }
   }
@@ -85,7 +104,7 @@ export const translateSchema = (
     newSchema.$defs = Object.fromEntries(
       Object.entries(newSchema.$defs).map(([key, def]) => [
         key,
-        translateSchema(def, t, `${path}.$defs.${key}`),
+        translateSchema(def, t, ns, concatPath(path, `$defs.${key}`)),
       ])
     );
   }
@@ -95,7 +114,8 @@ export const translateSchema = (
 export const translateUiSchema = (
   uiSchema: UiSchema,
   t: TFunction,
-  path = "form"
+  ns = "translation",
+  path: string = ""
 ): UiSchema => {
   if (!uiSchema || typeof uiSchema !== "object") return uiSchema;
 
@@ -106,15 +126,17 @@ export const translateUiSchema = (
     const value = newUISchema[key];
     if (typeof value === "string") {
       const rKey = key.replace("ui:", "");
-      newUISchema[key] = t(`${path}.${rKey}`, value);
+      const tPath = `${ns}:${concatPath(path, rKey)}.${value}`;
+      newUISchema[key] = t(tPath);
     }
     if (Array.isArray(value)) {
-      newUISchema[key] = t(`${path}.enum`, { returnObjects: true }) as string[];
+      newUISchema[key] = t(`${ns}:${concatPath(path, "enum")}`, {
+        returnObjects: true,
+      }) as string[];
     }
   });
-  
 
-  // Traduire les champs dans ui:options (title, description, help)
+  // Traduire les champs dans ui:options
   if (
     newUISchema["ui:options"] &&
     typeof newUISchema["ui:options"] === "object"
@@ -124,12 +146,24 @@ export const translateUiSchema = (
     ["title", "description", "help"].forEach((optKey) => {
       const val = options[optKey];
       if (typeof val === "string") {
-        options[optKey] = t(`${path}.options.${optKey}`, val);
+        const optPath = concatPath(path, `options.${optKey}`);
+        options[optKey] = t(`${ns}:${optPath}.${val}`);
       }
     });
 
     newUISchema["ui:options"] = options;
   }
+
+  // Traduire récursivement tous les sous-éléments du uiSchema
+  const translated = Object.fromEntries(
+    Object.entries(newUISchema).map(([key, val]) => {
+      if (key.startsWith("ui:")) return [key, val];
+      return [
+        key,
+        translateUiSchema(val as UiSchema, t, ns, concatPath(path, key)),
+      ];
+    })
+  );
 
   // Traduction récursive des enfants avec titres imbriqués
   const translateDeep = (obj: any, currentPath: string): any => {
@@ -138,17 +172,21 @@ export const translateUiSchema = (
     } else if (typeof obj === "object" && obj !== null) {
       const copy: any = { ...obj };
 
-      if (typeof copy.title === "string") {
-        const titleKey = `${currentPath}.title`;
-        copy.title = t(
-          titleKey,
-          t(`${path}.${copy.title}.title`, t(copy.title))
-        );
+      if (
+        typeof copy.title === "string" &&
+        copy.field == "LayoutHeaderField" &&
+        !copy._translated
+      ) {
+        if (!copy.title.includes(".")) {
+          copy.title = t(`${ns}:${copy.title}.title.${copy.title}`);
+          copy._translated = true;
+        }
+        return copy;
       }
 
       for (const [k, v] of Object.entries(copy)) {
         if (k !== "title") {
-          copy[k] = translateDeep(v, `${currentPath}.${k}`);
+          copy[k] = translateDeep(v, concatPath(currentPath, k));
         }
       }
 
@@ -157,19 +195,14 @@ export const translateUiSchema = (
     return obj;
   };
 
-  // Traduire récursivement tous les sous-éléments du uiSchema
-  const translated = Object.fromEntries(
-    Object.entries(newUISchema).map(([key, val]) => {
-      if (key.startsWith("ui:")) return [key, val];
-      return [key, translateUiSchema(val as UiSchema, t, `${path}.${key}`)];
-    })
-  );
-
   // Traduire aussi les enfants potentiels imbriqués
   return translateDeep(translated, path);
 };
 
-function getLastKey(path: string): string {
+const concatPath = (base: string, suffix: string): string =>
+  base ? `${base}.${suffix}` : suffix;
+
+const getLastKey = (path: string): string => {
   const parts = path.split(".");
   return parts[parts.length - 1];
-}
+};

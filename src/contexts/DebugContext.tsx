@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, type FC, type ReactNode } from 'react';
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const DebugContext = createContext({
   debugMode: false,
   toggleDebugMode: () => {},
@@ -19,6 +20,7 @@ export const DebugProvider: FC<{ children: ReactNode }> = ({
 };
 
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useDebug = () => {
   const context = useContext(DebugContext);
   if (!context) {

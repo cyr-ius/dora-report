@@ -15,7 +15,7 @@ import { ErrorBoundary } from "./ErrorBoundary";
 import DownTimeField from "./fields/DownTimeField";
 import schema from "./schemas/irSchema.json";
 import uischema from "./schemas/uiIR.json";
-import { validator } from "./utils/ajv";
+import { getValidatorForLanguage } from "./utils/ajv";
 import {
   translateSchema,
   translateString,
@@ -24,7 +24,7 @@ import {
 
 export const DoraIncident: FC = () => {
   const formRef = useFormRef();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { data, setData } = useData();
   const { setErrors } = useErrors();
   const { debugMode } = useDebug();
@@ -50,35 +50,34 @@ export const DoraIncident: FC = () => {
 
   const stepFields = useMemo(
     () => [
-      t("dora-incident.incidentSubmission.title", t("incidentSubmission")),
-      t("dora-incident.submittingEntity.title", t("submittingEntity")),
-      t("dora-incident.affectedEntity.title", t("affectedEntity")),
+      t("incident:incidentSubmission.title.incidentSubmission"),
+      t("incident:submittingEntity.title.submittingEntity"),
+      t("incident:affectedEntity.title.affectedEntity"),
+      t("incident:ultimateParentUndertaking.title.ultimateParentUndertaking"),
+      t("incident:primaryContact.title.primaryContact"),
+      t("incident:incident.title.incident"),
+      t("incident:impactAssessment.title.impactAssessment"),
       t(
-        "dora-incident.ultimateParentUndertaking.title",
-        t("ultimateParentUndertaking")
-      ),
-      t("dora-incident.primaryContact.title", t("primaryContact")),
-      t("dora-incident.incident.title", t("incident")),
-      t("dora-incident.impactAssessment.title", t("impactAssessment")),
-      t(
-        "dora-incident.reportingToOtherAuthorities.title",
-        t("reportingToOtherAuthorities")
+        "incident:reportingToOtherAuthorities.title.reportingToOtherAuthorities"
       ),
       t(
-        "dora-incident.durationServiceDowntime.title",
-        t("Duration Service Downtime")
+        "incident:informationDurationServiceDowntimeActualOrEstimate.title.informationDurationServiceDowntimeActualOrEstimate"
       ),
     ],
     [t]
   );
 
   const translatedSchema = useMemo(
-    () => translateSchema(schema, t, "dora-incident"),
+    () => translateSchema(schema, t, "incident"),
     [t]
   );
   const translatedUiSchema = useMemo(
-    () => translateUiSchema(uischema, t, "dora-incident"),
+    () => translateUiSchema(uischema, t, "incident"),
     [t]
+  );
+  const validator = useMemo(
+    () => getValidatorForLanguage(i18n.language),
+    [i18n.language]
   );
 
   useEffect(() => {

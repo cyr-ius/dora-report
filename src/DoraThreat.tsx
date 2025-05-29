@@ -14,7 +14,7 @@ import { DebugMode } from "./DebugMode";
 import { ErrorBoundary } from "./ErrorBoundary";
 import schema from "./schemas/cybSchema.json";
 import uischema from "./schemas/uiCYB.json";
-import { validator } from "./utils/ajv";
+import { getValidatorForLanguage } from "./utils/ajv";
 import {
   translateSchema,
   translateString,
@@ -23,7 +23,7 @@ import {
 
 export const DoraThreat: FC = () => {
   const formRef = useFormRef();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { data, setData } = useData();
   const { setErrors } = useErrors();
   const { debugMode } = useDebug();
@@ -36,10 +36,10 @@ export const DoraThreat: FC = () => {
 
   const stepFields = useMemo(
     () => [
-      t("threat.submittingEntity.title", t("submittingEntity")),
-      t("threat.affectedFinancialEntity.title", t("affectedFinancialEntity")),
-      t("threat.primaryContact.title", t("primaryContact")),
-      t("threat.cyberThreat.title", t("cyberThreat")),
+      t("threat:submittingEntity.title", t("submittingEntity")),
+      t("threat:affectedFinancialEntity.title", t("affectedFinancialEntity")),
+      t("threat:primaryContact.title", t("primaryContact")),
+      t("threat:cyberThreat.title", t("cyberThreat")),
     ],
     [t]
   );
@@ -51,6 +51,10 @@ export const DoraThreat: FC = () => {
   const translatedUiSchema = useMemo(
     () => translateUiSchema(uischema, t, "threat"),
     [t]
+  );
+  const validator = useMemo(
+    () => getValidatorForLanguage(i18n.language),
+    [i18n.language]
   );
 
   useEffect(() => {
@@ -111,7 +115,7 @@ export const DoraThreat: FC = () => {
         </Grid>
         <Grid size={{ xs: 12, sm: 12, md: debugMode ? 6 : 8 }}>
           <Form
-            key={step}
+            key={i18n.language}
             ref={formRef}
             schema={translatedSchema as RJSFSchema}
             uiSchema={translatedUiSchema}

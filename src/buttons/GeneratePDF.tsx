@@ -1,22 +1,23 @@
-import { Button } from '@mui/material';
-import jsPDF from 'jspdf';
-import autoTable from 'jspdf-autotable';
-import { useEffect, useRef, type FC, type RefObject } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useErrors } from '../contexts/ErrorContext';
+import { Button } from "@mui/material";
+import jsPDF from "jspdf";
+import autoTable from "jspdf-autotable";
+import { useEffect, useRef, type FC, type RefObject } from "react";
+import { useTranslation } from "react-i18next";
+import { useErrors } from "../contexts/ErrorContext";
 
 interface PDFButtonProps {
   data: any;
-  formRef: RefObject<any>
+  formRef: RefObject<any>;
 }
 
 export const GeneratePDGButton: FC<PDFButtonProps> = ({ data, formRef }) => {
   const { t } = useTranslation();
-  const {errors} = useErrors();
+  const { errors } = useErrors();
   const buttonRef = useRef<HTMLButtonElement | null>(null);
 
   useEffect(() => {
-      formRef.current.validateForm()
+    formRef.current.validateForm();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const generatePDF = () => {
@@ -33,14 +34,14 @@ export const GeneratePDGButton: FC<PDFButtonProps> = ({ data, formRef }) => {
       0,
       doc.internal.pageSize.width,
       doc.internal.pageSize.height,
-      'F',
+      "F"
     ); // Remplir toute la page avec la couleur
 
     // Calculer la position horizontale pour centrer le texte
     const pageWidth = doc.internal.pageSize.width;
     const pageHeight = doc.internal.pageSize.height;
 
-    const title = t('DORA Major Incident Report');
+    const title = t("DORA Major Incident Report");
     doc.setFontSize(22);
     doc.setTextColor(255, 255, 255); // Texte blanc pour contraster avec le bleu
     const titleWidth = doc.getTextWidth(title); // Largeur du texte
@@ -51,7 +52,7 @@ export const GeneratePDGButton: FC<PDFButtonProps> = ({ data, formRef }) => {
     doc.text(title, titleX, titleY); // Titre centré
 
     // Date centrée
-    const dateText = `${t('Date')} : ${new Date().toLocaleString()}`;
+    const dateText = `${t("Date")} : ${new Date().toLocaleString()}`;
     doc.setFontSize(14);
     const dateWidth = doc.getTextWidth(dateText); // Largeur du texte de la date
     const dateX = (pageWidth - dateWidth) / 2; // Position horizontale pour centrer la date
@@ -60,7 +61,7 @@ export const GeneratePDGButton: FC<PDFButtonProps> = ({ data, formRef }) => {
     doc.text(dateText, dateX, dateY); // Date centrée
 
     // Description centrée
-    const description = t('This document contains the form data.');
+    const description = t("This document contains the form data.");
     doc.setFontSize(12);
     const descriptionWidth = doc.getTextWidth(description);
     const descriptionX = (pageWidth - descriptionWidth) / 2;
@@ -74,21 +75,21 @@ export const GeneratePDGButton: FC<PDFButtonProps> = ({ data, formRef }) => {
     // Entête du tableau avec le même bleu
     doc.setFontSize(14);
     doc.setTextColor(0, 0, 0); // Texte noir pour le tableau
-    doc.text('Summary of the submitted form', 14, 20);
+    doc.text("Summary of the submitted form", 14, 20);
 
     const tableData: any[] = [];
 
-    const flatten = (obj: any, prefix = '') => {
+    const flatten = (obj: any, prefix = "") => {
       if (Array.isArray(obj)) {
         obj.forEach((item, index) => {
           const newPrefix = `${prefix}[${index}]`;
-          if (typeof item === 'object' && item !== null) {
+          if (typeof item === "object" && item !== null) {
             flatten(item, newPrefix);
           } else {
             tableData.push([newPrefix, String(item)]);
           }
         });
-      } else if (obj !== null && typeof obj === 'object') {
+      } else if (obj !== null && typeof obj === "object") {
         Object.entries(obj).forEach(([key, value]) => {
           const fullKey = prefix ? `${prefix}.${key}` : key;
           flatten(value, fullKey);
@@ -102,7 +103,7 @@ export const GeneratePDGButton: FC<PDFButtonProps> = ({ data, formRef }) => {
 
     // Entête du tableau avec fond bleu
     autoTable(doc, {
-      head: [[t('Field'), t('Value')]],
+      head: [[t("Field"), t("Value")]],
       body: tableData,
       startY: 30,
       headStyles: {
@@ -111,21 +112,25 @@ export const GeneratePDGButton: FC<PDFButtonProps> = ({ data, formRef }) => {
       },
     });
 
-    const timestamp = new Date().toISOString().replace(/[:.-]/g, '_');
+    const timestamp = new Date().toISOString().replace(/[:.-]/g, "_");
     const fileName = `formulaire_${timestamp}.pdf`;
     doc.save(fileName);
   };
 
   return (
-    <Button 
+    <Button
       ref={buttonRef}
-      variant="contained" 
-      color="primary" 
-      onClick={generatePDF} 
-      sx={{ backgroundColor: 'purple', color: 'white', '&:hover': { backgroundColor: '#5e0e9b' } }}
+      variant="contained"
+      color="primary"
+      onClick={generatePDF}
+      sx={{
+        backgroundColor: "purple",
+        color: "white",
+        "&:hover": { backgroundColor: "#5e0e9b" },
+      }}
       disabled={errors.length > 0}
-      >
-      {t('Generate')} PDF
+    >
+      {t("Generate")} PDF
     </Button>
   );
 };
