@@ -97,7 +97,7 @@ export const DoraIncident: FC = () => {
       });
     };
 
-    updateSteps();
+    const timeoutId = setTimeout(updateSteps, 10);
     const observer = new MutationObserver(updateSteps);
     const formContainer = document.querySelector(".step-container");
     if (formContainer) {
@@ -109,8 +109,11 @@ export const DoraIncident: FC = () => {
       ? setDisplayErrors("bottom")
       : setDisplayErrors(false);
 
-    return () => observer.disconnect();
-  }, [step, stepFields.length]);
+    return () => {
+      clearTimeout(timeoutId);
+      observer.disconnect();
+    };
+  }, [i18n.language, step, stepFields.length]);
 
   const handleReset = () => {
     if (formRef.current) {

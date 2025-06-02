@@ -46,11 +46,13 @@ export const DoraThreat: FC = () => {
 
   const translatedSchema = useMemo(
     () => translateSchema(schema, t, "threat"),
-    [t]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [i18n.language]
   );
   const translatedUiSchema = useMemo(
     () => translateUiSchema(uischema, t, "threat"),
-    [t]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [i18n.language]
   );
   const validator = useMemo(
     () => getValidatorForLanguage(i18n.language),
@@ -72,7 +74,7 @@ export const DoraThreat: FC = () => {
       });
     };
 
-    updateSteps();
+    const timeoutId = setTimeout(updateSteps, 10);
     const observer = new MutationObserver(updateSteps);
     const formContainer = document.querySelector(".step-container");
     if (formContainer) {
@@ -84,8 +86,11 @@ export const DoraThreat: FC = () => {
       ? setDisplayErrors("bottom")
       : setDisplayErrors(false);
 
-    return () => observer.disconnect();
-  }, [step, stepFields.length]);
+    return () => {
+      clearTimeout(timeoutId);
+      observer.disconnect();
+    };
+  }, [i18n.language, step, stepFields.length]);
 
   const handleReset = () => {
     if (formRef.current) {
