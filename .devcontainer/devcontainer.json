@@ -1,0 +1,20 @@
+// See https://containers.dev/implementors/json_reference/ for configuration reference
+{
+  "name": "React Node.js project",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:20",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "ms-vscode.vscode-typescript-next",
+        "msjsdiag.vscode-react-native",
+        "ms-azuretools.vscode-containers",
+        "ms-azuretools.vscode-docker",
+        "docker.docker",
+        "bierner.github-markdown-preview"
+      ]
+    }
+  },
+  "postCreateCommand": "npm install"
+}
