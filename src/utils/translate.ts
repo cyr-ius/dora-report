@@ -139,7 +139,7 @@ export const translateUiSchema = (
     ["title", "description", "help"].forEach((optKey) => {
       const val = options[optKey];
       if (typeof val === "string") {
-        const optPath = concatPath(path, `options.${optKey}`);
+        const optPath = concatPath(path, optKey);
         options[optKey] = t(`${ns}:${optPath}`, val);
       }
     });
