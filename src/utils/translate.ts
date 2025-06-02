@@ -171,10 +171,9 @@ export const translateUiSchema = (
         !copy._translated
       ) {
         if (!copy.title.includes(".")) {
-          copy.title = t(`${ns}:${copy.title}.title`);
+          copy.title = t(`${ns}:${copy.title}.title`, copy.title);
           copy._translated = true;
         }
-        return copy;
       }
 
       for (const [k, v] of Object.entries(copy)) {
