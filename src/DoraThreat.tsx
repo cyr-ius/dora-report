@@ -36,10 +36,10 @@ export const DoraThreat: FC = () => {
 
   const stepFields = useMemo(
     () => [
-      t("threat:submittingEntity.title", t("submittingEntity")),
-      t("threat:affectedFinancialEntity.title", t("affectedFinancialEntity")),
-      t("threat:primaryContact.title", t("primaryContact")),
-      t("threat:cyberThreat.title", t("cyberThreat")),
+      t("threat:submittingEntity.title"),
+      t("threat:affectedFinancialEntity.title"),
+      t("threat:primaryContact.title"),
+      t("threat:cyberThreat.title"),
     ],
     [t]
   );

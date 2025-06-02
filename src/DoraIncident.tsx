@@ -50,31 +50,33 @@ export const DoraIncident: FC = () => {
 
   const stepFields = useMemo(
     () => [
-      t("incident:incidentSubmission.title.incidentSubmission"),
-      t("incident:submittingEntity.title.submittingEntity"),
-      t("incident:affectedEntity.title.affectedEntity"),
-      t("incident:ultimateParentUndertaking.title.ultimateParentUndertaking"),
-      t("incident:primaryContact.title.primaryContact"),
-      t("incident:incident.title.incident"),
-      t("incident:impactAssessment.title.impactAssessment"),
-      t(
-        "incident:reportingToOtherAuthorities.title.reportingToOtherAuthorities"
-      ),
-      t(
-        "incident:informationDurationServiceDowntimeActualOrEstimate.title.informationDurationServiceDowntimeActualOrEstimate"
-      ),
+      t("incident:incidentSubmission.title"),
+      t("incident:submittingEntity.title"),
+      t("incident:affectedEntity.title"),
+      t("incident:ultimateParentUndertaking.title"),
+      t("incident:primaryContact.title"),
+      t("incident:incident.title"),
+      t("incident:impactAssessment.title"),
+      t("incident:reportingToOtherAuthorities.title"),
+      t("incident:informationDurationServiceDowntimeActualOrEstimate.title"),
     ],
     [t]
   );
 
-  const translatedSchema = useMemo(
-    () => translateSchema(schema, t, "incident"),
-    [t]
-  );
-  const translatedUiSchema = useMemo(
-    () => translateUiSchema(uischema, t, "incident"),
-    [t]
-  );
+  const translatedSchema = useMemo(() => {
+    console.debug(
+      "Translated Schema: ",
+      translateSchema(schema, t, "incident")
+    );
+    return translateSchema(schema, t, "incident");
+  }, [t]);
+  const translatedUiSchema = useMemo(() => {
+    console.debug(
+      "Translated UISchema: ",
+      translateUiSchema(uischema, t, "incident")
+    );
+    return translateUiSchema(uischema, t, "incident");
+  }, [t]);
   const validator = useMemo(
     () => getValidatorForLanguage(i18n.language),
     [i18n.language]

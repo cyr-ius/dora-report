@@ -37,33 +37,23 @@ export const translateSchema = (
   const newSchema = { ...schema };
 
   // Générer ou traduire le title
-  if (
-    !newSchema._translated &&
-    (!newSchema.title || typeof newSchema.title === "string")
-  ) {
-    let tPath = `${ns}:${concatPath(path, "title")}.${newSchema.title}`;
-    if (!newSchema.title) {
-      const key = getLastKey(path);
-      tPath = `${ns}:${concatPath(path, "title")}.${key}`;
-    }
-    newSchema.title = t(tPath);
-    newSchema._translated = true;
+  if (!newSchema.title || typeof newSchema.title === "string") {
+    const tPath = `${ns}:${concatPath(path, "title")}`;
+    const key = getLastKey(path.replace("items", ""));
+    newSchema.title = t(tPath, key);
   }
 
   // Traduction de la description
-  if (!newSchema._translated && typeof newSchema.description === "string") {
-    const tPath = `${ns}:${concatPath(path, "description")}.${
-      newSchema.description
-    }`;
-    newSchema.description = t(tPath);
-    newSchema._translated = true;
+  if (typeof newSchema.description === "string") {
+    const tPath = `${ns}:${concatPath(path, "description")}`;
+    newSchema.description = t(tPath, newSchema.description);
   }
 
   // Remplacement enum → oneOf avec { const, title } (même valeur, mais title traduit)
   if (Array.isArray(newSchema.enum)) {
     newSchema.oneOf = newSchema.enum.map((value: any) => ({
       const: value,
-      title: t(`${ns}:${concatPath(path, `enum.${value}`)}`),
+      title: t(`${ns}:${concatPath(path, `enum.${value}`)}`, value),
     }));
     delete newSchema.enum;
   }
@@ -129,8 +119,8 @@ export const translateUiSchema = (
     const value = newUISchema[key];
     if (typeof value === "string") {
       const rKey = key.replace("ui:", "");
-      const tPath = `${ns}:${concatPath(path, rKey)}.${value}`;
-      newUISchema[key] = t(tPath);
+      const tPath = `${ns}:${concatPath(path, rKey)}`;
+      newUISchema[key] = t(tPath, value);
     }
     if (Array.isArray(value)) {
       newUISchema[key] = t(`${ns}:${concatPath(path, "enum")}`, {
@@ -150,7 +140,7 @@ export const translateUiSchema = (
       const val = options[optKey];
       if (typeof val === "string") {
         const optPath = concatPath(path, `options.${optKey}`);
-        options[optKey] = t(`${ns}:${optPath}.${val}`);
+        options[optKey] = t(`${ns}:${optPath}`, val);
       }
     });
 
@@ -181,7 +171,7 @@ export const translateUiSchema = (
         !copy._translated
       ) {
         if (!copy.title.includes(".")) {
-          copy.title = t(`${ns}:${copy.title}.title.${copy.title}`);
+          copy.title = t(`${ns}:${copy.title}.title`);
           copy._translated = true;
         }
         return copy;

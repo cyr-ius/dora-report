@@ -1,11 +1,9 @@
 {
-  "title": { "DORA Major Incident Report": "DORA Rapport d'incident majeur" },
-  "description": {
-    "This form is used to report incidents that may impact the financial stability of the organization. Please fill out all relevant sections accurately.": "Ce formulaire est utilisé pour soumettre des rapports d'incidents majeurs conformément à la réglementation DORA."
-  },
+  "title": "DORA Rapport d'incident majeur",
+  "description": "Ce formulaire est utilisé pour soumettre des rapports d'incidents majeurs conformément à la réglementation DORA.",
   "incidentSubmission": {
-    "description": { "field 1.1": "Champ 1.1" },
-    "title": { "incidentSubmission": "Soumission d'incident majeur" },
+    "description": "Champ 1.1",
+    "title": "Soumission d'incident majeur",
     "enum": {
       "initial_notification": "Notification initiale",
       "intermediate_report": "Rapport intermédiaire",
@@ -14,51 +12,47 @@
     }
   },
   "reportCurrency": {
-    "title": { "reportCurrency": "Devise du rapport" },
-    "description": { "field 1.15": "Champ 1.15" }
+    "title": "Devise du rapport",
+    "description": "Champ 1.15"
   },
   "submittingEntity": {
-    "title": { "submittingEntity": "Entité soumettrice" },
-    "description": { "field  1.2,1.3,": "Champ 1.2, 1.3" }
+    "title": "Entité soumettrice",
+    "description": "Champ 1.2, 1.3"
   },
   "affectedEntity": {
-    "title": { "affectedEntity": "Entité affectée" },
-    "description": { "field 1.4,1.5,1.6": "Champ 1.4, 1.5, 1.6" }
+    "title": "Entité affectée",
+    "description": "Champ 1.4, 1.5, 1.6"
   },
   "ultimateParentUndertaking": {
-    "title": { "ultimateParentUndertaking": "Entreprise mère ultime" },
-    "description": { "field 1.13,1.14": "Champ 1.13, 1.14" }
+    "title": "Entreprise mère ultime",
+    "description": "Champ 1.13, 1.14"
   },
   "primaryContact": {
-    "title": { "primaryContact": "Contact principal" },
-    "description": { "field 1.7,1.8,1.9": "Champ 1.7, 1.8, 1.9" }
+    "title": "Contact principal",
+    "description": "Champ 1.7, 1.8, 1.9"
   },
   "secondaryContact": {
-    "title": { "secondaryContact": "Contact secondaire" },
-    "description": { "field 1.10,1.11,1.12": "Champ 1.10, 1.11, 1.12" }
+    "title": "Contact secondaire",
+    "description": "Champ 1.10, 1.11, 1.12"
   },
   "incident": {
-    "title": { "incident": "Incident" }
+    "title": "Incident"
   },
   "impactAssessment": {
-    "title": { "impactAssessment": "Évaluation de l'impact" }
+    "title": "Évaluation de l'impact"
   },
-  "serviceImpact": { "title": { "serviceImpact": "Impact sur le service" } },
-  "affectedAssets": { "title": { "affectedAssets": "Actifs affectés" } },
-  "affectedClients": { "title": { "affectedClients": "Clients affectés" } },
+  "serviceImpact": { "title": "Impact sur le service" },
+  "affectedAssets": { "title": "Actifs affectés" },
+  "affectedClients": { "title": "Clients affectés" },
   "affectedFinancialCounterparts": {
-    "title": {
-      "affectedFinancialCounterparts": "Contreparties Financières Affectées"
-    }
+    "title": "Contreparties Financières Affectées"
   },
-  "affectedTransactions": {
-    "title": { "affectedTransactions": "Transactions affectées" }
-  },
+  "affectedTransactions": { "title": "Transactions affectées" },
   "reportingToOtherAuthorities": {
-    "title": { "reportingToOtherAuthorities": "Rapport aux autres autorités" },
-    "description": { "field 3.31": "Champ 3.31" },
+    "title": "Rapport aux autres autorités",
+    "description": "Champ 3.31",
     "items": {
-      "title": { "items": "Autorité" },
+      "title": "Autorité",
       "enum": {
         "police_law_enforcement": "Police/Application de la loi",
         "csirt": "Csirt",
@@ -70,20 +64,12 @@
     }
   },
   "reportingToOtherAuthoritiesOther": {
-    "title": {
-      "reportingToOtherAuthoritiesOther": "Rapport aux autres autorités autres"
-    },
-    "description": {
-      "field 3.32  Required if reportingToOtherAuthorities includes 'OTHER'": "Champ 3.32 - Requis si Rapport aux autres autorités contient 'AUTRE'"
-    }
+    "title": "Rapport aux autres autorités autres",
+    "description": "Champ 3.32 - Requis si Rapport aux autres autorités contient 'AUTRE'"
   },
   "informationDurationServiceDowntimeActualOrEstimate": {
-    "title": {
-      "informationDurationServiceDowntimeActualOrEstimate": "Durée d'indisponibilité du service (réelle ou estimée)"
-    },
-    "description": {
-      "field 3.17": "Champ 3.17 - Requis si le champ 3.3 est renseigné"
-    },
+    "title": "Durée d'indisponibilité du service (réelle ou estimée)",
+    "description": "Champ 3.17 - Requis si le champ 3.3 est renseigné",
     "enum": {
       "actual_figures": " Chiffres réels",
       "estimates": "Estimations",
@@ -94,7 +80,7 @@
   "$defs": {
     "Entity": {
       "entityType": {
-        "title": { "entityType": "Type d'entité" },
+        "title": "Type d'entité",
         "enum": {
           "SUBMITTING_ENTITY": "Entité déclarante",
           "AFFECTED_ENTITY": "Entité affectée",
@@ -102,24 +88,22 @@
         }
       },
       "name": {
-        "title": { "name": "Nom" },
-        "description": { "field 1.2, 1.5, 1.13": "Champ 1.2, 1.5, 1.13" }
+        "title": "Nom",
+        "description": "Champ 1.2, 1.5, 1.13"
       },
       "code": {
-        "title": { "code": "Code" },
-        "description": { "field 1.3a": "Champ 1.3a" }
+        "title": "Code",
+        "description": "Champ 1.3a"
       },
       "LEI": {
-        "title": { "LEI": "LEI" },
-        "description": {
-          "field 1.3b, 1.6, 1.14. The validation rules on the required field is not implemented": "Champ 1.3b, 1.6, 1.14. Les règles de validation sur le champ requis ne sont pas implémentées"
-        }
+        "title": "LEI",
+        "description": "Champ 1.3b, 1.6, 1.14. Les règles de validation sur le champ requis ne sont pas implémentées"
       },
       "affectedEntityType": {
-        "title": { "affectedEntityType": "Type d'entité affectée" },
+        "title": "Type d'entité affectée",
         "items": {
-          "title": { "items": "Type d'entité affectée" },
-          "description": { "field 1.4": "Champ 1.4" },
+          "title": "Type d'entité affectée",
+          "description": "Champ 1.4",
           "enum": {
             "credit_institution": "Institution de crédit",
             "payment_institution": "Institution de paiement",
@@ -150,84 +134,62 @@
     },
     "Contact": {
       "name": {
-        "title": { "name": "Nom du contact" },
-        "description": {
-          "field 1.7, 1.10 - depending on the type of the contact primary or second": "Champ 1.7, 1.10 - selon le type de contact principal ou secondaire"
-        }
+        "title": "Nom du contact",
+        "description": "Champ 1.7, 1.10 - selon le type de contact principal ou secondaire"
       },
       "email": {
-        "title": { "email": "Email du contact" },
-        "description": {
-          "field 1.8, 1.11 - depending on the type of the contact primary or second": "Champ 1.8, 1.11 - selon le type de contact principal ou secondaire"
-        }
+        "title": "Email du contact",
+        "description": "Champ 1.8, 1.11 - selon le type de contact principal ou secondaire"
       },
       "phone": {
-        "title": { "phone": "Numéro de téléphone du contact" },
-        "description": {
-          "field 1.9, 1.12 - depending on the type of the contact primary or second": "Champ 1.9, 1.12 - selon le type de contact principal ou secondaire"
-        }
+        "title": "Numéro de téléphone du contact",
+        "description": "Champ 1.9, 1.12 - selon le type de contact principal ou secondaire"
       }
     },
     "Incident": {
       "financialEntityCode": {
-        "title": { "financialEntityCode": "Code de l'entité financière" },
-        "description": { "field 2.1": "Champ 2.1" }
+        "title": "Code de l'entité financière",
+        "description": "Champ 2.1"
       },
       "detectionDateTime": {
-        "title": {
-          "detectionDateTime": "Date et heure de détection de l'incident"
-        },
-        "description": {
-          "field 2.2": "Champ 2.2 - format YYYY-MM-DDThh:mm:ssZ"
-        }
+        "title": "Date et heure de détection de l'incident",
+        "description": "Champ 2.2 - format YYYY-MM-DDThh:mm:ssZ"
       },
       "classificationDateTime": {
-        "title": {
-          "classificationDateTime": "Date et heure de classification de l'incident"
-        },
-        "description": {
-          "field 2.3": "Champ 2.3 - format YYYY-MM-DDThh:mm:ssZ"
-        }
+        "title": "Date et heure de classification de l'incident",
+        "description": "Champ 2.3 - format YYYY-MM-DDThh:mm:ssZ"
       },
       "incidentDescription": {
-        "title": { "incidentDescription": "Description de l'incident" },
-        "description": { "field 2.4": "Champ 2.4" }
+        "title": "Description de l'incident",
+        "description": "Champ 2.4"
       },
       "otherInformation": {
-        "title": { "otherInformation": "Autres informations" },
-        "description": { "field 2.10": "Champ 2.10" }
+        "title": "Autres informations",
+        "description": "Champ 2.10"
       },
       "classificationTypes": {
-        "title": { "classificationTypes": "Types de classification" },
-        "items": {
-          "title": { "items": "Type de classification" }
-        }
+        "title": "Types de classification",
+        "items": { "title": "Type de classification" }
       },
       "isBusinessContinuityActivated": {
-        "title": {
-          "isBusinessContinuityActivated": "La continuité des activités est-elle activée ?"
-        },
-        "description": { "field 2.9": "Champ 2.9" }
+        "title": "La continuité des activités est-elle activée ?",
+        "description": "Champ 2.9"
       },
       "incidentOccurrenceDateTime": {
-        "title": {
-          "incidentOccurrenceDateTime": "Date et heure de l'incident"
-        },
+        "title": "Date et heure de l'incident",
         "description": "Champ 3.2 - format YYYY-MM-DDThh:mm:ssZ"
       },
       "incidentDuration": {
-        "title": { "incidentDuration": "Durée de l'incident" },
-        "description": { "field 3.15": "Champ 3.15 - format DDD:HH:MM" }
+        "title": "Durée de l'incident",
+        "description": "Champ 3.15 - format DDD:HH:MM"
       },
       "originatesFromThirdPartyProvider": {
-        "title": {
-          "originatesFromThirdPartyProvider": "Provenance d’un prestataire tiers"
-        },
-        "description": { "field 2.8": "Champ 2.8" }
+        "title": "Provenance d’un prestataire tiers",
+        "description": "Champ 2.8"
       },
       "incidentDiscovery": {
-        "title": { "incidentDiscovery": "Détection de l’incident" },
-        "description": { "field 2.7": "Champ 2.7" },
+        "title": "Détection de l’incident",
+        "description": "Champ 2.7",
         "enum": {
           "it_security": "Sécurité informatique",
           "staff": "Personnel",
@@ -240,16 +202,14 @@
         }
       },
       "competentAuthorityCode": {
-        "title": { "competentAuthorityCode": "Code de l’autorité compétente" },
-        "description": { "field 3.1": "Champ 3.1" }
+        "title": "Code de l’autorité compétente",
+        "description": "Champ 3.1"
       },
-      "incidentType": { "title": { "incidentType": "Type d’incident" } },
+      "incidentType": { "title": "Type d’incident" },
       "rootCauseHLClassification": {
-        "title": {
-          "rootCauseHLClassification": "Classification HL de la cause principale"
-        },
+        "title": "Classification HL de la cause principale",
         "items": {
-          "title": { "items": "Classification HL" },
+          "title": "Classification HL",
           "enum": {
             "malicious_actions": "Actions malveillantes",
             "process_failure": "Défaillance de processus",
@@ -258,14 +218,12 @@
             "external_event": "Événement externe"
           }
         },
-        "description": { "field 4.1": "Champ 4.1" }
+        "description": "Champ 4.1"
       },
       "rootCausesDetailedClassification": {
-        "title": {
-          "rootCausesDetailedClassification": "Classification détaillée des causes principales"
-        },
+        "title": "Classification détaillée des causes principales",
         "items": {
-          "title": { "items": "Classification détaillée" },
+          "title": "Classification détaillée",
           "enum": {
             "malicious_actions_deliberate_internal_actions": "Actions malveillantes, actions internes délibérées",
             "malicious_actions_deliberate_physical_damage_manipulation_theft": "Actions malveillantes, dommages physiques délibérés, manipulation, vol",
@@ -297,16 +255,13 @@
             "external_event_other": "Événement externe : autre"
           }
         },
-        "description": { "field 4.2": "Champ 4.2" }
+        "description": "Champ 4.2"
       },
       "rootCausesAdditionalClassification": {
-        "title": {
-          "rootCausesAdditionalClassification": "Classification supplémentaire des causes principales"
-        },
-
-        "description": { "field 4.3": "Champ 4.3" },
+        "title": "Classification supplémentaire des causes principales",
+        "description": "Champ 4.3",
         "items": {
-          "title": { "items": "Classification supplémentaire" },
+          "title": "Classification supplémentaire",
           "enum": {
             "monitoring_of_policy_adherence": "Suivi de l'adhésion à la politique",
             "monitoring_of_third-party_service_providers": "Suivi des prestataires de services tiers",
@@ -330,86 +285,60 @@
         }
       },
       "rootCausesOther": {
-        "title": { "rootCausesOther": "Autres causes profondes" },
-        "description": { "field 4.4": "Champ 4.4" }
+        "title": "Autres causes profondes",
+        "description": "Champ 4.4"
       },
       "rootCausesInformation": {
-        "title": {
-          "rootCausesInformation": "Informations sur les causes profondes"
-        },
-        "description": { "field 4.5": "Champ 4.5" }
+        "title": "Informations sur les causes profondes",
+        "description": "Champ 4.5"
       },
       "rootCauseAddressingDateTime": {
-        "title": {
-          "rootCauseAddressingDateTime": "Date et heure de traitement de la cause profonde"
-        },
-        "description": {
-          "field 4.7 - format YYYY-MM-DDThh:mm:ssZ": "Champ 4.7 - format YYYY-MM-DDThh:mm:ssZ"
-        }
+        "title": "Date et heure de traitement de la cause profonde",
+        "description": "Champ 4.7 - format YYYY-MM-DDThh:mm:ssZ"
       },
       "incidentResolutionSummary": {
-        "title": {
-          "incidentResolutionSummary": "Résumé de la résolution de l'incident"
-        },
-        "description": { "field 4.6": "Champ 4.6" }
+        "title": "Résumé de la résolution de l'incident",
+        "description": "Champ 4.6"
       },
       "incidentResolutionDateTime": {
-        "title": {
-          "incidentResolutionDateTime": "Date et heure de la résolution de l’incident"
-        },
-        "description": {
-          "field 4.8 - format YYYY-MM-DDThh.mm.ssZ": "Champ 4.8 - format YYYY-MM-DDThh:mm:ssZ"
-        }
+        "title": "Date et heure de la résolution de l’incident",
+        "description": "Champ 4.8 - format YYYY-MM-DDThh:mm:ssZ"
       },
       "incidentResolutionVsPlannedImplementation": {
-        "title": {
-          "incidentResolutionVsPlannedImplementation": "Résolution de l’incident vs mise en œuvre prévue"
-        },
-        "description": { "field 4.9": "Champ 4.9" }
+        "title": "Résolution de l’incident vs mise en œuvre prévue",
+        "description": "Champ 4.9"
       },
       "assessmentOfRiskToCriticalFunctions": {
-        "title": {
-          "assessmentOfRiskToCriticalFunctions": "Évaluation du risque pour les fonctions critiques"
-        },
-        "description": { "field 4.10": "Champ 4.10" }
+        "title": "Évaluation du risque pour les fonctions critiques",
+        "description": "Champ 4.10"
       },
       "informationRelevantToResolutionAuthorities": {
-        "title": {
-          "informationRelevantToResolutionAuthorities": "Informations pertinentes pour les autorités de résolution"
-        },
-        "description": { "field 4.11": "Champ 4.11" }
+        "title": "Informations pertinentes pour les autorités de résolution",
+        "description": "Champ 4.11"
       },
       "financialRecoveriesAmount": {
-        "title": {
-          "financialRecoveriesAmount": "Montant des récupérations financières"
-        },
-        "description": { "field 4.14": "Champ 4.14" }
+        "title": "Montant des récupérations financières",
+        "description": "Champ 4.14"
       },
       "grossAmountIndirectDirectCosts": {
-        "title": {
-          "grossAmountIndirectDirectCosts": "Montant brut des coûts directs et indirects"
-        },
-        "description": { "field 4.13": "Champ 4.13" }
+        "title": "Montant brut des coûts directs et indirects",
+        "description": "Champ 4.13"
       },
       "recurringNonMajorIncidentsDescription": {
-        "title": {
-          "recurringNonMajorIncidentsDescription": "Description des incidents récurrents non majeurs"
-        },
-        "description": { "field 4.15": "Champ 4.15" }
+        "title": "Description des incidents récurrents non majeurs",
+        "description": "Champ 4.15"
       },
       "recurringIncidentDate": {
-        "title": { "recurringIncidentDate": "Date de l'incident récurrent" },
-        "description": {
-          "field 4.16; format YYYY-MM-DDThh:mm:ssZ": "Champ 4.16 - format YYYY-MM-DDThh:mm:ssZ"
-        }
+        "title": "Date de l'incident récurrent",
+        "description": "Champ 4.16 - format YYYY-MM-DDThh:mm:ssZ"
       }
     },
     "IncidentType": {
       "incidentClassification": {
-        "title": { "incidentClassification": "Classification de l’incident" },
-        "description": { "field 3.23": "Champ 3.23" },
+        "title": "Classification de l’incident",
+        "description": "Champ 3.23",
         "items": {
-          "title": { "items": "Classification" },
+          "title": "Classification",
           "enum": {
             "cybersecurity-related": "lié à la cybersécurité",
             "process_failure": "défaillance de processus",
@@ -421,20 +350,14 @@
         }
       },
       "otherIncidentClassification": {
-        "title": {
-          "otherIncidentClassification": "Autre classification de l’incident"
-        },
-        "description": {
-          "field 3.24 This field is required if 'incidentClassification' is other": "Champ 3.24 - Ce champ est requis si 'Classification de l’incident' est 'autre'"
-        }
+        "title": "Autre classification de l’incident",
+        "description": "Champ 3.24 - Ce champ est requis si 'Classification de l’incident' est 'autre'"
       },
       "threatTechniques": {
-        "title": { "threatTechniques": "Techniques de menace" },
-        "description": {
-          "field 3.25 Required if 'incidentClassification' is 'CYBERSECURITY_RELATED'.": "Champ 3.25 - Requis si 'Classification de l’incident' est 'CYBERSECURITY_RELATED'"
-        },
+        "title": "Techniques de menace",
+        "description": "Champ 3.25 - Requis si 'Classification de l’incident' est 'CYBERSECURITY_RELATED'",
         "items": {
-          "title": { "items": "Technique de menace" },
+          "title": "Technique de menace",
           "enum": {
             "social_engineering_including_phishing": "Ingénierie sociale, y compris le phishing",
             "ddos": "Attaque par déni de service (DDoS)",
@@ -450,49 +373,37 @@
         }
       },
       "otherThreatTechniques": {
-        "title": { "otherThreatTechniques": "Autres techniques de menace" },
-        "description": {
-          "field 3.26 This field is required if 'threatTechniques' includes 'OTHER'": "Champ 3.26 - Ce champ est requis si 'Techniques de menace' contient 'AUTRE'"
-        }
+        "title": "Autres techniques de menace",
+        "description": "Champ 3.26 - Ce champ est requis si 'Techniques de menace' contient 'AUTRE'"
       },
       "indicatorsOfCompromise": {
-        "title": { "indicatorsOfCompromise": "Indicateurs de compromission" },
-        "description": {
-          "field 3.35 Required if the 'incidentClassification' is 'CYBERSECURITY_RELATED'": "Champ 3.35 - Requis si 'Classification de l’incident' est 'CYBERSECURITY_RELATED'"
-        }
+        "title": "Indicateurs de compromission",
+        "description": "Champ 3.35 - Requis si 'Classification de l’incident' est 'CYBERSECURITY_RELATED'"
       }
     },
     "ImpactAssessment": {
       "hasImpactOnRelevantClients": {
-        "title": {
-          "hasImpactOnRelevantClients": "A un Impact sur les Clients Pertinents"
-        },
-        "description": { "field 3.8": "Champ 3.8" }
+        "title": "A un Impact sur les Clients Pertinents",
+        "description": "Champ 3.8"
       },
       "serviceImpact": {
-        "title": { "serviceImpact": "Impact sur le service" }
+        "title": "Impact sur le service"
       },
       "criticalServicesAffected": {
-        "title": { "criticalServicesAffected": "Services Critiques Affectés" },
-        "description": { "field 3.22": "Champ 3.22" }
+        "title": "Services Critiques Affectés",
+        "description": "Champ 3.22"
       },
       "affectedAssets": {
-        "title": { "affectedAssets": "Actifs Affectés" },
-        "description": {
-          "field 3.4, 3.5, 3.6, 3.7, 3.9, 3.10, 3.11, 3.12": "Champ 3.4, 3.5, 3.6, 3.7, 3.9, 3.10, 3.11, 3.12"
-        }
+        "title": "Actifs Affectés",
+        "description": "Champ 3.4, 3.5, 3.6, 3.7, 3.9, 3.10, 3.11, 3.12"
       },
       "affectedFunctionalAreas": {
-        "title": {
-          "affectedFunctionalAreas": "Zones Fonctionnelles Affectées"
-        },
-        "description": { "field 3.27": "Champ 3.27" }
+        "title": "Zones Fonctionnelles Affectées",
+        "description": "Champ 3.27"
       },
       "isAffectedInfrastructureComponents": {
-        "title": {
-          "isAffectedInfrastructureComponents": "Des Composants d'Infrastructure Sont-ils Affectés ?"
-        },
-        "description": { "field 3.28": "Champ 3.28" },
+        "title": "Des Composants d'Infrastructure Sont-ils Affectés ?",
+        "description": "Champ 3.28",
         "enum": {
           "yes": "Oui",
           "no": "Non",
@@ -500,16 +411,12 @@
         }
       },
       "affectedInfrastructureComponents": {
-        "title": {
-          "affectedInfrastructureComponents": "Composants d'Infrastructure Affectés"
-        },
-        "description": { "field 3.29": "Champ 3.29" }
+        "title": "Composants d'Infrastructure Affectés",
+        "description": "Champ 3.29"
       },
       "isImpactOnFinancialInterest": {
-        "title": {
-          "isImpactOnFinancialInterest": "Impact Sur les Intérêts Financiers ?"
-        },
-        "description": { "field 3.30": "Champ 3.30" },
+        "title": "Impact Sur les Intérêts Financiers ?",
+        "description": "Champ 3.30",
         "enum": {
           "yes": "Oui",
           "no": "Non",
@@ -519,58 +426,44 @@
     },
     "ServiceImpact": {
       "serviceRestorationDateTime": {
-        "title": {
-          "serviceRestorationDateTime": "Date et Heure de Rétablissement du Service"
-        },
-        "description": {
-          "field 3.3": "Champ 3.3 - format YYYY-MM-DDThh:mm:ssZ"
-        }
+        "title": "Date et Heure de Rétablissement du Service",
+        "description": "Champ 3.3 - format YYYY-MM-DDThh:mm:ssZ"
       },
       "serviceDowntime": {
-        "title": { "serviceDowntime": "Temps d'Indisponibilité du Service" },
-        "description": {
-          "field 3.16 - days:hour:min - ex: 31:06:30": "Champ 3.16 - format DDD:HH:MM"
-        }
+        "title": "Temps d'Indisponibilité du Service",
+        "description": "Champ 3.16 - format DDD:HH:MM"
       },
       "isTemporaryActionsMeasuresForRecovery": {
-        "title": {
-          "isTemporaryActionsMeasuresForRecovery": "Sont des Mesures Temporaires pour la Récupération"
-        },
-        "description": { "field 3.33": "Champ 3.33" }
+        "title": "Sont des Mesures Temporaires pour la Récupération",
+        "description": "Champ 3.33"
       },
       "descriptionOfTemporaryActionsMeasuresForRecovery": {
-        "title": {
-          "descriptionOfTemporaryActionsMeasuresForRecovery": "Description des Mesures Temporaires pour la Récupération"
-        },
-        "description": { "field 3.34": "Champ 3.34" }
+        "title": "Description des Mesures Temporaires pour la Récupération",
+        "description": "Champ 3.34"
       }
     },
     "AffectedAssets": {
       "affectedClients": {
-        "title": { "affectedClients": "Clients Affectés" },
-        "description": { "field 3.4, 3.5": "Champ 3.4, 3.5" }
+        "title": "Clients Affectés",
+        "description": "Champ 3.4, 3.5"
       },
       "affectedFinancialCounterparts": {
-        "title": {
-          "affectedFinancialCounterparts": "Contreparties Financières Affectées"
-        },
-        "description": { "field 3.6, 3.7": "Champ 3.6, 3.7" }
+        "title": "Contreparties Financières Affectées",
+        "description": "Champ 3.6, 3.7"
       },
       "affectedFinancialEntity": {
-        "title": { "affectedFinancialEntity": "Entité financière affectée" },
-        "description": { "field 3.9, 3.10": "Champ 3.9, 3.10" }
+        "title": "Entité financière affectée",
+        "description": "Champ 3.9, 3.10"
       },
       "valueOfAffectedTransactions": {
-        "title": {
-          "valueOfAffectedTransactions": "Valeur des Transactions Affectées"
-        },
-        "description": { "field 3.11": "Champ 3.11" }
+        "title": "Valeur des Transactions Affectées",
+        "description": "Champ 3.11"
       },
       "numbersActualEstimate": {
-        "title": { "numbersActualEstimate": "Estimation des Nombres Réels" },
-        "description": { "field 3.12": "Champ 3.12" },
+        "title": "Estimation des Nombres Réels",
+        "description": "Champ 3.12",
         "items": {
-          "title": { "items": "Nombre" },
+          "title": "Nombre",
           "enum": {
             "actual_figures_for_clients_affected": "chiffres réels pour clients impactés",
             "actual_figures_for_financial_counterparts_affected": "chiffres réels pour_contreparties financières impactées",
@@ -587,18 +480,18 @@
     },
     "NumberPercentageType": {
       "number": {
-        "title": { "number": "Nombre" },
-        "description": { "Number": "nombre" }
+        "title": "Nombre",
+        "description": "nombre"
       },
       "percentage": {
-        "title": { "percentage": "Pourcentage" },
-        "description": { "Percentage: 0 - 100": "Pourcentage: 0 - 100" }
+        "title": "Pourcentage",
+        "description": "Pourcentage: 0 - 100"
       }
     },
     "ClassificationType": {
       "classificationCriterion": {
-        "title": { "classificationCriterion": "Critère de classification" },
-        "description": { "field 2.5": "Champ 2.5" },
+        "title": "Critère de classification",
+        "description": "Champ 2.5",
         "enum": {
           "clients_financial_counterparts_and_transactions_affected": "Clients, contreparties financières et transactions affectés",
           "reputational_impact": "Impact sur la réputation",
@@ -610,19 +503,15 @@
         }
       },
       "countryCodeMaterialityThresholds": {
-        "title": {
-          "countryCodeMaterialityThresholds": "Seuils de matérialité par code pays"
-        },
-        "items": { "title": { "items": "Code pays" } },
-        "description": { "field 2.6": "Champ 2.6" }
+        "title": "Seuils de matérialité par code pays",
+        "items": { "title": "Code pays" },
+        "description": "Champ 2.6"
       },
       "memberStatesImpactType": {
-        "title": {
-          "memberStatesImpactType": "Type d'impact sur les États membres"
-        },
-        "description": { "field 3.18": "Champ 3.18" },
+        "title": "Type d'impact sur les États membres",
+        "description": "Champ 3.18",
         "items": {
-          "title": { "items": "Impact" },
+          "title": "Impact",
           "enum": {
             "clients": "Clients",
             "financial_counterparts": "Contreparties financières",
@@ -634,18 +523,14 @@
         }
       },
       "memberStatesImpactTypeDescription": {
-        "title": {
-          "memberStatesImpactTypeDescription": "Description de l'impact sur les États membres"
-        },
-        "description": { "field 3.19": "Champ 3.19" }
+        "title": "Description de l'impact sur les États membres",
+        "description": "Champ 3.19"
       },
       "dataLosseMaterialityThresholds": {
-        "title": {
-          "dataLosseMaterialityThresholds": "Seuils de matérialité de perte de données"
-        },
-        "description": { "field 3.20": "Champ 3.20" },
+        "title": "Seuils de matérialité de perte de données",
+        "description": "Champ 3.20",
         "items": {
-          "title": { "items": "Impact" },
+          "title": "Impact",
           "enum": {
             "availability": "Disponibilité",
             "integrity": "Intégrité",
@@ -655,20 +540,14 @@
         }
       },
       "dataLossesDescription": {
-        "title": {
-          "dataLossesDescription": "Description des pertes de données"
-        },
-        "description": { "field 3.21": "Champ 3.21" }
+        "title": "Description des pertes de données",
+        "description": "Champ 3.21"
       },
       "reputationalImpactType": {
-        "title": {
-          "reputationalImpactType": "Type d'impact sur la réputation"
-        },
-        "description": {
-          "field 3.13 , if field 2.5 mention reputation impact": "Champ 3.13, si le champ 2.5 mentionne l'impact sur la réputation"
-        },
+        "title": "Type d'impact sur la réputation",
+        "description": "Champ 3.13, si le champ 2.5 mentionne l'impact sur la réputation",
         "items": {
-          "title": { "items": "Catégorie de réputation" },
+          "title": "Catégorie de réputation",
           "enum": {
             "the_major_ict-related_incident_has_been_reflected_in_the_media": "L'incident majeur lié aux TIC a été reflété dans les médias",
             "the_major_ict-related_incident_has_resulted_in_repetitive_complaints_from_different_clients_or_financial_counterparts_on_client-facing_services_or_critical_business_relationships": "L'incident majeur lié aux TIC a entraîné des plaintes répétitives de différents clients ou contreparties financières sur les services orientés client ou les relations commerciales critiques",
@@ -678,16 +557,12 @@
         }
       },
       "reputationalImpactDescription": {
-        "title": {
-          "reputationalImpactDescription": "Description de l'impact sur la réputation"
-        },
-        "description": { "field 3.14": "Champ 3.14" }
+        "title": "Description de l'impact sur la réputation",
+        "description": "Champ 3.14"
       },
       "economicImpactMaterialityThreshold": {
-        "title": {
-          "economicImpactMaterialityThreshold": "Seuil de matérialité de l'impact économique"
-        },
-        "description": { "field 4.12": "Champ 4.12" }
+        "title": "Seuil de matérialité de l'impact économique",
+        "description": "Champ 4.12"
       }
     }
   }
