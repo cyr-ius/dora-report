@@ -1,7 +1,3 @@
-Bien sûr ! Voici la version mise à jour du `README.md` **en anglais**, avec un nouveau chapitre intitulé **"Privacy and Data Handling"**, précisant que l'application fonctionne uniquement en local dans le navigateur et n'envoie aucune donnée vers un serveur.
-
----
-
 # DORA Report
 
 **DORA Report** is a web application designed to assist in the reporting of incidents and threats to the European Banking Authority (EBA), in compliance with the **DORA** regulation (Digital Operational Resilience Act). This tool enables financial institutions to quickly and efficiently submit cybersecurity reports, ensuring regulatory compliance.
