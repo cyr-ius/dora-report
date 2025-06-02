@@ -1,0 +1,573 @@
+{
+  "title": "DORA Major Incident Report",
+  "description": "This form is used to submit major incident reports in accordance with the DORA regulation.",
+  "incidentSubmission": {
+    "description": "Field 1.1",
+    "title": "Major Incident Submission",
+    "enum": {
+      "initial_notification": "Initial Notification",
+      "intermediate_report": "Intermediate Report",
+      "final_report": "Final Report",
+      "major_incident_reclassified_as_non-major": "Major Incident Reclassified as Non-Major"
+    }
+  },
+  "reportCurrency": {
+    "title": "Report Currency",
+    "description": "Field 1.15"
+  },
+  "submittingEntity": {
+    "title": "Submitting Entity",
+    "description": "Fields 1.2, 1.3"
+  },
+  "affectedEntity": {
+    "title": "Affected Entity",
+    "description": "Fields 1.4, 1.5, 1.6"
+  },
+  "ultimateParentUndertaking": {
+    "title": "Ultimate Parent Undertaking",
+    "description": "Fields 1.13, 1.14"
+  },
+  "primaryContact": {
+    "title": "Primary Contact",
+    "description": "Fields 1.7, 1.8, 1.9"
+  },
+  "secondaryContact": {
+    "title": "Secondary Contact",
+    "description": "Fields 1.10, 1.11, 1.12"
+  },
+  "incident": {
+    "title": "Incident"
+  },
+  "impactAssessment": {
+    "title": "Impact Assessment"
+  },
+  "serviceImpact": { "title": "Service Impact" },
+  "affectedAssets": { "title": "Affected Assets" },
+  "affectedClients": { "title": "Affected Clients" },
+  "affectedFinancialCounterparts": {
+    "title": "Affected Financial Counterparties"
+  },
+  "affectedTransactions": { "title": "Affected Transactions" },
+  "reportingToOtherAuthorities": {
+    "title": "Reporting to Other Authorities",
+    "description": "Field 3.31",
+    "items": {
+      "title": "Authority",
+      "enum": {
+        "police_law_enforcement": "Police/Law Enforcement",
+        "csirt": "CSIRT",
+        "data_protection_authority": "Data Protection Authority",
+        "national_cybersecurity_agency": "National Cybersecurity Agency",
+        "none": "None",
+        "other": "Other"
+      }
+    }
+  },
+  "reportingToOtherAuthoritiesOther": {
+    "title": "Reporting to Other Authorities - Other",
+    "description": "Field 3.32 - Required if 'Other' is selected in Reporting to Other Authorities"
+  },
+  "informationDurationServiceDowntimeActualOrEstimate": {
+    "title": "Service Downtime Duration (Actual or Estimated)",
+    "description": "Field 3.17 - Required if Field 3.3 is filled in",
+    "enum": {
+      "actual_figures": "Actual Figures",
+      "estimates": "Estimates",
+      "actual_figures_and_estimates": "Actual Figures and Estimates",
+      "no_information_available": "No Information Available"
+    }
+  },
+  "$defs": {
+    "Entity": {
+      "entityType": {
+        "title": "Entity Type",
+        "enum": {
+          "SUBMITTING_ENTITY": "Submitting Entity",
+          "AFFECTED_ENTITY": "Affected Entity",
+          "ULTIMATE_PARENT_UNDERTAKING_ENTITY": "Ultimate Parent Undertaking Entity"
+        }
+      },
+      "name": {
+        "title": "Name",
+        "description": "Fields 1.2, 1.5, 1.13"
+      },
+      "code": {
+        "title": "Code",
+        "description": "Field 1.3a"
+      },
+      "LEI": {
+        "title": "LEI",
+        "description": "Fields 1.3b, 1.6, 1.14. Validation rules on required status are not implemented"
+      },
+      "affectedEntityType": {
+        "title": "Type of Affected Entity",
+        "items": {
+          "title": "Type of Affected Entity",
+          "description": "Field 1.4",
+          "enum": {
+            "credit_institution": "Credit Institution",
+            "payment_institution": "Payment Institution",
+            "exempted_payment_institution": "Exempted Payment Institution",
+            "account_information_service_provider": "Account Information Service Provider",
+            "electronic_money_institution": "Electronic Money Institution",
+            "exempted_electronic_money_institution": "Exempted Electronic Money Institution",
+            "investment_firm": "Investment Firm",
+            "crypto-asset_service_provider": "Crypto-Asset Service Provider",
+            "issuer_of_asset-referenced_tokens": "Issuer of Asset-Referenced Tokens",
+            "central_securities_depository": "Central Securities Depository",
+            "central_counterparty": "Central Counterparty",
+            "trading_venue": "Trading Venue",
+            "trade_repository": "Trade Repository",
+            "manager_of_alternative_investment_fund": "Alternative Investment Fund Manager",
+            "management_company": "Management Company",
+            "data_reporting_service_provider": "Data Reporting Service Provider",
+            "insurance_and_reinsurance_undertaking": "Insurance and Reinsurance Undertaking",
+            "insurance_intermediary_reinsurance_intermediary_and_ancillary_insurance_intermediary": "Insurance Intermediary, Reinsurance Intermediary and Ancillary Insurance Intermediary",
+            "institution_for_occupational_retirement_provision": "Institution for Occupational Retirement Provision",
+            "credit_rating_agency": "Credit Rating Agency",
+            "administrator_of_critical_benchmarks": "Administrator of Critical Benchmarks",
+            "crowdfunding_service_provider": "Crowdfunding Service Provider",
+            "securitisation_repository": "Securitisation Repository"
+          }
+        }
+      }
+    },
+    "Contact": {
+      "name": {
+        "title": "Contact Name",
+        "description": "Fields 1.7, 1.10 – depending on whether it's the primary or secondary contact"
+      },
+      "email": {
+        "title": "Contact Email",
+        "description": "Fields 1.8, 1.11 – depending on whether it's the primary or secondary contact"
+      },
+      "phone": {
+        "title": "Contact Phone Number",
+        "description": "Fields 1.9, 1.12 – depending on whether it's the primary or secondary contact"
+      }
+    },
+    "Incident": {
+      "financialEntityCode": {
+        "title": "Financial entity code",
+        "description": "Field 2.1"
+      },
+      "detectionDateTime": {
+        "title": "Incident detection date and time",
+        "description": "Field 2.2 - format YYYY-MM-DDThh:mm:ssZ"
+      },
+      "classificationDateTime": {
+        "title": "Incident classification date and time",
+        "description": "Field 2.3 - format YYYY-MM-DDThh:mm:ssZ"
+      },
+      "incidentDescription": {
+        "title": "Incident description",
+        "description": "Field 2.4"
+      },
+      "otherInformation": {
+        "title": "Other information",
+        "description": "Field 2.10"
+      },
+      "classificationTypes": {
+        "title": "Classification types",
+        "items": {
+          "title": "Classification type"
+        }
+      },
+      "isBusinessContinuityActivated": {
+        "title": "Is business continuity activated?",
+        "description": "Field 2.9"
+      },
+      "incidentOccurrenceDateTime": {
+        "title": "Incident occurrence date and time",
+        "description": "Field 3.2 - format YYYY-MM-DDThh:mm:ssZ"
+      },
+      "incidentDuration": {
+        "title": "Incident duration",
+        "description": "Field 3.15 - format DDD:HH:MM"
+      },
+      "originatesFromThirdPartyProvider": {
+        "title": "Originates from third-party provider",
+        "description": "Field 2.8"
+      },
+      "incidentDiscovery": {
+        "title": "Incident discovery",
+        "description": "Field 2.7",
+        "enum": {
+          "it_security": "IT security",
+          "staff": "Staff",
+          "internal_audit": "Internal audit",
+          "external_audit": "External audit",
+          "third-party_provider": "Third-party provider",
+          "attacker": "Attacker",
+          "monitoring_systems": "Monitoring systems",
+          "authority_agency_law_enforcement_body": "Authority/Agency/Law enforcement body"
+        }
+      },
+      "competentAuthorityCode": {
+        "title": "Competent authority code",
+        "description": "Field 3.1"
+      },
+      "incidentType": {
+        "title": "Incident type"
+      },
+      "rootCauseHLClassification": {
+        "title": "HL classification of root cause",
+        "items": {
+          "title": "HL classification",
+          "enum": {
+            "malicious_actions": "Malicious actions",
+            "process_failure": "Process failure",
+            "system_failure_malfunction": "System failure: malfunction",
+            "human_error": "Human error",
+            "external_event": "External event"
+          }
+        },
+        "description": "Field 4.1"
+      },
+      "rootCausesDetailedClassification": {
+        "title": "Detailed classification of root causes",
+        "items": {
+          "title": "Detailed classification",
+          "enum": {
+            "malicious_actions_deliberate_internal_actions": "Malicious actions, deliberate internal actions",
+            "malicious_actions_deliberate_physical_damage_manipulation_theft": "Malicious actions, deliberate physical damage, manipulation, theft",
+            "malicious_actions_fraudulent_actions": "Malicious actions, fraudulent actions",
+            "process_failure_insufficient_monitoring_or_failure_of_monitoring_and_control": "Process failure, insufficient monitoring or failure of monitoring and control",
+            "process_failure_insufficient_unclear_roles_and_responsibilities": "Process failure, insufficient or unclear roles and responsibilities",
+            "process_failure_ICT_risk_management_process_failure": "Process failure, ICT risk management process failure",
+            "process_failure_insufficient_or_failure_of_ict_operations_and_ict_security_operations": "Process failure, insufficient or failure of ICT operations and ICT security operations",
+            "process_failure_insufficient_or_failure_of_ict_project_management": "Process failure, insufficient or failure of ICT project management",
+            "process_failure_inadequacy_of_internal_policies_procedures_and_documentation": "Process failure, inadequacy of internal policies, procedures and documentation",
+            "process_failure_inadequate_ict_systems_acquisition_development_and_maintenance": "Process failure, inadequate ICT systems acquisition, development and maintenance",
+            "process_failure_other": "Process failure, other",
+            "system_failure_hardware_capacity_and_performance": "System failure, hardware capacity and performance",
+            "system_failure_hardware_maintenance": "System failure, hardware maintenance",
+            "system_failure_hardware_obsolescence_ageing": "System failure, hardware obsolescence, ageing",
+            "system_failure_software_compatibility_configuration": "System failure, software compatibility and configuration",
+            "system_failure_software_performance": "System failure, software performance",
+            "system_failure_network_configuration": "System failure, network configuration",
+            "system_failure_physical_damage": "System failure, physical damage",
+            "system_failure_other": "System failure, other",
+            "human_error_omission": "Human error: omission",
+            "human_error_mistake": "Human error: mistake",
+            "human_error_skills_knowledge": "Human error: lack of skills or knowledge",
+            "human_error_inadequate_human_resources": "Human error: inadequate human resources",
+            "human_error_miscommunication": "Human error: miscommunication",
+            "human_error_other": "Human error: other",
+            "external_event_natural_disasters_force_majeure": "External event: natural disasters or force majeure",
+            "external_event_third-party_failures": "External event: third-party failures",
+            "external_event_other": "External event: other"
+          }
+        },
+        "description": "Field 4.2"
+      },
+      "rootCausesAdditionalClassification": {
+        "title": "Additional classification of root causes",
+        "description": "Field 4.3",
+        "items": {
+          "title": "Additional classification",
+          "enum": {
+            "monitoring_of_policy_adherence": "Monitoring of policy adherence",
+            "monitoring_of_third-party_service_providers": "Monitoring of third-party service providers",
+            "monitoring_and_verification_of_remediation_of_vulnerabilities": "Monitoring and verification of remediation of vulnerabilities",
+            "identity_and_access_management": "Identity and access management",
+            "encryption_and_cryptography": "Encryption and cryptography",
+            "logging": "Logging",
+            "failure_in_specifying_accurate_risk_tolerance_levels": "Failure in specifying accurate risk tolerance levels",
+            "insufficient_vulnerability_and_threat_assessments": "Insufficient vulnerability and threat assessments",
+            "inadequate_risk_treatment_measures": "Inadequate risk treatment measures",
+            "poor_management_of_residual_ict_risks": "Poor management of residual ICT risks",
+            "vulnerability_and_patch_management": "Vulnerability and patch management",
+            "change_management": "Change management",
+            "capacity_and_performance_management": "Capacity and performance management",
+            "ict_asset_management_and_information_classification": "ICT asset management and information classification",
+            "backup_and_restore": "Backup and restore",
+            "error_handling": "Error handling",
+            "inadequate_ict_systems_acquisition_development_and_maintenance": "Inadequate ICT systems acquisition, development and maintenance",
+            "insufficient_or_failure_of_software_testing": "Insufficient or failed software testing"
+          }
+        }
+      },
+      "rootCausesOther": {
+        "title": "Other root causes",
+        "description": "Field 4.4"
+      },
+      "rootCausesInformation": {
+        "title": "Root causes information",
+        "description": "Field 4.5"
+      },
+      "rootCauseAddressingDateTime": {
+        "title": "Root cause addressing date and time",
+        "description": "Field 4.7 - format YYYY-MM-DDThh:mm:ssZ"
+      },
+      "incidentResolutionSummary": {
+        "title": "Incident resolution summary",
+        "description": "Field 4.6"
+      },
+      "incidentResolutionDateTime": {
+        "title": "Incident resolution date and time",
+        "description": "Field 4.8 - format YYYY-MM-DDThh:mm:ssZ"
+      },
+      "incidentResolutionVsPlannedImplementation": {
+        "title": "Incident resolution vs planned implementation",
+        "description": "Field 4.9"
+      },
+      "assessmentOfRiskToCriticalFunctions": {
+        "title": "Assessment of risk to critical functions",
+        "description": "Field 4.10"
+      },
+      "informationRelevantToResolutionAuthorities": {
+        "title": "Information relevant to resolution authorities",
+        "description": "Field 4.11"
+      },
+      "financialRecoveriesAmount": {
+        "title": "Financial recoveries amount",
+        "description": "Field 4.14"
+      },
+      "grossAmountIndirectDirectCosts": {
+        "title": "Gross amount of direct and indirect costs",
+        "description": "Field 4.13"
+      },
+      "recurringNonMajorIncidentsDescription": {
+        "title": "Description of recurring non-major incidents",
+        "description": "Field 4.15"
+      },
+      "recurringIncidentDate": {
+        "title": "Date of the recurring incident",
+        "description": "Field 4.16 - format YYYY-MM-DDThh:mm:ssZ"
+      }
+    },
+    "IncidentType": {
+      "incidentClassification": {
+        "title": "Incident Classification",
+        "description": "Field 3.23",
+        "items": {
+          "title": "Classification",
+          "enum": {
+            "cybersecurity-related": "Cybersecurity-related",
+            "process_failure": "Process Failure",
+            "system_failure": "System Failure",
+            "external_event": "External Event",
+            "payment-related": "Payment-related",
+            "other": "Other"
+          }
+        }
+      },
+      "otherIncidentClassification": {
+        "title": "Other Incident Classification",
+        "description": "Field 3.24 - This field is required if 'Incident Classification' is 'other'"
+      },
+      "threatTechniques": {
+        "title": "Threat Techniques",
+        "description": "Field 3.25 - Required if 'Incident Classification' is 'CYBERSECURITY_RELATED'",
+        "items": {
+          "title": "Threat Technique",
+          "enum": {
+            "social_engineering_including_phishing": "Social Engineering, including Phishing",
+            "ddos": "Denial-of-Service Attack (DDoS)",
+            "identity_theft": "Identity Theft",
+            "data_encryption_for_impact_including_ransomware": "Data Encryption for Impact, including Ransomware",
+            "resource_hijacking": "Resource Hijacking",
+            "data_exfiltration_and_manipulation_including_identity_theft": "Data Exfiltration and Manipulation, including Identity Theft",
+            "data_destruction": "Data Destruction",
+            "defacement": "Defacement",
+            "supply-chain_attack": "Supply Chain Attack",
+            "other": "Other"
+          }
+        }
+      },
+      "otherThreatTechniques": {
+        "title": "Other Threat Techniques",
+        "description": "Field 3.26 - This field is required if 'Threat Techniques' contains 'OTHER'"
+      },
+      "indicatorsOfCompromise": {
+        "title": "Indicators of Compromise",
+        "description": "Field 3.35 - Required if 'Incident Classification' is 'CYBERSECURITY_RELATED'"
+      }
+    },
+    "ImpactAssessment": {
+      "hasImpactOnRelevantClients": {
+        "title": "Has Impact on Relevant Clients",
+        "description": "Field 3.8"
+      },
+      "serviceImpact": {
+        "title": "Service Impact"
+      },
+      "criticalServicesAffected": {
+        "title": "Critical Services Affected",
+        "description": "Field 3.22"
+      },
+      "affectedAssets": {
+        "title": "Affected Assets",
+        "description": "Field 3.4, 3.5, 3.6, 3.7, 3.9, 3.10, 3.11, 3.12"
+      },
+      "affectedFunctionalAreas": {
+        "title": "Affected Functional Areas",
+        "description": "Field 3.27"
+      },
+      "isAffectedInfrastructureComponents": {
+        "title": "Are Infrastructure Components Affected?",
+        "description": "Field 3.28",
+        "enum": {
+          "yes": "Yes",
+          "no": "No",
+          "information_not_available": "Information Not Available"
+        }
+      },
+      "affectedInfrastructureComponents": {
+        "title": "Affected Infrastructure Components",
+        "description": "Field 3.29"
+      },
+      "isImpactOnFinancialInterest": {
+        "title": "Is There an Impact on Financial Interests?",
+        "description": "Field 3.30",
+        "enum": {
+          "yes": "Yes",
+          "no": "No",
+          "information_not_available": "Information Not Available"
+        }
+      }
+    },
+    "ServiceImpact": {
+      "serviceRestorationDateTime": {
+        "title": "Service Restoration Date and Time",
+        "description": "Field 3.3 - format YYYY-MM-DDThh:mm:ssZ"
+      },
+      "serviceDowntime": {
+        "title": "Service Downtime",
+        "description": "Field 3.16 - format DDD:HH:MM"
+      },
+      "isTemporaryActionsMeasuresForRecovery": {
+        "title": "Are There Temporary Measures for Recovery?",
+        "description": "Field 3.33"
+      },
+      "descriptionOfTemporaryActionsMeasuresForRecovery": {
+        "title": "Description of Temporary Measures for Recovery",
+        "description": "Field 3.34"
+      }
+    },
+    "AffectedAssets": {
+      "affectedClients": {
+        "title": "Affected Clients",
+        "description": "Field 3.4, 3.5"
+      },
+      "affectedFinancialCounterparts": {
+        "title": "Affected Financial Counterparties",
+        "description": "Field 3.6, 3.7"
+      },
+      "affectedFinancialEntity": {
+        "title": "Affected Financial Entity",
+        "description": "Field 3.9, 3.10"
+      },
+      "valueOfAffectedTransactions": {
+        "title": "Value of Affected Transactions",
+        "description": "Field 3.11"
+      },
+      "numbersActualEstimate": {
+        "title": "Estimates of Actual Numbers",
+        "description": "Field 3.12",
+        "items": {
+          "title": "Number",
+          "enum": {
+            "actual_figures_for_clients_affected": "Actual figures for affected clients",
+            "actual_figures_for_financial_counterparts_affected": "Actual figures for affected financial counterparties",
+            "actual_figures_for_transactions_affected": "Actual figures for affected transactions",
+            "estimates_for_clients_affected": "Estimates for affected clients",
+            "estimates_for_financial_counterparts_affected": "Estimates for affected financial counterparties",
+            "estimates_for_transactions_affected": "Estimates for affected transactions",
+            "no_impact_on_clients": "No impact on clients",
+            "no_impact_on_financial_counterparts": "No impact on financial counterparties",
+            "no_impact_on_transactions": "No impact on transactions"
+          }
+        }
+      }
+    },
+    "NumberPercentageType": {
+      "number": {
+        "title": "Number",
+        "description": "number"
+      },
+      "percentage": {
+        "title": "Percentage",
+        "description": "Percentage: 0 - 100"
+      }
+    },
+    "ClassificationType": {
+      "classificationCriterion": {
+        "title": "Classification Criterion",
+        "description": "Field 2.5",
+        "enum": {
+          "clients_financial_counterparts_and_transactions_affected": "Affected clients, financial counterparties, and transactions",
+          "reputational_impact": "Reputational impact",
+          "duration_and_service_downtime": "Duration and service downtime",
+          "geographical_spread": "Geographical spread",
+          "data_losses": "Data losses",
+          "critical_services_affected": "Critical services affected",
+          "economic_impact": "Economic impact"
+        }
+      },
+      "countryCodeMaterialityThresholds": {
+        "title": "Materiality Thresholds by Country Code",
+        "items": { "title": "Country Code" },
+        "description": "Field 2.6"
+      },
+      "memberStatesImpactType": {
+        "title": "Type of Impact on Member States",
+        "description": "Field 3.18",
+        "items": {
+          "title": "Impact",
+          "enum": {
+            "clients": "Clients",
+            "financial_counterparts": "Financial counterparties",
+            "branch_of_the_financial_entity": "Branch of the financial entity",
+            "financial_entities_within_the_group_carrying_out_activities_in_the_respective_member_state": "Group financial entities carrying out activities in the respective Member State",
+            "financial_market_infrastructure": "Financial market infrastructure",
+            "third-party_providers_that_may_be_common_to_other_financial_entities": "Third-party providers potentially shared with other financial entities"
+          }
+        }
+      },
+      "memberStatesImpactTypeDescription": {
+        "title": "Description of Impact on Member States",
+        "description": "Field 3.19"
+      },
+      "dataLosseMaterialityThresholds": {
+        "title": "Materiality Thresholds for Data Loss",
+        "description": "Field 3.20",
+        "items": {
+          "title": "Impact",
+          "enum": {
+            "availability": "Availability",
+            "integrity": "Integrity",
+            "confidentiality": "Confidentiality",
+            "authenticity": "Authenticity"
+          }
+        }
+      },
+      "dataLossesDescription": {
+        "title": "Description of Data Losses",
+        "description": "Field 3.21"
+      },
+      "reputationalImpactType": {
+        "title": "Type of Reputational Impact",
+        "description": "Field 3.13, if field 2.5 mentions reputational impact",
+        "items": {
+          "title": "Reputation Category",
+          "enum": {
+            "the_major_ict-related_incident_has_been_reflected_in_the_media": "The major ICT-related incident has been reported in the media",
+            "the_major_ict-related_incident_has_resulted_in_repetitive_complaints_from_different_clients_or_financial_counterparts_on_client-facing_services_or_critical_business_relationships": "The major ICT-related incident resulted in repetitive complaints from different clients or financial counterparties on customer-facing services or critical business relationships",
+            "the_financial_entity_will_not_be_able_to_or_is_likely_not_to_be_able_to_meet_regulatory_requirements_as_a_result_of_the_major_ict-related_incident": "The financial entity will not or is unlikely to meet regulatory requirements due to the major ICT-related incident",
+            "the_financial_entity_will_or_is_likely_to_lose_clients_or_financial_counterparts_with_a_material_impact_on_its_business_as_a_result_of_the_major_ict-related_incident": "The financial entity will or is likely to lose clients or financial counterparties with a material impact on its business due to the major ICT-related incident"
+          }
+        }
+      },
+      "reputationalImpactDescription": {
+        "title": "Description of Reputational Impact",
+        "description": "Field 3.14"
+      },
+      "economicImpactMaterialityThreshold": {
+        "title": "Materiality Threshold of Economic Impact",
+        "description": "Field 4.12"
+      }
+    }
+  }
+}
