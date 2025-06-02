@@ -50,15 +50,24 @@ export const DoraIncident: FC = () => {
 
   const stepFields = useMemo(
     () => [
-      t("incident:incidentSubmission.title"),
-      t("incident:submittingEntity.title"),
-      t("incident:affectedEntity.title"),
-      t("incident:ultimateParentUndertaking.title"),
-      t("incident:primaryContact.title"),
-      t("incident:incident.title"),
-      t("incident:impactAssessment.title"),
-      t("incident:reportingToOtherAuthorities.title"),
-      t("incident:informationDurationServiceDowntimeActualOrEstimate.title"),
+      t("incident:incidentSubmission.title", "incidentSubmission"),
+      t("incident:submittingEntity.title", "submittingEntity"),
+      t("incident:affectedEntity.title", "affectedEntity"),
+      t(
+        "incident:ultimateParentUndertaking.title",
+        "ultimateParentUndertaking"
+      ),
+      t("incident:primaryContact.title", "primaryContact"),
+      t("incident:incident.title", "incident"),
+      t("incident:impactAssessment.title", "impactAssessment"),
+      t(
+        "incident:reportingToOtherAuthorities.title",
+        "reportingToOtherAuthorities"
+      ),
+      t(
+        "incident:informationDurationServiceDowntimeActualOrEstimate.title",
+        "informationDurationServiceDowntimeActualOrEstimate"
+      ),
     ],
     [t]
   );
@@ -85,7 +94,6 @@ export const DoraIncident: FC = () => {
   useEffect(() => {
     setStep(0);
     setData(initialData);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {

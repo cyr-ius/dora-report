@@ -36,22 +36,20 @@ export const DoraThreat: FC = () => {
 
   const stepFields = useMemo(
     () => [
-      t("threat:submittingEntity.title"),
-      t("threat:affectedFinancialEntity.title"),
-      t("threat:primaryContact.title"),
-      t("threat:cyberThreat.title"),
+      t("threat:submittingEntity.title", "submittingEntity"),
+      t("threat:affectedFinancialEntity.title", "affectedFinancialEntity"),
+      t("threat:primaryContact.title", "primaryContact"),
+      t("threat:cyberThreat.title", "cyberThreat"),
     ],
     [t]
   );
 
   const translatedSchema = useMemo(
     () => translateSchema(schema, t, "threat"),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     [i18n.language]
   );
   const translatedUiSchema = useMemo(
     () => translateUiSchema(uischema, t, "threat"),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     [i18n.language]
   );
   const validator = useMemo(
@@ -62,7 +60,6 @@ export const DoraThreat: FC = () => {
   useEffect(() => {
     setStep(0);
     setData(initialData);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
