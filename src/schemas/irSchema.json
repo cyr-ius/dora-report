@@ -102,7 +102,7 @@
     "incident"
   ],
   "additionalProperties": false,
-  "dependencies": {
+  "dependentSchemas": {
     "incidentSubmission": {
       "oneOf": [
         {
@@ -238,6 +238,7 @@
             }
           },
           "required": [
+            "incidentSubmission",
             "impactAssessment",
             "reportingToOtherAuthorities",
             "informationDurationServiceDowntimeActualOrEstimate"
@@ -345,6 +346,7 @@
             }
           },
           "required": [
+            "incidentSubmission",
             "impactAssessment",
             "reportingToOtherAuthorities",
             "informationDurationServiceDowntimeActualOrEstimate"
@@ -356,7 +358,7 @@
               "const": "initial_notification"
             },
             "incident": {
-              "required": []
+              "required": ["incidentSubmission"]
             }
           }
         },
@@ -366,7 +368,7 @@
               "const": "major_incident_reclassified_as_non-major"
             },
             "incident": {
-              "required": []
+              "required": ["incidentSubmission"]
             }
           }
         }
@@ -479,16 +481,16 @@
           "description": "field 1.3b, 1.6, 1.14. The validation rules on the required field is not implemented"
         }
       },
-      "dependencies": {
+      "dependentSchemas": {
         "entityType": {
           "oneOf": [
             {
               "properties": {
                 "entityType": {
-                  "enum": ["SUBMITTING_ENTITY"]
+                  "const": "SUBMITTING_ENTITY"
                 }
               },
-              "required": ["name", "code"],
+              "required": ["entityType", "name", "code"],
               "not": {
                 "required": ["LEI"]
               }
@@ -496,10 +498,10 @@
             {
               "properties": {
                 "entityType": {
-                  "enum": ["SUBMITTING_ENTITY"]
+                  "const": "SUBMITTING_ENTITY"
                 }
               },
-              "required": ["name", "LEI"],
+              "required": ["entityType", "name", "LEI"],
               "not": {
                 "required": ["code"]
               }
@@ -507,10 +509,10 @@
             {
               "properties": {
                 "entityType": {
-                  "enum": ["AFFECTED_ENTITY"]
+                  "const": "AFFECTED_ENTITY"
                 }
               },
-              "required": ["name", "code", "affectedEntityType"],
+              "required": ["entityType", "name", "code", "affectedEntityType"],
               "not": {
                 "required": ["LEI"]
               }
@@ -518,10 +520,10 @@
             {
               "properties": {
                 "entityType": {
-                  "enum": ["AFFECTED_ENTITY"]
+                  "const": "AFFECTED_ENTITY"
                 }
               },
-              "required": ["name", "LEI", "affectedEntityType"],
+              "required": ["entityType", "name", "LEI", "affectedEntityType"],
               "not": {
                 "required": ["code"]
               }
@@ -529,10 +531,10 @@
             {
               "properties": {
                 "entityType": {
-                  "enum": ["ULTIMATE_PARENT_UNDERTAKING_ENTITY"]
+                  "const": "ULTIMATE_PARENT_UNDERTAKING_ENTITY"
                 }
               },
-              "required": []
+              "required": ["entityType"]
             }
           ]
         }
@@ -789,7 +791,10 @@
         "incidentDiscovery",
         "isBusinessContinuityActivated"
       ],
-      "dependencies": {
+      "dependentRequired": {
+        "recurringNonMajorIncidentsDescription": ["recurringIncidentDate"]
+      },
+      "dependentSchemas": {
         "rootCausesDetailedClassification": {
           "if": {
             "properties": {
@@ -803,24 +808,11 @@
                   ]
                 }
               }
-            }
+            },
+            "required": ["rootCausesDetailedClassification"]
           },
           "then": {
             "required": ["rootCausesOther"]
-          }
-        },
-        "recurringNonMajorIncidentsDescription": {
-          "if": {
-            "properties": {
-              "recurringNonMajorIncidentsDescription": {
-                "type": "string",
-                "minLength": 1
-              }
-            },
-            "required": ["recurringNonMajorIncidentsDescription"]
-          },
-          "then": {
-            "required": ["recurringIncidentDate"]
           }
         }
       },
@@ -883,7 +875,7 @@
       },
       "required": [],
       "additionalProperties": false,
-      "dependencies": {
+      "dependentSchemas": {
         "incidentClassification": {
           "allOf": [
             {
@@ -894,7 +886,8 @@
                       "const": "other"
                     }
                   }
-                }
+                },
+                "required": ["incidentClassification"]
               },
               "then": {
                 "required": ["otherIncidentClassification"]
@@ -908,7 +901,8 @@
                       "const": "cybersecurity-related"
                     }
                   }
-                }
+                },
+                "required": ["incidentClassification"]
               },
               "then": {
                 "required": ["threatTechniques", "indicatorsOfCompromise"]
@@ -924,7 +918,8 @@
                   "const": "other"
                 }
               }
-            }
+            },
+            "required": ["threatTechniques"]
           },
           "then": {
             "required": ["otherThreatTechniques"]
@@ -1000,7 +995,10 @@
       },
       "required": [],
       "additionalProperties": false,
-      "dependencies": {
+      "dependentRequired": {
+        "serviceDowntime": ["serviceRestorationDateTime"]
+      },
+      "dependentSchemas": {
         "isTemporaryActionsMeasuresForRecovery": {
           "if": {
             "properties": {
@@ -1012,19 +1010,6 @@
           },
           "then": {
             "required": ["descriptionOfTemporaryActionsMeasuresForRecovery"]
-          }
-        },
-        "serviceDowntime": {
-          "if": {
-            "properties": {
-              "serviceDowntime": {
-                "minLength": 1
-              }
-            },
-            "required": ["serviceDowntime"]
-          },
-          "then": {
-            "required": ["serviceRestorationDateTime"]
           }
         }
       }
