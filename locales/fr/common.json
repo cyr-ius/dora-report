@@ -69,5 +69,9 @@
     "hu": "Magyar",
     "cs": "Čeština",
     "sk": "Slovenčina"
+  },
+  "menu": {
+    "incidentReport": "Rapport d'incident",
+    "threatReport": "Rapport de menaces"
   }
 }
