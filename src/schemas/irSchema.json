@@ -215,16 +215,13 @@
                 "rootCausesAdditionalClassification",
                 "rootCausesInformation",
                 "rootCauseAddressingDateTime",
-                "grossAmountIndirectDirectCosts",
-                "incidentDiscovery"
+                "grossAmountIndirectDirectCosts"
               ]
             },
             "impactAssessment": {
               "properties": {
                 "serviceImpact": {
-                  "required": [
-                    "isTemporaryActionsMeasuresForRecovery"
-                  ]
+                  "required": ["isTemporaryActionsMeasuresForRecovery"]
                 }
               },
               "required": [
@@ -323,16 +320,13 @@
                 "financialEntityCode",
                 "incidentDescription",
                 "incidentOccurrenceDateTime",
-                "incidentDuration",
-                "incidentDiscovery"
+                "incidentDuration"
               ]
             },
             "impactAssessment": {
               "properties": {
                 "serviceImpact": {
-                  "required": [
-                    "isTemporaryActionsMeasuresForRecovery"
-                  ]
+                  "required": ["isTemporaryActionsMeasuresForRecovery"]
                 }
               },
               "required": [
@@ -411,7 +405,7 @@
         "required": ["impactAssessment"]
       },
       "then": {
-        "impactAssessment":{
+        "impactAssessment": {
           "serviceImpact": {
             "required": ["informationDurationServiceDowntimeActualOrEstimate"]
           }
@@ -429,8 +423,7 @@
             "SUBMITTING_ENTITY",
             "AFFECTED_ENTITY",
             "ULTIMATE_PARENT_UNDERTAKING_ENTITY"
-          ],
-          "description": ""
+          ]
         },
         "name": {
           "type": "string",
