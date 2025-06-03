@@ -39,7 +39,8 @@ export default function DownTimeField<
   const { translateString } = registry;
   const options = getUiOptions<T, S, F>(uiSchema, registry.globalUiOptions);
   const { title: uiTitle } = options;
-  const fieldTitle = uiTitle || title || name;
+  const { title: schemaTitle } = schema;
+  const fieldTitle = title || uiTitle || schemaTitle || name;
 
   let value: Duration = { days: 0, hours: 0, minutes: 0 };
   if (typeof formData === "string") {
