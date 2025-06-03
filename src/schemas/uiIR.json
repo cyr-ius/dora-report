@@ -206,8 +206,7 @@
     "entityType": {
       "ui:options": {
         "widget": "text",
-        "readonly": true,
-        "title":"entityType"
+        "readonly": true
       }
     }
   },
