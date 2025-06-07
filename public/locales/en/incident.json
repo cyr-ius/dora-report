@@ -200,7 +200,10 @@
           "third-party_provider": "Third-party provider",
           "attacker": "Attacker",
           "monitoring_systems": "Monitoring systems",
-          "authority_agency_law_enforcement_body": "Authority/Agency/Law enforcement body"
+          "authority_agency_law_enforcement_body": "Authority/Agency/Law enforcement body",
+          "clients": "Clients",
+          "financial_counterparts": "Financial counterparts",
+          "other": "Other"
         }
       },
       "competentAuthorityCode": {
