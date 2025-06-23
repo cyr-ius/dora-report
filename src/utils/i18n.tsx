@@ -8,6 +8,7 @@ i18n
   .use(HttpBackend)
   .use(initReactI18next)
   .init({
+    debug: false,
     supportedLngs: ["en", "fr"],
     fallbackLng: "en",
     ns: ["common", "threat", "incident"],

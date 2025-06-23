@@ -134,17 +134,8 @@ export const DoraIncident: FC = () => {
   const transformErrors = (errors: any) => {
     return errors.map((error: any) => {
       // console.debug(error)
-      if (error.name === "const" && error.property == ".incidentSubmission") {
-        error.message = "";
-      }
-      if (
-        error.name === "oneOf" &&
-        error.schemaPath === "#/dependencies/incidentSubmission/oneOf"
-      ) {
-        error.message = "";
-      }
-      if (error.message === "must match exactly one schema in oneOf")
-        error.message = "";
+      if (error.name === "const") error.message = "";
+      if (error.name === "oneOf") error.message = "";
       return error;
     });
   };
@@ -194,7 +185,7 @@ export const DoraIncident: FC = () => {
               },
               constAsDefaults: "skipOneOf",
               mergeDefaultsIntoFormData: "useDefaultIfFormDataUndefined",
-              emptyObjectFields: "skipDefaults",
+              // emptyObjectFields: "skipDefaults",
             }}
             focusOnFirstError={true}
             transformErrors={transformErrors}
