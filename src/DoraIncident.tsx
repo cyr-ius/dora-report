@@ -185,7 +185,7 @@ export const DoraIncident: FC = () => {
               },
               constAsDefaults: "skipOneOf",
               mergeDefaultsIntoFormData: "useDefaultIfFormDataUndefined",
-              // emptyObjectFields: "skipDefaults",
+              emptyObjectFields: "skipDefaults",
             }}
             focusOnFirstError={true}
             transformErrors={transformErrors}
