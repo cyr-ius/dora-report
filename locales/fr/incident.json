@@ -1,0 +1,577 @@
+{
+  "title": "DORA Rapport d'incident majeur",
+  "description": "Ce formulaire est utilisé pour soumettre des rapports d'incidents majeurs conformément à la réglementation DORA.",
+  "incidentSubmission": {
+    "description": "Champ 1.1",
+    "title": "Soumission d'incident majeur",
+    "enum": {
+      "initial_notification": "Notification initiale",
+      "intermediate_report": "Rapport intermédiaire",
+      "final_report": "Rapport final",
+      "major_incident_reclassified_as_non-major": "Incident majeur reclassé comme non majeur"
+    }
+  },
+  "reportCurrency": {
+    "title": "Devise du rapport",
+    "description": "Champ 1.15"
+  },
+  "submittingEntity": {
+    "title": "Entité soumettrice",
+    "description": "Champ 1.2, 1.3"
+  },
+  "affectedEntity": {
+    "title": "Entités affectées",
+    "description": "Champ 1.4, 1.5, 1.6",
+    "items": { "title": "Entité affectée" }
+  },
+  "ultimateParentUndertaking": {
+    "title": "Entreprise mère ultime",
+    "description": "Champ 1.13, 1.14"
+  },
+  "primaryContact": {
+    "title": "Contact principal",
+    "description": "Champ 1.7, 1.8, 1.9"
+  },
+  "secondaryContact": {
+    "title": "Contact secondaire",
+    "description": "Champ 1.10, 1.11, 1.12"
+  },
+  "incident": {
+    "title": "Incident"
+  },
+  "impactAssessment": {
+    "title": "Évaluation de l'impact"
+  },
+  "serviceImpact": { "title": "Impact sur le service" },
+  "affectedAssets": { "title": "Actifs affectés" },
+  "affectedClients": { "title": "Clients affectés" },
+  "affectedFinancialCounterparts": {
+    "title": "Contreparties Financières Affectées"
+  },
+  "affectedTransactions": {
+    "title": "Transactions affectées",
+    "description": "Champ 3.9, 3.10"
+  },
+  "reportingToOtherAuthorities": {
+    "title": "Rapport aux autres autorités",
+    "description": "Champ 3.31",
+    "items": {
+      "title": "Autorité",
+      "enum": {
+        "police_law_enforcement": "Police/Application de la loi",
+        "csirt": "Csirt",
+        "data_protection_authority": "Autorité de protection des données",
+        "national_cybersecurity_agency": "Agence nationale de sécurité cybernétique",
+        "none": "Aucun",
+        "other": "Autre"
+      }
+    }
+  },
+  "reportingToOtherAuthoritiesOther": {
+    "title": "Rapport aux autres autorités autres",
+    "description": "Champ 3.32 - Requis si Rapport aux autres autorités contient 'AUTRE'"
+  },
+  "informationDurationServiceDowntimeActualOrEstimate": {
+    "title": "Durée d'indisponibilité du service (réelle ou estimée)",
+    "description": "Champ 3.17 - Requis si le champ 3.3 est renseigné",
+    "enum": {
+      "actual_figures": " Chiffres réels",
+      "estimates": "Estimations",
+      "actual_figures_and_estimates": "Chiffres effectifs et estimations",
+      "no_information_available": "Aucune information disponible"
+    }
+  },
+  "$defs": {
+    "Entity": {
+      "entityType": {
+        "title": "Type d'entité",
+        "enum": {
+          "SUBMITTING_ENTITY": "Entité déclarante",
+          "AFFECTED_ENTITY": "Entité affectée",
+          "ULTIMATE_PARENT_UNDERTAKING_ENTITY": "Entité mère ultime"
+        }
+      },
+      "name": {
+        "title": "Nom",
+        "description": "Champ 1.2, 1.5, 1.13"
+      },
+      "code": {
+        "title": "Code",
+        "description": "Champ 1.3a"
+      },
+      "LEI": {
+        "title": "LEI",
+        "description": "Champ 1.3b, 1.6, 1.14. Les règles de validation sur le champ requis ne sont pas implémentées"
+      },
+      "affectedEntityType": {
+        "title": "Type d'entité affectée",
+        "items": {
+          "title": "Type d'entité affectée",
+          "description": "Champ 1.4",
+          "enum": {
+            "credit_institution": "Institution de crédit",
+            "payment_institution": "Institution de paiement",
+            "exempted_payment_institution": "Institution de paiement exemptée",
+            "account_information_service_provider": "Fournisseur de services d'information sur les comptes",
+            "electronic_money_institution": "Institution de monnaie électronique",
+            "exempted_electronic_money_institution": "Institution de monnaie électronique exemptée",
+            "investment_firm": "Société d'investissement",
+            "crypto-asset_service_provider": "Fournisseur de services d'actifs cryptographiques",
+            "issuer_of_asset-referenced_tokens": "Émetteur de tokens référencés par des actifs",
+            "central_securities_depository": "Dépositaire central de titres",
+            "central_counterparty": "Contrepartie centrale",
+            "trading_venue": "Lieu de négociation",
+            "trade_repository": "Répertoire de transactions",
+            "manager_of_alternative_investment_fund": "Gestionnaire de fonds d'investissement alternatif",
+            "management_company": "Société de gestion",
+            "data_reporting_service_provider": "Fournisseur de services de déclaration de données",
+            "insurance_and_reinsurance_undertaking": "Entreprise d'assurance et de réassurance",
+            "insurance_intermediary_reinsurance_intermediary_and_ancillary_insurance_intermediary": "Intermédiaire d'assurance, intermédiaire de réassurance et intermédiaire d'assurance accessoire",
+            "institution_for_occupational_retirement_provision": "Institution de prévoyance professionnelle",
+            "credit_rating_agency": "Agence de notation de crédit",
+            "administrator_of_critical_benchmarks": "Administrateur de repères critiques",
+            "crowdfunding_service_provider": "Fournisseur de services de financement participatif",
+            "securitisation_repository": "Répertoire de titrisation"
+          }
+        }
+      }
+    },
+    "Contact": {
+      "name": {
+        "title": "Nom du contact",
+        "description": "Champ 1.7, 1.10 - selon le type de contact principal ou secondaire"
+      },
+      "email": {
+        "title": "Email du contact",
+        "description": "Champ 1.8, 1.11 - selon le type de contact principal ou secondaire"
+      },
+      "phone": {
+        "title": "Numéro de téléphone du contact",
+        "description": "Champ 1.9, 1.12 - selon le type de contact principal ou secondaire"
+      }
+    },
+    "Incident": {
+      "financialEntityCode": {
+        "title": "Code de l'entité financière",
+        "description": "Champ 2.1"
+      },
+      "detectionDateTime": {
+        "title": "Date et heure de détection de l'incident",
+        "description": "Champ 2.2 - format YYYY-MM-DDThh:mm:ssZ"
+      },
+      "classificationDateTime": {
+        "title": "Date et heure de classification de l'incident",
+        "description": "Champ 2.3 - format YYYY-MM-DDThh:mm:ssZ"
+      },
+      "incidentDescription": {
+        "title": "Description de l'incident",
+        "description": "Champ 2.4"
+      },
+      "otherInformation": {
+        "title": "Autres informations",
+        "description": "Champ 2.10"
+      },
+      "classificationTypes": {
+        "title": "Types de classification",
+        "items": { "title": "Type de classification" }
+      },
+      "isBusinessContinuityActivated": {
+        "title": "La continuité des activités est-elle activée ?",
+        "description": "Champ 2.9"
+      },
+      "incidentOccurrenceDateTime": {
+        "title": "Date et heure de l'incident",
+        "description": "Champ 3.2 - format YYYY-MM-DDThh:mm:ssZ"
+      },
+      "incidentDuration": {
+        "title": "Durée de l'incident",
+        "description": "Champ 3.15 - format DDD:HH:MM"
+      },
+      "originatesFromThirdPartyProvider": {
+        "title": "Provenance d’un prestataire tiers",
+        "description": "Champ 2.8"
+      },
+      "incidentDiscovery": {
+        "title": "Détection de l’incident",
+        "description": "Champ 2.7",
+        "enum": {
+          "it_security": "Sécurité informatique",
+          "staff": "Personnel",
+          "internal_audit": "Audit interne",
+          "external_audit": "Audit externe",
+          "third-party_provider": "Fournisseur tiers",
+          "attacker": "Attaquant",
+          "monitoring_systems": "Systèmes de surveillance",
+          "authority_agency_law_enforcement_body": "Autorité/Agence/Organe d'application de la loi",
+          "financial_counterparts": "Contreparties financières",
+          "clients": "Clients",
+          "other": "Autre"
+        }
+      },
+      "competentAuthorityCode": {
+        "title": "Code de l’autorité compétente",
+        "description": "Champ 3.1"
+      },
+      "incidentType": { "title": "Type d’incident" },
+      "rootCauseHLClassification": {
+        "title": "Classification HL de la cause principale",
+        "items": {
+          "title": "Classification HL",
+          "enum": {
+            "malicious_actions": "Actions malveillantes",
+            "process_failure": "Défaillance de processus",
+            "system_failure_malfunction": "Défaillance système : dysfonctionnement",
+            "human_error": "Erreur humaine",
+            "external_event": "Événement externe"
+          }
+        },
+        "description": "Champ 4.1"
+      },
+      "rootCausesDetailedClassification": {
+        "title": "Classification détaillée des causes principales",
+        "items": {
+          "title": "Classification détaillée",
+          "enum": {
+            "malicious_actions_deliberate_internal_actions": "Actions malveillantes, actions internes délibérées",
+            "malicious_actions_deliberate_physical_damage_manipulation_theft": "Actions malveillantes, dommages physiques délibérés, manipulation, vol",
+            "malicious_actions_fraudulent_actions": "Actions malveillantes, actions frauduleuses",
+            "process_failure_insufficient_monitoring_or_failure_of_monitoring_and_control": "Échec de processus, surveillance insuffisante ou échec de la surveillance et du contrôle",
+            "process_failure_insufficient_unclear_roles_and_responsibilities": "Échec de processus, rôles et responsabilités insuffisants ou peu clairs",
+            "process_failure_ICT_risk_management_process_failure": "Échec de processus, échec de la gestion des risques ICT",
+            "process_failure_insufficient_or_failure_of_ict_operations_and_ict_security_operations": "Échec de processus, insuffisance ou échec des opérations ICT et des opérations de sécurité ICT",
+            "process_failure_insufficient_or_failure_of_ict_project_management": "Échec de processus, insuffisance ou échec de la gestion de projet ICT",
+            "process_failure_inadequacy_of_internal_policies_procedures_and_documentation": "Échec de processus, inadéquation des politiques internes, des procédures et de la documentation",
+            "process_failure_inadequate_ict_systems_acquisition_development_and_maintenance": "Échec de processus, acquisition, développement et maintenance inadéquats des systèmes ICT",
+            "process_failure_other": "Échec de processus, autre",
+            "system_failure_hardware_capacity_and_performance": "Échec système, capacité et performance matérielles",
+            "system_failure_hardware_maintenance": "Échec système, maintenance matérielle",
+            "system_failure_hardware_obsolescence_ageing": "Échec système, obsolescence matérielle, vieillissement",
+            "system_failure_software_compatibility_configuration": "Échec système, compatibilité et configuration logicielle",
+            "system_failure_software_performance": "Échec système, performance logicielle",
+            "system_failure_network_configuration": "Échec système, configuration réseau",
+            "system_failure_physical_damage": "Échec système, dommages physiques",
+            "system_failure_other": "Échec système, autre",
+            "human_error_omission": "Erreur humaine : omission",
+            "human_error_mistake": "Erreur humaine : erreur",
+            "human_error_skills_knowledge": "Erreur humaine : manque de compétences ou de connaissances",
+            "human_error_inadequate_human_resources": "Erreur humaine : ressources humaines inadéquates",
+            "human_error_miscommunication": "Erreur humaine : mauvaise communication",
+            "human_error_other": "Erreur humaine : autre",
+            "external_event_natural_disasters_force_majeure": "Événement externe : catastrophes naturelles ou force majeure",
+            "external_event_third-party_failures": "Événement externe : défaillances de tiers",
+            "external_event_other": "Événement externe : autre"
+          }
+        },
+        "description": "Champ 4.2"
+      },
+      "rootCausesAdditionalClassification": {
+        "title": "Classification supplémentaire des causes principales",
+        "description": "Champ 4.3",
+        "items": {
+          "title": "Classification supplémentaire",
+          "enum": {
+            "monitoring_of_policy_adherence": "Suivi de l'adhésion à la politique",
+            "monitoring_of_third-party_service_providers": "Suivi des prestataires de services tiers",
+            "monitoring_and_verification_of_remediation_of_vulnerabilities": "Suivi et vérification de la correction des vulnérabilités",
+            "identity_and_access_management": "Gestion des identités et des accès",
+            "encryption_and_cryptography": "Cryptage et cryptographie",
+            "logging": "Journalisation",
+            "failure_in_specifying_accurate_risk_tolerance_levels": "Échec de la spécification des niveaux de tolérance au risque précis",
+            "insufficient_vulnerability_and_threat_assessments": "Évaluations insuffisantes des vulnérabilités et des menaces",
+            "inadequate_risk_treatment_measures": "Mesures de traitement des risques inadéquates",
+            "poor_management_of_residual_ict_risks": "Mauvaise gestion des risques résiduels ICT",
+            "vulnerability_and_patch_management": "Gestion des vulnérabilités et des correctifs",
+            "change_management": "Gestion des changements",
+            "capacity_and_performance_management": "Gestion de la capacité et des performances",
+            "ict_asset_management_and_information_classification": "Gestion des actifs ICT et classification de l'information",
+            "backup_and_restore": "Sauvegarde et restauration",
+            "error_handling": "Gestion des erreurs",
+            "inadequate_ict_systems_acquisition_development_and_maintenance": "Acquisition, développement et maintenance des systèmes ICT inadéquats",
+            "insufficient_or_failure_of_software_testing": "Tests logiciels insuffisants ou échoués"
+          }
+        }
+      },
+      "rootCausesOther": {
+        "title": "Autres causes profondes",
+        "description": "Champ 4.4"
+      },
+      "rootCausesInformation": {
+        "title": "Informations sur les causes profondes",
+        "description": "Champ 4.5"
+      },
+      "rootCauseAddressingDateTime": {
+        "title": "Date et heure de traitement de la cause profonde",
+        "description": "Champ 4.7 - format YYYY-MM-DDThh:mm:ssZ"
+      },
+      "incidentResolutionSummary": {
+        "title": "Résumé de la résolution de l'incident",
+        "description": "Champ 4.6"
+      },
+      "incidentResolutionDateTime": {
+        "title": "Date et heure de la résolution de l’incident",
+        "description": "Champ 4.8 - format YYYY-MM-DDThh:mm:ssZ"
+      },
+      "incidentResolutionVsPlannedImplementation": {
+        "title": "Résolution de l’incident vs mise en œuvre prévue",
+        "description": "Champ 4.9"
+      },
+      "assessmentOfRiskToCriticalFunctions": {
+        "title": "Évaluation du risque pour les fonctions critiques",
+        "description": "Champ 4.10"
+      },
+      "informationRelevantToResolutionAuthorities": {
+        "title": "Informations pertinentes pour les autorités de résolution",
+        "description": "Champ 4.11"
+      },
+      "financialRecoveriesAmount": {
+        "title": "Montant des récupérations financières",
+        "description": "Champ 4.14"
+      },
+      "grossAmountIndirectDirectCosts": {
+        "title": "Montant brut des coûts directs et indirects",
+        "description": "Champ 4.13"
+      },
+      "recurringNonMajorIncidentsDescription": {
+        "title": "Description des incidents récurrents non majeurs",
+        "description": "Champ 4.15"
+      },
+      "recurringIncidentDate": {
+        "title": "Date de l'incident récurrent",
+        "description": "Champ 4.16 - format YYYY-MM-DDThh:mm:ssZ"
+      }
+    },
+    "IncidentType": {
+      "incidentClassification": {
+        "title": "Classification de l’incident",
+        "description": "Champ 3.23",
+        "items": {
+          "title": "Classification",
+          "enum": {
+            "cybersecurity-related": "lié à la cybersécurité",
+            "process_failure": "défaillance de processus",
+            "system_failure": "défaillance du système",
+            "external_event": "événement externe",
+            "payment-related": "lié aux paiements",
+            "other": "autre"
+          }
+        }
+      },
+      "otherIncidentClassification": {
+        "title": "Autre classification de l’incident",
+        "description": "Champ 3.24 - Ce champ est requis si 'Classification de l’incident' est 'autre'"
+      },
+      "threatTechniques": {
+        "title": "Techniques de menace",
+        "description": "Champ 3.25 - Requis si 'Classification de l’incident' est 'CYBERSECURITY_RELATED'",
+        "items": {
+          "title": "Technique de menace",
+          "enum": {
+            "social_engineering_including_phishing": "Ingénierie sociale, y compris le phishing",
+            "ddos": "Attaque par déni de service (DDoS)",
+            "identity_theft": "Vol d’identité",
+            "data_encryption_for_impact_including_ransomware": "Chiffrement des données à des fins d'impact, y compris le ransomware",
+            "resource_hijacking": "Détournement de ressources",
+            "data_exfiltration_and_manipulation_including_identity_theft": "Exfiltration et manipulation des données, y compris le vol d’identité",
+            "data_destruction": "Destruction de données",
+            "defacement": "Défiguration",
+            "supply-chain_attack": "Attaque de la chaîne d’approvisionnement",
+            "other": "Autre"
+          }
+        }
+      },
+      "otherThreatTechniques": {
+        "title": "Autres techniques de menace",
+        "description": "Champ 3.26 - Ce champ est requis si 'Techniques de menace' contient 'AUTRE'"
+      },
+      "indicatorsOfCompromise": {
+        "title": "Indicateurs de compromission",
+        "description": "Champ 3.35 - Requis si 'Classification de l’incident' est 'CYBERSECURITY_RELATED'"
+      }
+    },
+    "ImpactAssessment": {
+      "hasImpactOnRelevantClients": {
+        "title": "A un Impact sur les Clients Pertinents",
+        "description": "Champ 3.8"
+      },
+      "serviceImpact": {
+        "title": "Impact sur le service"
+      },
+      "criticalServicesAffected": {
+        "title": "Services Critiques Affectés",
+        "description": "Champ 3.22"
+      },
+      "affectedAssets": {
+        "title": "Actifs Affectés",
+        "description": "Champ 3.4, 3.5, 3.6, 3.7, 3.9, 3.10, 3.11, 3.12"
+      },
+      "affectedFunctionalAreas": {
+        "title": "Zones Fonctionnelles Affectées",
+        "description": "Champ 3.27"
+      },
+      "isAffectedInfrastructureComponents": {
+        "title": "Des Composants d'Infrastructure Sont-ils Affectés ?",
+        "description": "Champ 3.28",
+        "enum": {
+          "yes": "Oui",
+          "no": "Non",
+          "information_not_available": "Information non disponible"
+        }
+      },
+      "affectedInfrastructureComponents": {
+        "title": "Composants d'Infrastructure Affectés",
+        "description": "Champ 3.29"
+      },
+      "isImpactOnFinancialInterest": {
+        "title": "Impact Sur les Intérêts Financiers ?",
+        "description": "Champ 3.30",
+        "enum": {
+          "yes": "Oui",
+          "no": "Non",
+          "information_not_available": "Information non disponible"
+        }
+      }
+    },
+    "ServiceImpact": {
+      "serviceRestorationDateTime": {
+        "title": "Date et Heure de Rétablissement du Service",
+        "description": "Champ 3.3 - format YYYY-MM-DDThh:mm:ssZ"
+      },
+      "serviceDowntime": {
+        "title": "Temps d'Indisponibilité du Service",
+        "description": "Champ 3.16 - format DDD:HH:MM"
+      },
+      "isTemporaryActionsMeasuresForRecovery": {
+        "title": "Sont des Mesures Temporaires pour la Récupération",
+        "description": "Champ 3.33"
+      },
+      "descriptionOfTemporaryActionsMeasuresForRecovery": {
+        "title": "Description des Mesures Temporaires pour la Récupération",
+        "description": "Champ 3.34"
+      }
+    },
+    "AffectedAssets": {
+      "affectedClients": {
+        "title": "Clients Affectés",
+        "description": "Champ 3.4, 3.5"
+      },
+      "affectedFinancialCounterparts": {
+        "title": "Contreparties Financières Affectées",
+        "description": "Champ 3.6, 3.7"
+      },
+      "affectedFinancialEntity": {
+        "title": "Entité financière affectée",
+        "description": "Champ 3.9, 3.10"
+      },
+      "valueOfAffectedTransactions": {
+        "title": "Valeur des Transactions Affectées",
+        "description": "Champ 3.11"
+      },
+      "numbersActualEstimate": {
+        "title": "Estimation des Nombres Réels",
+        "description": "Champ 3.12",
+        "items": {
+          "title": "Nombre",
+          "enum": {
+            "actual_figures_for_clients_affected": "chiffres réels pour clients impactés",
+            "actual_figures_for_financial_counterparts_affected": "chiffres réels pour contreparties financières impactées",
+            "actual_figures_for_transactions_affected": "chiffres réels pour transactions impactées",
+            "estimates_for_clients_affected": "estimations_pour clients impactés",
+            "estimates_for_financial_counterparts_affected": "estimations pour contreparties financières impactées",
+            "estimates_for_transactions_affected": "estimations pour transactions impactées",
+            "no_impact_on_clients": "pas d'impact sur les clients",
+            "no_impact_on_financial_counterparts": "pas d'impact sur les contreparties financières",
+            "no_impact_on_transactions": "pas d'impact sur les transactions"
+          }
+        }
+      }
+    },
+    "NumberPercentageType": {
+      "title": "Nombre et pourcentage",
+      "number": {
+        "title": "Nombre",
+        "description": "nombre"
+      },
+      "percentage": {
+        "title": "Pourcentage",
+        "description": "Pourcentage: 0 - 100"
+      }
+    },
+    "ClassificationType": {
+      "classificationCriterion": {
+        "title": "Critère de classification",
+        "description": "Champ 2.5",
+        "enum": {
+          "clients_financial_counterparts_and_transactions_affected": "Clients, contreparties financières et transactions affectés",
+          "reputational_impact": "Impact sur la réputation",
+          "duration_and_service_downtime": "Durée et interruption des services",
+          "geographical_spread": "Propagation géographique",
+          "data_losses": "Pertes de données",
+          "critical_services_affected": "Services critiques affectés",
+          "economic_impact": "Impact économique"
+        }
+      },
+      "countryCodeMaterialityThresholds": {
+        "title": "Seuils de matérialité par code pays",
+        "items": { "title": "Code pays" },
+        "description": "Champ 2.6"
+      },
+      "memberStatesImpactType": {
+        "title": "Type d'impact sur les États membres",
+        "description": "Champ 3.18",
+        "items": {
+          "title": "Impact",
+          "enum": {
+            "clients": "Clients",
+            "financial_counterparts": "Contreparties financières",
+            "branch_of_the_financial_entity": "Succursale de l'entité financière",
+            "financial_entities_within_the_group_carrying_out_activities_in_the_respective_member_state": "Entités financières au sein du groupe exerçant des activités dans l'État membre respectif",
+            "financial_market_infrastructure": "Infrastructure de marché financier",
+            "third-party_providers_that_may_be_common_to_other_financial_entities": "Fournisseurs tiers qui peuvent être communs à d'autres entités financières"
+          }
+        }
+      },
+      "memberStatesImpactTypeDescription": {
+        "title": "Description de l'impact sur les États membres",
+        "description": "Champ 3.19"
+      },
+      "dataLosseMaterialityThresholds": {
+        "title": "Seuils de matérialité de perte de données",
+        "description": "Champ 3.20",
+        "items": {
+          "title": "Impact",
+          "enum": {
+            "availability": "Disponibilité",
+            "integrity": "Intégrité",
+            "confidentiality": "Confidentialité",
+            "authenticity": "Authenticité"
+          }
+        }
+      },
+      "dataLossesDescription": {
+        "title": "Description des pertes de données",
+        "description": "Champ 3.21"
+      },
+      "reputationalImpactType": {
+        "title": "Type d'impact sur la réputation",
+        "description": "Champ 3.13, si le champ 2.5 mentionne l'impact sur la réputation",
+        "items": {
+          "title": "Catégorie de réputation",
+          "enum": {
+            "the_major_ict-related_incident_has_been_reflected_in_the_media": "L'incident majeur lié aux TIC a été reflété dans les médias",
+            "the_major_ict-related_incident_has_resulted_in_repetitive_complaints_from_different_clients_or_financial_counterparts_on_client-facing_services_or_critical_business_relationships": "L'incident majeur lié aux TIC a entraîné des plaintes répétitives de différents clients ou contreparties financières sur les services orientés client ou les relations commerciales critiques",
+            "the_financial_entity_will_not_be_able_to_or_is_likely_not_to_be_able_to_meet_regulatory_requirements_as_a_result_of_the_major_ict-related_incident": "L'entité financière ne sera pas en mesure ou est susceptible de ne pas être en mesure de répondre aux exigences réglementaires à la suite de l'incident majeur lié aux TIC",
+            "the_financial_entity_will_or_is_likely_to_lose_clients_or_financial_counterparts_with_a_material_impact_on_its_business_as_a_result_of_the_major_ict-related_incident": "L'entité financière perdra ou est susceptible de perdre des clients ou des contreparties financières, avec un impact matériel sur ses activités à la suite de l'incident majeur lié aux TIC"
+          }
+        }
+      },
+      "reputationalImpactDescription": {
+        "title": "Description de l'impact sur la réputation",
+        "description": "Champ 3.14"
+      },
+      "economicImpactMaterialityThreshold": {
+        "title": "Seuil de matérialité de l'impact économique",
+        "description": "Champ 4.12"
+      }
+    }
+  }
+}
