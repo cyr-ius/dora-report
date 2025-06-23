@@ -20,8 +20,9 @@
     "description": "Champ 1.2, 1.3"
   },
   "affectedEntity": {
-    "title": "Entité affectée",
-    "description": "Champ 1.4, 1.5, 1.6"
+    "title": "Entités affectées",
+    "description": "Champ 1.4, 1.5, 1.6",
+    "items": { "title": "Entité affectée" }
   },
   "ultimateParentUndertaking": {
     "title": "Entreprise mère ultime",
@@ -47,7 +48,10 @@
   "affectedFinancialCounterparts": {
     "title": "Contreparties Financières Affectées"
   },
-  "affectedTransactions": { "title": "Transactions affectées" },
+  "affectedTransactions": {
+    "title": "Transactions affectées",
+    "description": "Champ 3.9, 3.10"
+  },
   "reportingToOtherAuthorities": {
     "title": "Rapport aux autres autorités",
     "description": "Champ 3.31",
@@ -198,7 +202,10 @@
           "third-party_provider": "Fournisseur tiers",
           "attacker": "Attaquant",
           "monitoring_systems": "Systèmes de surveillance",
-          "authority_agency_law_enforcement_body": "Autorité/Agence/Organe d'application de la loi"
+          "authority_agency_law_enforcement_body": "Autorité/Agence/Organe d'application de la loi",
+          "financial_counterparts": "Contreparties financières",
+          "clients": "Clients",
+          "other": "Autre"
         }
       },
       "competentAuthorityCode": {
@@ -466,7 +473,7 @@
           "title": "Nombre",
           "enum": {
             "actual_figures_for_clients_affected": "chiffres réels pour clients impactés",
-            "actual_figures_for_financial_counterparts_affected": "chiffres réels pour_contreparties financières impactées",
+            "actual_figures_for_financial_counterparts_affected": "chiffres réels pour contreparties financières impactées",
             "actual_figures_for_transactions_affected": "chiffres réels pour transactions impactées",
             "estimates_for_clients_affected": "estimations_pour clients impactés",
             "estimates_for_financial_counterparts_affected": "estimations pour contreparties financières impactées",
@@ -479,6 +486,7 @@
       }
     },
     "NumberPercentageType": {
+      "title": "Nombre et pourcentage",
       "number": {
         "title": "Nombre",
         "description": "nombre"
