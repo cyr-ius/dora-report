@@ -352,7 +352,7 @@
               "const": "initial_notification"
             },
             "incident": {
-              "required": ["incidentSubmission"]
+              "required": []
             }
           }
         },
@@ -362,7 +362,7 @@
               "const": "major_incident_reclassified_as_non-major"
             },
             "incident": {
-              "required": ["incidentSubmission"]
+              "required": []
             }
           }
         }
