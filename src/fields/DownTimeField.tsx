@@ -63,7 +63,7 @@ export default function DownTimeField<
       const serviceDowntime = `${newValue.days}:${pad(newValue.hours)}:${pad(
         newValue.minutes
       )}`;
-      onChange(serviceDowntime as T);
+      onChange(serviceDowntime as T, []);
     };
 
   return (
