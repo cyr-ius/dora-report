@@ -1,20 +1,42 @@
-// See https://containers.dev/implementors/json_reference/ for configuration reference
 {
-  "name": "React Node.js project",
-  "image": "mcr.microsoft.com/devcontainers/typescript-node:20",
+  "name": "DORA Report (React + Vite)",
+  "image": "mcr.microsoft.com/devcontainers/base:trixie",
+  "features": {
+    "ghcr.io/devcontainers/features/node:2.1.0": { "version": "24" },
+    "ghcr.io/devcontainers-extra/features/prek:1": {},
+  },
+  "mounts": ["source=${env:HOME}/.claude,target=/home/vscode/.claude,type=bind,consistency=cached"],
+  // ─── VS Code extensions ────────────────────────────────────────────────
   "customizations": {
     "vscode": {
       "extensions": [
         "esbenp.prettier-vscode",
         "dbaeumer.vscode-eslint",
-        "ms-vscode.vscode-typescript-next",
-        "msjsdiag.vscode-react-native",
-        "ms-azuretools.vscode-containers",
-        "ms-azuretools.vscode-docker",
-        "docker.docker",
-        "bierner.github-markdown-preview"
-      ]
-    }
+        "streetsidesoftware.code-spell-checker",
+        "editorconfig.editorconfig",
+        "anthropic.claude-code",
+      ],
+      "settings": {
+        "[typescript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+        "[typescriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+        "[json]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+        "[yaml]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "files.eol": "\n",
+        "files.insertFinalNewline": true,
+        "files.trimTrailingWhitespace": true,
+      },
+    },
   },
-  "postCreateCommand": "npm install"
+
+  // ─── Ports ─────────────────────────────────────────────────────────────
+  "forwardPorts": [5173],
+  "portsAttributes": {
+    "5173": { "label": "Vite dev server", "onAutoForward": "notify" },
+  },
+
+  // ─── Lifecycle ─────────────────────────────────────────────────────────
+  "postCreateCommand": "bash .devcontainer/scripts/post-create.sh ${containerWorkspaceFolder}",
+  "remoteUser": "vscode",
 }
